@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { useDonation } from '@/context/DonationContext';
 import { DonationWidget } from '@/components/DonationWidget';
 import { GraduationCap, CheckCircle2, Quote, ArrowRight, Heart, CreditCard, Building2 } from 'lucide-react';
+import volunteerCommunityImg from '@/assets/images/volunteer-community.png';
 
 export default function ScholarsProgramPage() {
   const { openDonationModal } = useDonation();
@@ -28,7 +29,7 @@ export default function ScholarsProgramPage() {
         <div className="container split-layout">
           <div className="split-image" style={{ height: 480, position: 'relative' }}>
             <Image
-              src="/assets/images/volunteer-community.png"
+              src={volunteerCommunityImg}
               alt="Children in the Scholars Program"
               fill
               style={{ objectFit: 'cover' }}

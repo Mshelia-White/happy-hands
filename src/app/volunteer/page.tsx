@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Users, Laptop, MapPin, Briefcase, CheckCircle2, Heart } from 'lucide-react';
 import { VolunteerForm } from '@/components/VolunteerForm';
+import volunteerCommunityImg from '@/assets/images/volunteer-community.png';
 
 export default function VolunteerPage() {
   return (
@@ -30,7 +31,7 @@ export default function VolunteerPage() {
           <div className="white-panel">
             <div style={{ position: 'relative', width: '100%', height: 320, borderRadius: 'var(--radius-sm)', overflow: 'hidden' }}>
               <Image
-                src="/assets/images/volunteer-community.png"
+                src={volunteerCommunityImg}
                 alt="Happy Hands Volunteers"
                 fill
                 style={{ objectFit: 'cover' }}

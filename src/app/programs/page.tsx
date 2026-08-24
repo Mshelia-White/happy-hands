@@ -5,6 +5,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useDonation } from '@/context/DonationContext';
 import { DonationWidget } from '@/components/DonationWidget';
+import volunteerCommunityImg from '@/assets/images/volunteer-community.png';
+import communityOutreachImg from '@/assets/images/community-outreach.jpg';
 import { 
   LayoutGrid, 
   BookOpen, 
@@ -62,7 +64,7 @@ export default function ProgramsPage() {
               <article className="program-card">
                 <div className="program-image">
                   <Image
-                    src="/assets/images/volunteer-community.png"
+                    src={volunteerCommunityImg}
                     alt="Scholars Program"
                     fill
                     style={{ objectFit: 'cover' }}
@@ -88,7 +90,7 @@ export default function ProgramsPage() {
               <article className="program-card">
                 <div className="program-image">
                   <Image
-                    src="/assets/images/community-outreach.jpg"
+                    src={communityOutreachImg}
                     alt="Teachers on the Go"
                     fill
                     style={{ objectFit: 'cover' }}
@@ -114,7 +116,7 @@ export default function ProgramsPage() {
               <article className="program-card">
                 <div className="program-image">
                   <Image
-                    src="/assets/images/volunteer-community.png"
+                    src={volunteerCommunityImg}
                     alt="Back-2-School"
                     fill
                     style={{ objectFit: 'cover' }}
@@ -164,7 +166,7 @@ export default function ProgramsPage() {
               <article className="program-card">
                 <div className="program-image">
                   <Image
-                    src="/assets/images/community-outreach.jpg"
+                    src={communityOutreachImg}
                     alt="Nourish Now"
                     fill
                     style={{ objectFit: 'cover' }}
@@ -194,7 +196,7 @@ export default function ProgramsPage() {
               <article className="program-card">
                 <div className="program-image">
                   <Image
-                    src="/assets/images/volunteer-community.png"
+                    src={volunteerCommunityImg}
                     alt="FitTot"
                     fill
                     style={{ objectFit: 'cover' }}

@@ -7,6 +7,8 @@ import { useDonation } from '@/context/DonationContext';
 import { StatsCounter } from '@/components/StatsCounter';
 import { DonationWidget } from '@/components/DonationWidget';
 import { ContactForm } from '@/components/ContactForm';
+import volunteerCommunityImg from '@/assets/images/volunteer-community.png';
+import communityOutreachImg from '@/assets/images/community-outreach.jpg';
 import { 
   Sparkles, 
   ArrowRight, 
@@ -75,7 +77,7 @@ export default function HomePage() {
           <div className="hero-collage">
             <div className="hero-img-main">
               <Image
-                src="/assets/images/volunteer-community.png"
+                src={volunteerCommunityImg}
                 alt="Happy Hands Foundation Outreach"
                 fill
                 priority
@@ -85,7 +87,7 @@ export default function HomePage() {
             </div>
             <div className="hero-img-secondary">
               <Image
-                src="/assets/images/community-outreach.jpg"
+                src={communityOutreachImg}
                 alt="Community Children Outreach"
                 fill
                 style={{ objectFit: 'cover' }}
@@ -114,7 +116,7 @@ export default function HomePage() {
           <div className="orange-panel">
             <div
               className="orange-bg-img"
-              style={{ backgroundImage: "url('/assets/images/volunteer-community.png')" }}
+              style={{ backgroundImage: `url(${volunteerCommunityImg.src})` }}
             />
             <p className="section-kicker" style={{ color: 'white' }}>
               About Us
@@ -140,7 +142,7 @@ export default function HomePage() {
           <div className="white-panel">
             <div style={{ position: 'relative', width: '100%', height: 220, marginBottom: 24 }}>
               <Image
-                src="/assets/images/community-outreach.jpg"
+                src={communityOutreachImg}
                 alt="Community Outreach"
                 fill
                 style={{ objectFit: 'cover', borderRadius: 'var(--radius-md)' }}
@@ -210,7 +212,7 @@ export default function HomePage() {
               <div className="program-card">
                 <div className="program-image">
                   <Image
-                    src="/assets/images/volunteer-community.png"
+                    src={volunteerCommunityImg}
                     alt="Scholars Program"
                     fill
                     style={{ objectFit: 'cover' }}
@@ -244,7 +246,7 @@ export default function HomePage() {
               <div className="program-card">
                 <div className="program-image">
                   <Image
-                    src="/assets/images/community-outreach.jpg"
+                    src={communityOutreachImg}
                     alt="Teachers on the Go"
                     fill
                     style={{ objectFit: 'cover' }}
@@ -278,7 +280,7 @@ export default function HomePage() {
               <div className="program-card">
                 <div className="program-image">
                   <Image
-                    src="/assets/images/volunteer-community.png"
+                    src={volunteerCommunityImg}
                     alt="Back-2-School Campaign"
                     fill
                     style={{ objectFit: 'cover' }}
@@ -332,7 +334,7 @@ export default function HomePage() {
               <div className="program-card">
                 <div className="program-image">
                   <Image
-                    src="/assets/images/community-outreach.jpg"
+                    src={communityOutreachImg}
                     alt="Nourish Now Campaign"
                     fill
                     style={{ objectFit: 'cover' }}
@@ -368,7 +370,7 @@ export default function HomePage() {
               <div className="program-card">
                 <div className="program-image">
                   <Image
-                    src="/assets/images/volunteer-community.png"
+                    src={volunteerCommunityImg}
                     alt="FitTot Healthcare"
                     fill
                     style={{ objectFit: 'cover' }}
@@ -456,7 +458,7 @@ export default function HomePage() {
           <div className="gallery-grid">
             <div className="gallery-card tall">
               <Image
-                src="/assets/images/volunteer-community.png"
+                src={volunteerCommunityImg}
                 alt="Community Volunteer Program"
                 fill
                 style={{ objectFit: 'cover' }}
@@ -468,7 +470,7 @@ export default function HomePage() {
             </div>
             <div className="gallery-card">
               <Image
-                src="/assets/images/community-outreach.jpg"
+                src={communityOutreachImg}
                 alt="Scholars in Classroom"
                 fill
                 style={{ objectFit: 'cover' }}
@@ -480,7 +482,7 @@ export default function HomePage() {
             </div>
             <div className="gallery-card">
               <Image
-                src="/assets/images/volunteer-community.png"
+                src={volunteerCommunityImg}
                 alt="Nourish Now Distribution"
                 fill
                 style={{ objectFit: 'cover' }}
@@ -492,7 +494,7 @@ export default function HomePage() {
             </div>
             <div className="gallery-card">
               <Image
-                src="/assets/images/community-outreach.jpg"
+                src={communityOutreachImg}
                 alt="Back-2-School Kits"
                 fill
                 style={{ objectFit: 'cover' }}
@@ -504,7 +506,7 @@ export default function HomePage() {
             </div>
             <div className="gallery-card">
               <Image
-                src="/assets/images/volunteer-community.png"
+                src={volunteerCommunityImg}
                 alt="Teachers on the Go Workshop"
                 fill
                 style={{ objectFit: 'cover' }}
@@ -587,7 +589,7 @@ export default function HomePage() {
           <div className="orange-panel">
             <div
               className="orange-bg-img"
-              style={{ backgroundImage: "url('/assets/images/volunteer-community.png')" }}
+              style={{ backgroundImage: `url(${volunteerCommunityImg.src})` }}
             />
             <h2>Join us in nurturing the future!</h2>
             <p className="section-lede" style={{ color: 'rgba(255,255,255,.9)' }}>

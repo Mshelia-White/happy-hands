@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useDonation } from '@/context/DonationContext';
+import logoImg from '@/assets/logo.png';
 import { 
   ChevronDown, 
   GraduationCap, 
@@ -50,7 +51,7 @@ export const Header: React.FC = () => {
         <Link href="/" className="brand" aria-label="Happy Hands Foundation Home">
           <div className="brand-mark">
             <Image
-              src="/assets/logo.png"
+              src={logoImg}
               alt="Happy Hands Logo"
               width={44}
               height={44}

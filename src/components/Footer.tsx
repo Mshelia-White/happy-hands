@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useDonation } from '@/context/DonationContext';
+import logoImg from '@/assets/logo.png';
 import { 
   Mail, 
   Phone, 
@@ -21,7 +22,7 @@ export const Footer: React.FC = () => {
         <div className="footer-grid">
           <div className="footer-brand">
             <Image
-              src="/assets/logo.png"
+              src={logoImg}
               alt="Happy Hands Logo"
               width={60}
               height={60}
