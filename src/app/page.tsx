@@ -2,13 +2,11 @@
 
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { useDonation } from '@/context/DonationContext';
 import { StatsCounter } from '@/components/StatsCounter';
 import { DonationWidget } from '@/components/DonationWidget';
 import { ContactForm } from '@/components/ContactForm';
-import volunteerCommunityImg from '@/assets/images/volunteer-community.png';
-import communityOutreachImg from '@/assets/images/community-outreach.jpg';
+import { SafeImage } from '@/components/SafeImage';
 import { 
   Sparkles, 
   ArrowRight, 
@@ -76,8 +74,9 @@ export default function HomePage() {
 
           <div className="hero-collage">
             <div className="hero-img-main">
-              <Image
-                src={volunteerCommunityImg}
+              <SafeImage
+                src="/assets/images/volunteer-community.png"
+                fallbackSrc="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1200&q=80"
                 alt="Happy Hands Foundation Outreach"
                 fill
                 priority
@@ -86,8 +85,9 @@ export default function HomePage() {
               <div className="hero-img-overlay" />
             </div>
             <div className="hero-img-secondary">
-              <Image
-                src={communityOutreachImg}
+              <SafeImage
+                src="/assets/images/community-outreach.jpg"
+                fallbackSrc="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1200&q=80"
                 alt="Community Children Outreach"
                 fill
                 style={{ objectFit: 'cover' }}
@@ -116,7 +116,7 @@ export default function HomePage() {
           <div className="orange-panel">
             <div
               className="orange-bg-img"
-              style={{ backgroundImage: `url(${volunteerCommunityImg.src})` }}
+              style={{ backgroundImage: "url('/assets/images/volunteer-community.png'), url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1200&q=80')" }}
             />
             <p className="section-kicker" style={{ color: 'white' }}>
               About Us
@@ -141,8 +141,9 @@ export default function HomePage() {
 
           <div className="white-panel">
             <div style={{ position: 'relative', width: '100%', height: 220, marginBottom: 24 }}>
-              <Image
-                src={communityOutreachImg}
+              <SafeImage
+                src="/assets/images/community-outreach.jpg"
+                fallbackSrc="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1200&q=80"
                 alt="Community Outreach"
                 fill
                 style={{ objectFit: 'cover', borderRadius: 'var(--radius-md)' }}
@@ -211,8 +212,9 @@ export default function HomePage() {
               {/* Scholars Program */}
               <div className="program-card">
                 <div className="program-image">
-                  <Image
-                    src={volunteerCommunityImg}
+                  <SafeImage
+                    src="/assets/images/volunteer-community.png"
+                    fallbackSrc="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=1200&q=80"
                     alt="Scholars Program"
                     fill
                     style={{ objectFit: 'cover' }}
@@ -245,8 +247,9 @@ export default function HomePage() {
               {/* Teachers on the Go */}
               <div className="program-card">
                 <div className="program-image">
-                  <Image
-                    src={communityOutreachImg}
+                  <SafeImage
+                    src="/assets/images/community-outreach.jpg"
+                    fallbackSrc="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=1200&q=80"
                     alt="Teachers on the Go"
                     fill
                     style={{ objectFit: 'cover' }}
@@ -279,8 +282,9 @@ export default function HomePage() {
               {/* Back-2-School */}
               <div className="program-card">
                 <div className="program-image">
-                  <Image
-                    src={volunteerCommunityImg}
+                  <SafeImage
+                    src="/assets/images/volunteer-community.png"
+                    fallbackSrc="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=1200&q=80"
                     alt="Back-2-School Campaign"
                     fill
                     style={{ objectFit: 'cover' }}
@@ -333,8 +337,9 @@ export default function HomePage() {
               {/* Nourish Now */}
               <div className="program-card">
                 <div className="program-image">
-                  <Image
-                    src={communityOutreachImg}
+                  <SafeImage
+                    src="/assets/images/community-outreach.jpg"
+                    fallbackSrc="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=1200&q=80"
                     alt="Nourish Now Campaign"
                     fill
                     style={{ objectFit: 'cover' }}
@@ -369,8 +374,9 @@ export default function HomePage() {
               {/* FitTot */}
               <div className="program-card">
                 <div className="program-image">
-                  <Image
-                    src={volunteerCommunityImg}
+                  <SafeImage
+                    src="/assets/images/volunteer-community.png"
+                    fallbackSrc="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=1200&q=80"
                     alt="FitTot Healthcare"
                     fill
                     style={{ objectFit: 'cover' }}
@@ -457,8 +463,9 @@ export default function HomePage() {
 
           <div className="gallery-grid">
             <div className="gallery-card tall">
-              <Image
-                src={volunteerCommunityImg}
+              <SafeImage
+                src="/assets/images/volunteer-community.png"
+                fallbackSrc="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1200&q=80"
                 alt="Community Volunteer Program"
                 fill
                 style={{ objectFit: 'cover' }}
@@ -469,8 +476,9 @@ export default function HomePage() {
               </div>
             </div>
             <div className="gallery-card">
-              <Image
-                src={communityOutreachImg}
+              <SafeImage
+                src="/assets/images/community-outreach.jpg"
+                fallbackSrc="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1200&q=80"
                 alt="Scholars in Classroom"
                 fill
                 style={{ objectFit: 'cover' }}
@@ -481,8 +489,9 @@ export default function HomePage() {
               </div>
             </div>
             <div className="gallery-card">
-              <Image
-                src={volunteerCommunityImg}
+              <SafeImage
+                src="/assets/images/volunteer-community.png"
+                fallbackSrc="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=1200&q=80"
                 alt="Nourish Now Distribution"
                 fill
                 style={{ objectFit: 'cover' }}
@@ -493,8 +502,9 @@ export default function HomePage() {
               </div>
             </div>
             <div className="gallery-card">
-              <Image
-                src={communityOutreachImg}
+              <SafeImage
+                src="/assets/images/community-outreach.jpg"
+                fallbackSrc="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=1200&q=80"
                 alt="Back-2-School Kits"
                 fill
                 style={{ objectFit: 'cover' }}
@@ -505,8 +515,9 @@ export default function HomePage() {
               </div>
             </div>
             <div className="gallery-card">
-              <Image
-                src={volunteerCommunityImg}
+              <SafeImage
+                src="/assets/images/volunteer-community.png"
+                fallbackSrc="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=1200&q=80"
                 alt="Teachers on the Go Workshop"
                 fill
                 style={{ objectFit: 'cover' }}
@@ -589,7 +600,7 @@ export default function HomePage() {
           <div className="orange-panel">
             <div
               className="orange-bg-img"
-              style={{ backgroundImage: `url(${volunteerCommunityImg.src})` }}
+              style={{ backgroundImage: "url('/assets/images/volunteer-community.png'), url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1200&q=80')" }}
             />
             <h2>Join us in nurturing the future!</h2>
             <p className="section-lede" style={{ color: 'rgba(255,255,255,.9)' }}>

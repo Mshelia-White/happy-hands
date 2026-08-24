@@ -2,11 +2,10 @@
 
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { useDonation } from '@/context/DonationContext';
 import { DonationWidget } from '@/components/DonationWidget';
+import { SafeImage } from '@/components/SafeImage';
 import { HeartPulse, CheckCircle2, ArrowRight, Heart, CreditCard, Building2, Sparkles } from 'lucide-react';
-import communityOutreachImg from '@/assets/images/community-outreach.jpg';
 
 export default function FitTotPage() {
   const { openDonationModal } = useDonation();
@@ -28,8 +27,9 @@ export default function FitTotPage() {
       <section className="section">
         <div className="container split-layout">
           <div className="split-image" style={{ height: 480, position: 'relative' }}>
-            <Image
-              src={communityOutreachImg}
+            <SafeImage
+              src="/assets/images/community-outreach.jpg"
+              fallbackSrc="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=1200&q=80"
               alt="Children receiving health screening"
               fill
               style={{ objectFit: 'cover' }}

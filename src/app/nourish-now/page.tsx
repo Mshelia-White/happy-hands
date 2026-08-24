@@ -2,11 +2,10 @@
 
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { useDonation } from '@/context/DonationContext';
 import { DonationWidget } from '@/components/DonationWidget';
+import { SafeImage } from '@/components/SafeImage';
 import { Utensils, CheckCircle2, ArrowRight, Heart, CreditCard, Building2 } from 'lucide-react';
-import volunteerCommunityImg from '@/assets/images/volunteer-community.png';
 
 export default function NourishNowPage() {
   const { openDonationModal } = useDonation();
@@ -28,8 +27,9 @@ export default function NourishNowPage() {
       <section className="section">
         <div className="container split-layout">
           <div className="split-image" style={{ height: 480, position: 'relative' }}>
-            <Image
-              src={volunteerCommunityImg}
+            <SafeImage
+              src="/assets/images/volunteer-community.png"
+              fallbackSrc="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=1200&q=80"
               alt="Volunteers distributing food relief"
               fill
               style={{ objectFit: 'cover' }}

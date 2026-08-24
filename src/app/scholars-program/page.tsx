@@ -2,11 +2,10 @@
 
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { useDonation } from '@/context/DonationContext';
 import { DonationWidget } from '@/components/DonationWidget';
+import { SafeImage } from '@/components/SafeImage';
 import { GraduationCap, CheckCircle2, Quote, ArrowRight, Heart, CreditCard, Building2 } from 'lucide-react';
-import volunteerCommunityImg from '@/assets/images/volunteer-community.png';
 
 export default function ScholarsProgramPage() {
   const { openDonationModal } = useDonation();
@@ -28,8 +27,9 @@ export default function ScholarsProgramPage() {
       <section className="section">
         <div className="container split-layout">
           <div className="split-image" style={{ height: 480, position: 'relative' }}>
-            <Image
-              src={volunteerCommunityImg}
+            <SafeImage
+              src="/assets/images/volunteer-community.png"
+              fallbackSrc="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=1200&q=80"
               alt="Children in the Scholars Program"
               fill
               style={{ objectFit: 'cover' }}

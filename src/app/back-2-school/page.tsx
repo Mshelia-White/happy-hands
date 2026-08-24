@@ -2,11 +2,10 @@
 
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { useDonation } from '@/context/DonationContext';
 import { DonationWidget } from '@/components/DonationWidget';
+import { SafeImage } from '@/components/SafeImage';
 import { Backpack, CheckCircle2, ArrowRight, Heart, CreditCard, Building2 } from 'lucide-react';
-import communityOutreachImg from '@/assets/images/community-outreach.jpg';
 
 export default function Back2SchoolPage() {
   const { openDonationModal } = useDonation();
@@ -28,8 +27,9 @@ export default function Back2SchoolPage() {
       <section className="section">
         <div className="container split-layout">
           <div className="split-image" style={{ height: 480, position: 'relative' }}>
-            <Image
-              src={communityOutreachImg}
+            <SafeImage
+              src="/assets/images/community-outreach.jpg"
+              fallbackSrc="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=1200&q=80"
               alt="Children receiving school supplies"
               fill
               style={{ objectFit: 'cover' }}

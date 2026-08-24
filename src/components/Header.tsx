@@ -2,10 +2,9 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useDonation } from '@/context/DonationContext';
-import logoImg from '@/assets/logo.png';
+import { BrandLogo } from '@/components/BrandLogo';
 import { 
   ChevronDown, 
   GraduationCap, 
@@ -50,13 +49,7 @@ export const Header: React.FC = () => {
       <div className="container nav-wrap">
         <Link href="/" className="brand" aria-label="Happy Hands Foundation Home">
           <div className="brand-mark">
-            <Image
-              src={logoImg}
-              alt="Happy Hands Logo"
-              width={44}
-              height={44}
-              priority
-            />
+            <BrandLogo width={44} height={44} priority />
           </div>
           <div>
             <p className="brand-name">Happy Hands</p>

@@ -1,10 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { Metadata } from 'next';
 import { BookOpen, Target, Eye, ArrowRight, Sparkles, Heart } from 'lucide-react';
-import volunteerCommunityImg from '@/assets/images/volunteer-community.png';
-import communityOutreachImg from '@/assets/images/community-outreach.jpg';
+import { SafeImage } from '@/components/SafeImage';
 
 export const metadata: Metadata = {
   title: 'About Us | Happy Hands Foundation',
@@ -32,8 +30,9 @@ export default function AboutPage() {
       <section className="section" style={{ paddingTop: '80px' }}>
         <div className="container split-layout">
           <div className="split-image" style={{ height: 480, position: 'relative' }}>
-            <Image
-              src={volunteerCommunityImg}
+            <SafeImage
+              src="/assets/images/volunteer-community.png"
+              fallbackSrc="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1200&q=80"
               alt="Children at a Happy Hands event"
               fill
               style={{ objectFit: 'cover' }}
@@ -109,7 +108,7 @@ export default function AboutPage() {
           <div className="orange-panel" style={{ textAlign: 'center' }}>
             <div
               className="orange-bg-img"
-              style={{ backgroundImage: `url(${communityOutreachImg.src})` }}
+              style={{ backgroundImage: "url('/assets/images/community-outreach.jpg'), url('https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1200&q=80')" }}
             />
             <p className="section-kicker" style={{ color: '#ffedd5', justifyContent: 'center' }}>
               Join Our Community

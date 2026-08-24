@@ -2,10 +2,9 @@
 
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { Users, Laptop, MapPin, Briefcase, CheckCircle2, Heart } from 'lucide-react';
 import { VolunteerForm } from '@/components/VolunteerForm';
-import volunteerCommunityImg from '@/assets/images/volunteer-community.png';
+import { SafeImage } from '@/components/SafeImage';
 
 export default function VolunteerPage() {
   return (
@@ -30,8 +29,9 @@ export default function VolunteerPage() {
           {/* Left Column */}
           <div className="white-panel">
             <div style={{ position: 'relative', width: '100%', height: 320, borderRadius: 'var(--radius-sm)', overflow: 'hidden' }}>
-              <Image
-                src={volunteerCommunityImg}
+              <SafeImage
+                src="/assets/images/volunteer-community.png"
+                fallbackSrc="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1200&q=80"
                 alt="Happy Hands Volunteers"
                 fill
                 style={{ objectFit: 'cover' }}

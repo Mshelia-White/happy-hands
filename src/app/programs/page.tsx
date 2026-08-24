@@ -2,11 +2,9 @@
 
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { useDonation } from '@/context/DonationContext';
 import { DonationWidget } from '@/components/DonationWidget';
-import volunteerCommunityImg from '@/assets/images/volunteer-community.png';
-import communityOutreachImg from '@/assets/images/community-outreach.jpg';
+import { SafeImage } from '@/components/SafeImage';
 import { 
   LayoutGrid, 
   BookOpen, 
@@ -63,8 +61,9 @@ export default function ProgramsPage() {
             <div className="program-grid">
               <article className="program-card">
                 <div className="program-image">
-                  <Image
-                    src={volunteerCommunityImg}
+                  <SafeImage
+                    src="/assets/images/volunteer-community.png"
+                    fallbackSrc="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=1200&q=80"
                     alt="Scholars Program"
                     fill
                     style={{ objectFit: 'cover' }}
@@ -89,8 +88,9 @@ export default function ProgramsPage() {
 
               <article className="program-card">
                 <div className="program-image">
-                  <Image
-                    src={communityOutreachImg}
+                  <SafeImage
+                    src="/assets/images/community-outreach.jpg"
+                    fallbackSrc="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=1200&q=80"
                     alt="Teachers on the Go"
                     fill
                     style={{ objectFit: 'cover' }}
@@ -115,8 +115,9 @@ export default function ProgramsPage() {
 
               <article className="program-card">
                 <div className="program-image">
-                  <Image
-                    src={volunteerCommunityImg}
+                  <SafeImage
+                    src="/assets/images/volunteer-community.png"
+                    fallbackSrc="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=1200&q=80"
                     alt="Back-2-School"
                     fill
                     style={{ objectFit: 'cover' }}
@@ -165,8 +166,9 @@ export default function ProgramsPage() {
             <div className="program-grid two">
               <article className="program-card">
                 <div className="program-image">
-                  <Image
-                    src={communityOutreachImg}
+                  <SafeImage
+                    src="/assets/images/community-outreach.jpg"
+                    fallbackSrc="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=1200&q=80"
                     alt="Nourish Now"
                     fill
                     style={{ objectFit: 'cover' }}
@@ -195,8 +197,9 @@ export default function ProgramsPage() {
 
               <article className="program-card">
                 <div className="program-image">
-                  <Image
-                    src={volunteerCommunityImg}
+                  <SafeImage
+                    src="/assets/images/volunteer-community.png"
+                    fallbackSrc="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=1200&q=80"
                     alt="FitTot"
                     fill
                     style={{ objectFit: 'cover' }}

@@ -2,9 +2,8 @@
 
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { useDonation } from '@/context/DonationContext';
-import logoImg from '@/assets/logo.png';
+import { BrandLogo } from '@/components/BrandLogo';
 import { 
   Mail, 
   Phone, 
@@ -21,13 +20,9 @@ export const Footer: React.FC = () => {
       <div className="container">
         <div className="footer-grid">
           <div className="footer-brand">
-            <Image
-              src={logoImg}
-              alt="Happy Hands Logo"
-              width={60}
-              height={60}
-              style={{ objectFit: 'contain', marginBottom: 16 }}
-            />
+            <div style={{ marginBottom: 16 }}>
+              <BrandLogo width={60} height={60} />
+            </div>
             <h3 style={{ margin: '0 0 8px', fontSize: 18, fontWeight: 900 }}>
               Happy Hands Foundation
             </h3>
