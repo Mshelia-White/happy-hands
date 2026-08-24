@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scholars Program | Happy Hands Foundation</title>
+  <meta name="description" content="Basic education access for underprivileged children." />
+  
+  <link rel="icon" href="assets/logo.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a href="index.html" class="brand" aria-label="Happy Hands Foundation Home">
+        <div class="brand-mark"><img src="assets/logo.png" alt="Happy Hands Logo" /></div>
+        <div>
+          <p class="brand-name">Happy Hands</p>
+          <p class="brand-sub">Foundation</p>
+        </div>
+      </a>
+      
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <div class="nav-item has-dropdown">
+          <span style="color:var(--orange)">Programs <i data-lucide="chevron-down" style="width:14px; height:14px"></i></span>
+          <div class="dropdown-menu">
+            <div class="dropdown-col">
+              <h4>Education Programs</h4>
+              <a href="scholars-program.html" class="dropdown-link" style="background:var(--orange-soft)"><i data-lucide="graduation-cap"></i><div class="dropdown-link-text"><strong>Scholars Program</strong><span>Basic education access</span></div></a>
+              <a href="teachers-on-the-go.html" class="dropdown-link"><i data-lucide="bus-front"></i><div class="dropdown-link-text"><strong>Teachers on the Go</strong><span>Beyond classroom learning</span></div></a>
+              <a href="back-2-school.html" class="dropdown-link"><i data-lucide="backpack"></i><div class="dropdown-link-text"><strong>Back-2-School</strong><span>School supplies support</span></div></a>
+            </div>
+            <div class="dropdown-col">
+              <h4>Health Programs</h4>
+              <a href="nourish-now.html" class="dropdown-link"><i data-lucide="utensils"></i><div class="dropdown-link-text"><strong>Nourish Now</strong><span>Food relief campaigns</span></div></a>
+              <a href="fittot.html" class="dropdown-link"><i data-lucide="heart-pulse"></i><div class="dropdown-link-text"><strong>FitTot</strong><span>Quality healthcare access</span></div></a>
+            </div>
+          </div>
+        </div>
+        <a href="index.html#gallery">Gallery</a>
+        <a href="volunteer.html">Volunteer</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      
+      <div class="nav-actions">
+        <a href="volunteer.html" class="btn btn-ghost" style="color:var(--slate)">Sign up</a>
+        <a href="#donate" class="btn btn-orange">Donate now</a>
+      </div>
+      <button class="menu-btn" id="menuToggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+    
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="programs.html">Programs</a>
+      <a href="index.html#gallery">Gallery</a>
+      <a href="volunteer.html">Volunteer</a>
+      <a href="contact.html">Contact</a>
+      <div class="mobile-actions">
+        <a href="volunteer.html" class="btn btn-light">Sign up</a>
+        <a href="#donate" class="btn btn-orange">Donate now</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Page Hero -->
+    <section class="page-hero" style="background:var(--orange-soft)">
+      <div class="container page-hero-inner animate-on-scroll">
+        <div class="eyebrow" style="color:var(--orange-dark); border-color:var(--orange)"><i data-lucide="graduation-cap" style="width:16px; height:16px"></i> Education Pillar</div>
+        <h1>Scholars Program</h1>
+        <p>Ensuring every child has access to basic education through merit and need-based scholarships.</p>
+      </div>
+    </section>
+
+    <!-- Content Split Layout -->
+    <section class="section">
+      <div class="container split-layout">
+        <div class="split-image animate-on-scroll">
+          <img src="assets/images/children-group.jpg" alt="Children in the Scholars Program" style="width:100%; height: 500px; object-fit: cover;" />
+        </div>
+        
+        <div class="split-content animate-on-scroll delay-2">
+          <h2>Opening doors through education.</h2>
+          <p>The Scholars Program is our flagship initiative designed to ensure that lack of funds never stops a child from learning. We provide comprehensive scholarships that cover tuition fees, extra-curricular activities, and continuous monitoring.</p>
+          <p>But we don't stop at paying school fees. Our scholars are enrolled in inclusive development programs designed to hone their social and emotional skills, ensuring they grow into well-rounded individuals ready to take on the world.</p>
+          
+          <div class="role-card" style="margin-top: 32px; box-shadow:none; border:1px solid var(--line); padding: 24px;">
+            <h3 style="margin: 0 0 16px; font-size: 20px;">What the scholarship covers:</h3>
+            <ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px;">
+              <li style="display: flex; gap: 12px; color: #475569; font-weight: 700; align-items: center;">
+                <i data-lucide="check-circle-2" style="color:var(--orange)"></i> Full tuition fees
+              </li>
+              <li style="display: flex; gap: 12px; color: #475569; font-weight: 700; align-items: center;">
+                <i data-lucide="check-circle-2" style="color:var(--orange)"></i> Extra-curricular activities support
+              </li>
+              <li style="display: flex; gap: 12px; color: #475569; font-weight: 700; align-items: center;">
+                <i data-lucide="check-circle-2" style="color:var(--orange)"></i> Continuous academic monitoring
+              </li>
+              <li style="display: flex; gap: 12px; color: #475569; font-weight: 700; align-items: center;">
+                <i data-lucide="check-circle-2" style="color:var(--orange)"></i> Inclusive personal development programs
+              </li>
+            </ul>
+          </div>
+          
+          <div style="margin-top: 32px;">
+            <a class="btn btn-orange" href="#donate">Become a Guardian</a>
+            <a class="btn btn-light" href="contact.html">Partner with this program</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonial Highlight -->
+    <section class="quote-banner animate-on-scroll">
+      <div class="container">
+        <i data-lucide="quote" style="width: 48px; height: 48px; color: var(--orange); margin-bottom: 24px;"></i>
+        <h3 style="font-size: clamp(24px, 4vw, 36px);">"It's been a while since I last saw my daughter this excited. Sometimes, I'd catch Esther making mental notes of some things she learnt in school for the day... The scholarship has been all too wonderful, and timely as well."</h3>
+        <p>— Mrs. Jacob, Mother of a Scholars Beneficiary</p>
+      </div>
+    </section>
+  
+    <!-- Donate Section -->
+    <section class="section" id="donate">
+      <div class="container donate-wrap">
+        <div class="donate-copy animate-on-scroll">
+          <div class="eyebrow" style="background:rgba(255,255,255,.1);color:#fed7aa;border-color:rgba(255,255,255,.12)">
+            <i data-lucide="gift" style="width:14px; height:14px"></i> Donation Experience
+          </div>
+          <h2>Give to all programs or support a specific initiative.</h2>
+          <p>Every donation plays a crucial role in supporting our initiatives. Choose to support a specific program or give to the general fund where it's needed most.</p>
+          
+          <div class="payment-cards">
+            <div class="payment-card">
+              <i data-lucide="credit-card" style="width:28px; height:28px"></i>
+              <h3>Card payment</h3>
+              <p>Secure online payment via Paystack or Flutterwave.</p>
+            </div>
+            <div class="payment-card">
+              <i data-lucide="building-2" style="width:28px; height:28px"></i>
+              <h3>Bank transfer</h3>
+              <p>Direct bank transfers with reference verification.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="donate-panel animate-on-scroll delay-2">
+          <div class="donation-card">
+            <p class="donation-label">Make a Donation</p>
+            <h3>Choose your impact</h3>
+            
+            <div class="amount-grid">
+              <button class="amount-btn">₦5k</button>
+              <button class="amount-btn active">₦10k</button>
+              <button class="amount-btn">₦25k</button>
+              <button class="amount-btn">₦50k</button>
+            </div>
+            
+            <div class="custom-amount">
+              <span>₦</span>
+              <input type="number" placeholder="Enter custom amount" />
+            </div>
+            
+            <div class="funds">
+              <p>Direct my donation to:</p>
+              <div class="fund-buttons">
+                <button class="fund-btn active">General Fund</button>
+                <button class="fund-btn">Scholars Program</button>
+                <button class="fund-btn">Nourish Now</button>
+                <button class="fund-btn">Back-2-School</button>
+              </div>
+            </div>
+            
+            <div class="donation-actions">
+              <button class="btn btn-orange" style="width: 100%">Donate Securely</button>
+            </div>
+            
+            <div class="ssl-badge">
+              <i data-lucide="lock" style="width:14px; height:14px"></i>
+              256-bit SSL Secure Donation
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="assets/logo.png" alt="Happy Hands Logo" />
+          <h3 style="margin: 0 0 8px; font-size: 18px; font-weight: 900;">Happy Hands Foundation</h3>
+          <p>Everything goes to child development. Creating a safe space for the African child with opportunities for inclusive growth.</p>
+        </div>
+        <div>
+          <h4 class="footer-heading">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="programs.html">Our Programs</a></li>
+            <li><a href="index.html#gallery">Gallery</a></li>
+            <li><a href="volunteer.html">Volunteer</a></li>
+            <li><a href="#donate">Donate</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-heading">Contact Info</h4>
+          <ul class="footer-links">
+            <li><a href="mailto:info@happyhandsfoundation.org">info@happyhandsfoundation.org</a></li>
+            <li><a href="tel:+2348188745474">+234 8188 745 474</a></li>
+            <li style="color: #64748b; font-size: 14px; font-weight: 700; margin-top: 8px;">2 Ikotun Road, Igando Bus Stop, Lagos State, Nigeria.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Happy Hands Foundation. All rights reserved.</span>
+        <span>Designed with purpose.</span>
+      </div>
+    </div>
+  </footer>
+
+  <button id="scrollTop" aria-label="Scroll to top"><i data-lucide="arrow-up"></i></button>
+  <script>lucide.createIcons();</script>
+  <script src="js/main.js"></script>
+</body>
+</html>

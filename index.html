@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Hands Foundation | Nurturing Changemakers</title>
+  <meta name="description" content="Happy Hands Foundation bridges the education and health gap for less privileged children in Nigeria." />
+  
+  <!-- Favicon -->
+  <link rel="icon" href="assets/logo.png" type="image/png" />
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Icons (Lucide) -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a href="index.html" class="brand" aria-label="Happy Hands Foundation Home">
+        <div class="brand-mark">
+          <img src="assets/logo.png" alt="Happy Hands Logo" />
+        </div>
+        <div>
+          <p class="brand-name">Happy Hands</p>
+          <p class="brand-sub">Foundation</p>
+        </div>
+      </a>
+      
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="index.html" style="color:var(--orange)">Home</a>
+        <a href="about.html">About</a>
+        
+        <!-- Dropdown -->
+        <div class="nav-item has-dropdown">
+          <span>Programs <i data-lucide="chevron-down" style="width:14px; height:14px"></i></span>
+          <div class="dropdown-menu">
+            <div class="dropdown-col">
+              <h4>Education Programs</h4>
+              <a href="scholars-program.html" class="dropdown-link">
+                <i data-lucide="graduation-cap"></i>
+                <div class="dropdown-link-text">
+                  <strong>Scholars Program</strong>
+                  <span>Basic education access</span>
+                </div>
+              </a>
+              <a href="teachers-on-the-go.html" class="dropdown-link">
+                <i data-lucide="bus-front"></i>
+                <div class="dropdown-link-text">
+                  <strong>Teachers on the Go</strong>
+                  <span>Beyond classroom learning</span>
+                </div>
+              </a>
+              <a href="back-2-school.html" class="dropdown-link">
+                <i data-lucide="backpack"></i>
+                <div class="dropdown-link-text">
+                  <strong>Back-2-School</strong>
+                  <span>School supplies support</span>
+                </div>
+              </a>
+            </div>
+            <div class="dropdown-col">
+              <h4>Health Programs</h4>
+              <a href="nourish-now.html" class="dropdown-link">
+                <i data-lucide="utensils"></i>
+                <div class="dropdown-link-text">
+                  <strong>Nourish Now</strong>
+                  <span>Food relief campaigns</span>
+                </div>
+              </a>
+              <a href="fittot.html" class="dropdown-link">
+                <i data-lucide="heart-pulse"></i>
+                <div class="dropdown-link-text">
+                  <strong>FitTot</strong>
+                  <span>Quality healthcare access</span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <a href="index.html#gallery">Gallery</a>
+        <a href="volunteer.html">Volunteer</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      
+      <div class="nav-actions">
+        <a href="volunteer.html" class="btn btn-ghost" style="color:var(--slate)">Sign up</a>
+        <a href="index.html#donate" class="btn btn-orange">Donate now</a>
+      </div>
+      
+      <button class="menu-btn" id="menuToggle" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="programs.html">Programs</a>
+      <a href="index.html#gallery">Gallery</a>
+      <a href="volunteer.html">Volunteer</a>
+      <a href="contact.html">Contact</a>
+      <div class="mobile-actions">
+        <a href="volunteer.html" class="btn btn-light">Sign up</a>
+        <a href="index.html#donate" class="btn btn-orange">Donate now</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="animate-on-scroll">
+          <div class="eyebrow">
+            <i data-lucide="heart-handshake" style="width:16px; height:16px"></i> 
+            Nurturing changemakers since 2020
+          </div>
+          <h1>They are the reason we exist. <span>You are the reason this works.</span></h1>
+          <p class="section-lede">Happy Hands gives its all to 360-degree child welfare by bridging the education and health gap for less privileged children in Nigeria.</p>
+          
+          <div class="hero-actions">
+            <a class="btn btn-dark" href="#about">Learn more</a>
+            <a class="btn btn-orange" href="#donate">Donate now</a>
+            <a class="btn btn-light" href="#volunteer">Volunteer</a>
+          </div>
+          
+          <div class="hero-badges">
+            <div class="hero-badge"><i data-lucide="book-open"></i> Education</div>
+            <div class="hero-badge"><i data-lucide="stethoscope"></i> Health</div>
+            <div class="hero-badge"><i data-lucide="shield-check"></i> Welfare</div>
+          </div>
+        </div>
+        
+        <div class="hero-collage animate-on-scroll delay-2">
+          <div class="hero-img-main">
+            <img src="assets/images/volunteer-community.png" alt="Volunteer with children in community" />
+            <div class="hero-img-overlay"></div>
+          </div>
+          <div class="hero-img-secondary">
+            <img src="assets/images/hero-volunteer.jpg" alt="Volunteer smiling with three boys" />
+          </div>
+          
+          <div class="float-card one"><i data-lucide="graduation-cap"></i> Education</div>
+          <div class="float-card two"><i data-lucide="apple"></i> Nutrition</div>
+          
+          <div class="impact-card">
+            <small>Impact since 2020</small>
+            <p>Over 1000 children reached across four states.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+      <div class="container stats-grid">
+        <div class="stat-card animate-on-scroll delay-1">
+          <div class="stat-icon"><i data-lucide="users"></i></div>
+          <strong>80+</strong><span>Registered Volunteers</span>
+        </div>
+        <div class="stat-card animate-on-scroll delay-1">
+          <div class="stat-icon"><i data-lucide="heart"></i></div>
+          <strong>100+</strong><span>Satisfied Donors</span>
+        </div>
+        <div class="stat-card animate-on-scroll delay-2">
+          <div class="stat-icon"><i data-lucide="smile"></i></div>
+          <strong>1000+</strong><span>Children Impacted</span>
+        </div>
+        <div class="stat-card animate-on-scroll delay-2">
+          <div class="stat-icon"><i data-lucide="map-pin"></i></div>
+          <strong>8+</strong><span>Communities Reached</span>
+        </div>
+        <div class="stat-card animate-on-scroll delay-3">
+          <div class="stat-icon"><i data-lucide="layout-grid"></i></div>
+          <strong>4</strong><span>Active Programs</span>
+        </div>
+        <div class="stat-card animate-on-scroll delay-3">
+          <div class="stat-icon"><i data-lucide="map"></i></div>
+          <strong>4</strong><span>States Reached</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+      <div class="container about-grid">
+        <div class="orange-panel animate-on-scroll">
+          <div class="orange-bg-img" style="background-image: url('assets/images/community-outreach.jpg')"></div>
+          <p class="section-kicker" style="color:#ffedd5">Why Happy Hands</p>
+          <h2>Happy hands are loving hearts translated into action.</h2>
+          <p class="section-lede" style="color: rgba(255,255,255,.9)">Happy Hands is not just the name of an organization. It describes everyone who translates love, joy, and happiness from their hearts to their hands.</p>
+          
+          <div class="quote-box">
+            <strong>"Money is not the problem."</strong>
+            <small>— Founder's guiding belief</small>
+          </div>
+        </div>
+        
+        <div class="white-panel animate-on-scroll delay-2">
+          <img src="assets/images/children-event.png" alt="Children seated at an event" class="white-panel-img" />
+          <p>At Happy Hands, we provide children in underserved areas with equal opportunities to become agents of lasting change by creating an environment for their all-inclusive welfare. Since 2020, we have been bridging education and health gaps while creating development opportunities for children who deserve the right environment to bloom.</p>
+          
+          <div class="mission-grid">
+            <div class="mission-card">
+              <i data-lucide="target"></i>
+              <h3>Mission</h3>
+              <p>To incorporate a network of volunteers and partners passionate about helping children realize their full potential.</p>
+            </div>
+            <div class="mission-card alt">
+              <i data-lucide="eye"></i>
+              <h3>Vision</h3>
+              <p>Creating a safe space for the African child while providing opportunities for inclusive growth.</p>
+            </div>
+          </div>
+          
+          <div class="about-actions">
+            <a class="btn btn-dark" href="#programs">Explore Programs</a>
+            <a class="btn btn-light" href="#donate">Sponsor a Child</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section class="section" id="programs">
+      <div class="container">
+        <div class="program-intro animate-on-scroll">
+          <div>
+            <p class="section-kicker">Our programs</p>
+            <h2 class="section-title">Two focus areas. One complete mission.</h2>
+          </div>
+          <p class="section-lede">Happy Hands organizes its work around Education and Health, with practical initiatives that solve real problems and invite donors, volunteers, sponsors, and partners into clear roles.</p>
+        </div>
+
+        <!-- Education Pillar -->
+        <div class="pillar-block pillar-education animate-on-scroll">
+          <div class="pillar-head">
+            <div class="pillar-title">
+              <div class="pillar-icon"><i data-lucide="book-open" style="width:28px; height:28px"></i></div>
+              <div>
+                <small>Pillar one</small>
+                <h3>Education Programs</h3>
+              </div>
+            </div>
+            <a class="btn btn-light" href="#donate">Support education</a>
+          </div>
+          
+          <div class="program-grid">
+            <article class="program-card">
+              <div class="program-image">
+                <img src="assets/images/children-group.jpg" alt="Scholars Program" />
+                <div class="program-image-overlay"></div>
+                <div class="program-tag">Education</div>
+              </div>
+              <div class="program-body">
+                <h4>Scholars Program</h4>
+                <p class="program-sentence">Ensuring every child has access to basic education.</p>
+                <p class="program-desc">Scholarships for merit and need-based children, covering tuition, extra-curricular activities, monitoring, and inclusive development programs.</p>
+                <div class="program-actions">
+                  <a class="btn btn-dark" href="scholars-program.html">View Details</a>
+                </div>
+              </div>
+            </article>
+            
+            <article class="program-card">
+              <div class="program-image">
+                <img src="assets/images/volunteer-community.png" alt="Teachers on the Go" />
+                <div class="program-image-overlay"></div>
+                <div class="program-tag">Education</div>
+              </div>
+              <div class="program-body">
+                <h4>Teachers on the Go</h4>
+                <p class="program-sentence">Grooming well-rounded children beyond the classroom.</p>
+                <p class="program-desc">Volunteers and partner organizations teach non-academic topics in underserved schools and communities once or twice weekly.</p>
+                <div class="program-actions">
+                  <a class="btn btn-dark" href="teachers-on-the-go.html">View Details</a>
+                </div>
+              </div>
+            </article>
+            
+            <article class="program-card">
+              <div class="program-image">
+                <img src="assets/images/children-event.png" alt="Back-2-School" />
+                <div class="program-image-overlay"></div>
+                <div class="program-tag">Education</div>
+              </div>
+              <div class="program-body">
+                <h4>Back-2-School</h4>
+                <p class="program-sentence">Helping children learn in better conditions.</p>
+                <p class="program-desc">School supplies and learning support for children and schools, including books, boards, desks, chairs, and academic materials.</p>
+                <div class="program-actions">
+                  <a class="btn btn-dark" href="back-2-school.html">View Details</a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- Health Pillar -->
+        <div class="pillar-block pillar-health animate-on-scroll">
+          <div class="pillar-head">
+            <div class="pillar-title">
+              <div class="pillar-icon"><i data-lucide="heart-pulse" style="width:28px; height:28px"></i></div>
+              <div>
+                <small>Pillar two</small>
+                <h3>Health Programs</h3>
+              </div>
+            </div>
+            <a class="btn btn-orange" href="#donate">Support health</a>
+          </div>
+          
+          <div class="program-grid two">
+            <article class="program-card">
+              <div class="program-image">
+                <img src="assets/images/hero-volunteer.jpg" alt="Nourish Now" />
+                <div class="program-image-overlay"></div>
+                <div class="program-tag" style="color:var(--green)">Health</div>
+              </div>
+              <div class="program-body">
+                <h4>Nourish Now</h4>
+                <p class="program-sentence" style="color:var(--green)">Food relief for children and families in need.</p>
+                <p class="program-desc">Temporary food relief through Happy Boxes, Eat 'n' Learn, and future Food Bank campaigns that support vulnerable families.</p>
+                <div class="program-actions">
+                  <a class="btn btn-dark" href="nourish-now.html">View Details</a>
+                </div>
+              </div>
+            </article>
+            
+            <article class="program-card">
+              <div class="program-image">
+                <img src="assets/images/community-outreach.jpg" alt="FitTot" />
+                <div class="program-image-overlay"></div>
+                <div class="program-tag" style="color:var(--green)">Health</div>
+              </div>
+              <div class="program-body">
+                <h4>FitTot</h4>
+                <p class="program-sentence" style="color:var(--green)">Quality healthcare access for vulnerable children.</p>
+                <p class="program-desc">A coming-soon healthcare initiative designed around medical screenings, HMO partnerships, and affordable care access.</p>
+                <div class="program-actions">
+                  <a class="btn btn-dark" href="fittot.html">View Details</a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Donate Section -->
+    <section class="section" id="donate">
+      <div class="container donate-wrap">
+        <div class="donate-copy animate-on-scroll">
+          <div class="eyebrow" style="background:rgba(255,255,255,.1);color:#fed7aa;border-color:rgba(255,255,255,.12)">
+            <i data-lucide="gift" style="width:14px; height:14px"></i> Donation Experience
+          </div>
+          <h2>Give to all programs or support a specific initiative.</h2>
+          <p>Every donation plays a crucial role in supporting our initiatives. Choose to support a specific program or give to the general fund where it's needed most.</p>
+          
+          <div class="payment-cards">
+            <div class="payment-card">
+              <i data-lucide="credit-card" style="width:28px; height:28px"></i>
+              <h3>Card payment</h3>
+              <p>Secure online payment via Paystack or Flutterwave.</p>
+            </div>
+            <div class="payment-card">
+              <i data-lucide="building-2" style="width:28px; height:28px"></i>
+              <h3>Bank transfer</h3>
+              <p>Direct bank transfers with reference verification.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="donate-panel animate-on-scroll delay-2">
+          <div class="donation-card">
+            <p class="donation-label">Make a Donation</p>
+            <h3>Choose your impact</h3>
+            
+            <div class="amount-grid">
+              <button class="amount-btn">₦5k</button>
+              <button class="amount-btn active">₦10k</button>
+              <button class="amount-btn">₦25k</button>
+              <button class="amount-btn">₦50k</button>
+            </div>
+            
+            <div class="custom-amount">
+              <span>₦</span>
+              <input type="number" placeholder="Enter custom amount" />
+            </div>
+            
+            <div class="funds">
+              <p>Direct my donation to:</p>
+              <div class="fund-buttons">
+                <button class="fund-btn active">General Fund</button>
+                <button class="fund-btn">Scholars Program</button>
+                <button class="fund-btn">Nourish Now</button>
+                <button class="fund-btn">Back-2-School</button>
+              </div>
+            </div>
+            
+            <div class="donation-actions">
+              <button class="btn btn-orange" style="width: 100%">Donate Securely</button>
+            </div>
+            
+            <div class="ssl-badge">
+              <i data-lucide="lock" style="width:14px; height:14px"></i>
+              256-bit SSL Secure Donation
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="section" id="gallery">
+      <div class="container">
+        <div class="gallery-head animate-on-scroll">
+          <div>
+            <p class="section-kicker">Gallery & Highlights</p>
+            <h2 class="section-title">Important moments from the communities.</h2>
+          </div>
+          <a class="btn btn-dark" href="https://www.instagram.com/Happyhandsfoundation_/" target="_blank" rel="noreferrer">
+            <i data-lucide="instagram"></i> View Instagram
+          </a>
+        </div>
+        
+        <div class="gallery-grid">
+          <div class="gallery-card tall animate-on-scroll">
+            <img src="assets/images/community-outreach.jpg" alt="Community Outreach" />
+            <div class="gallery-overlay">
+              <small>Highlight</small>
+              <h3>Community Outreaches</h3>
+            </div>
+          </div>
+          <div class="gallery-card animate-on-scroll delay-1">
+            <img src="assets/images/children-group.jpg" alt="Scholars Program" />
+            <div class="gallery-overlay">
+              <small>Highlight</small>
+              <h3>Scholars Program</h3>
+            </div>
+          </div>
+          <div class="gallery-card animate-on-scroll delay-2">
+            <img src="assets/images/hero-volunteer.jpg" alt="Nourish Now" />
+            <div class="gallery-overlay">
+              <small>Highlight</small>
+              <h3>Nourish Now</h3>
+            </div>
+          </div>
+          <div class="gallery-card animate-on-scroll delay-1">
+            <img src="assets/images/children-event.png" alt="Back-2-School" />
+            <div class="gallery-overlay">
+              <small>Highlight</small>
+              <h3>Back-2-School</h3>
+            </div>
+          </div>
+          <div class="gallery-card animate-on-scroll delay-2">
+            <img src="assets/images/volunteer-community.png" alt="Teachers on the Go" />
+            <div class="gallery-overlay">
+              <small>Highlight</small>
+              <h3>Teachers on the Go</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section">
+      <div class="container">
+        <div class="testimonial-head animate-on-scroll">
+          <div>
+            <p class="section-kicker">Testimonials</p>
+            <h2 class="section-title">Stories from the people this work touches.</h2>
+          </div>
+          <p class="section-lede">Voices from parents, staff, and volunteers making the impact feel real and human.</p>
+        </div>
+        
+        <div class="testimonial-grid">
+          <blockquote class="animate-on-scroll">
+            <i data-lucide="quote" class="quote-icon"></i>
+            <p>"It's been a while since I last saw my daughter this excited. Sometimes, I'd catch Esther making mental notes of some things she learnt in school for the day... The scholarship has been all too wonderful, and timely as well."</p>
+            <footer>
+              <div class="avatar">J</div>
+              <div>
+                <strong>Mrs. Jacob</strong>
+                <small>Mother of a Scholars beneficiary</small>
+              </div>
+            </footer>
+          </blockquote>
+          
+          <blockquote class="animate-on-scroll delay-1">
+            <i data-lucide="quote" class="quote-icon"></i>
+            <p>"What isn't there to love about Happy Hands? I feel fulfilled knowing that the little effort we put in translates to big smiles on the faces of these children."</p>
+            <footer>
+              <div class="avatar">S</div>
+              <div>
+                <strong>Shobbs</strong>
+                <small>Staff Member</small>
+              </div>
+            </footer>
+          </blockquote>
+          
+          <blockquote class="animate-on-scroll delay-2">
+            <i data-lucide="quote" class="quote-icon"></i>
+            <p>"I've been given the opportunity to grow into a better version of myself. Volunteering here is more than just giving; it's also receiving immense joy and purpose."</p>
+            <footer>
+              <div class="avatar">T</div>
+              <div>
+                <strong>Taiwo Alamu</strong>
+                <small>Volunteer</small>
+              </div>
+            </footer>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- Volunteer Section -->
+    <section class="section" id="volunteer">
+      <div class="container volunteer-grid">
+        <div class="orange-panel animate-on-scroll">
+          <div class="orange-bg-img" style="background-image: url('assets/images/volunteer-community.png')"></div>
+          <h2>Join us in nurturing the future!</h2>
+          <p class="section-lede" style="color: rgba(255,255,255,.9)">Your desire to go the extra mile makes us super happy. Your time and input help us do more for the children while giving you the opportunity to make a difference.</p>
+          
+          <div class="quote-box">
+            <strong style="font-size:18px">Volunteer Benefit</strong>
+            <small>Eligible volunteers receive a community service certificate or reference letter after 6-10 months of proven contribution.</small>
+          </div>
+          
+          <div class="about-actions">
+            <a class="btn btn-light" href="volunteer.html">Apply now</a>
+          </div>
+        </div>
+        
+        <div class="volunteer-roles animate-on-scroll delay-2">
+          <div class="role-card" style="margin-bottom: 20px;">
+            <div class="role-icon"><i data-lucide="laptop" style="width:24px; height:24px"></i></div>
+            <h3>Virtual Roles</h3>
+            <ul>
+              <li><i data-lucide="check-circle-2"></i> Media & Graphics Design</li>
+              <li><i data-lucide="check-circle-2"></i> Grant & Content Writing</li>
+              <li><i data-lucide="check-circle-2"></i> Partnership & Fundraising</li>
+            </ul>
+          </div>
+          <div class="role-card">
+            <div class="role-icon"><i data-lucide="users" style="width:24px; height:24px"></i></div>
+            <h3>Physical & Specialized</h3>
+            <ul>
+              <li><i data-lucide="check-circle-2"></i> Mentors & Event Volunteers</li>
+              <li><i data-lucide="check-circle-2"></i> Community Outreaches</li>
+              <li><i data-lucide="check-circle-2"></i> Medical & Legal Professionals</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+      <div class="container contact-grid">
+        <div class="animate-on-scroll">
+          <p class="section-kicker">Contact Us</p>
+          <h2 class="section-title">Ready to partner or ask a question?</h2>
+          <p class="section-lede">Reach out to us directly through our channels below or send us a quick message.</p>
+          
+          <div class="contact-cards" style="margin-top: 32px;">
+            <div class="contact-card">
+              <i data-lucide="map-pin"></i>
+              <div>2 Ikotun Road, Igando Bus Stop, Lagos State, Nigeria.</div>
+            </div>
+            <div class="contact-two">
+              <div class="contact-card">
+                <i data-lucide="phone"></i>
+                <div>+234 8188 745 474</div>
+              </div>
+              <div class="contact-card">
+                <i data-lucide="mail"></i>
+                <div>info@happyhandsfoundation.org</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="contact-form-card animate-on-scroll delay-2">
+          <h3>Send a Message</h3>
+          <form onsubmit="event.preventDefault(); alert('Message sent successfully!');">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Your Name" required />
+            </div>
+            <div class="form-group">
+              <input type="email" class="form-control" placeholder="Email Address" required />
+            </div>
+            <div class="form-group">
+              <textarea class="form-control" placeholder="How can we help you?" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-dark" style="width: 100%">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="assets/logo.png" alt="Happy Hands Logo" />
+          <h3 style="margin: 0 0 8px; font-size: 18px; font-weight: 900;">Happy Hands Foundation</h3>
+          <p>Everything goes to child development. Creating a safe space for the African child with opportunities for inclusive growth.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook"><i data-lucide="facebook" style="width:18px; height:18px"></i></a>
+            <a href="https://www.instagram.com/Happyhandsfoundation_/" target="_blank" aria-label="Instagram"><i data-lucide="instagram" style="width:18px; height:18px"></i></a>
+            <a href="#" aria-label="LinkedIn"><i data-lucide="linkedin" style="width:18px; height:18px"></i></a>
+            <a href="#" aria-label="Twitter"><i data-lucide="twitter" style="width:18px; height:18px"></i></a>
+          </div>
+        </div>
+        
+        <div>
+          <h4 class="footer-heading">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="programs.html">Our Programs</a></li>
+            <li><a href="index.html#gallery">Gallery</a></li>
+            <li><a href="volunteer.html">Volunteer</a></li>
+            <li><a href="index.html#donate">Donate</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="footer-heading">Contact Info</h4>
+          <ul class="footer-links">
+            <li><a href="mailto:info@happyhandsfoundation.org">info@happyhandsfoundation.org</a></li>
+            <li><a href="tel:+2348188745474">+234 8188 745 474</a></li>
+            <li style="color: #64748b; font-size: 14px; font-weight: 700; margin-top: 8px;">2 Ikotun Road, Igando Bus Stop, Lagos State, Nigeria.</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <span>&copy; 2026 Happy Hands Foundation. All rights reserved.</span>
+        <span>Designed with purpose.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll to top button -->
+  <button id="scrollTop" aria-label="Scroll to top">
+    <i data-lucide="arrow-up"></i>
+  </button>
+
+  <!-- Initialize Lucide Icons -->
+  <script>
+    lucide.createIcons();
+  </script>
+  
+  <!-- Custom JS -->
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Programs | Happy Hands Foundation</title>
+  <meta name="description" content="Explore the education and health programs of Happy Hands Foundation." />
+  
+  <link rel="icon" href="assets/logo.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a href="index.html" class="brand" aria-label="Happy Hands Foundation Home">
+        <div class="brand-mark"><img src="assets/logo.png" alt="Happy Hands Logo" /></div>
+        <div>
+          <p class="brand-name">Happy Hands</p>
+          <p class="brand-sub">Foundation</p>
+        </div>
+      </a>
+      
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <div class="nav-item has-dropdown">
+          <span style="color:var(--orange)">Programs <i data-lucide="chevron-down" style="width:14px; height:14px"></i></span>
+          <div class="dropdown-menu">
+            <div class="dropdown-col">
+              <h4>Education Programs</h4>
+              <a href="scholars-program.html" class="dropdown-link"><i data-lucide="graduation-cap"></i><div class="dropdown-link-text"><strong>Scholars Program</strong><span>Basic education access</span></div></a>
+              <a href="teachers-on-the-go.html" class="dropdown-link"><i data-lucide="bus-front"></i><div class="dropdown-link-text"><strong>Teachers on the Go</strong><span>Beyond classroom learning</span></div></a>
+              <a href="back-2-school.html" class="dropdown-link"><i data-lucide="backpack"></i><div class="dropdown-link-text"><strong>Back-2-School</strong><span>School supplies support</span></div></a>
+            </div>
+            <div class="dropdown-col">
+              <h4>Health Programs</h4>
+              <a href="nourish-now.html" class="dropdown-link"><i data-lucide="utensils"></i><div class="dropdown-link-text"><strong>Nourish Now</strong><span>Food relief campaigns</span></div></a>
+              <a href="fittot.html" class="dropdown-link"><i data-lucide="heart-pulse"></i><div class="dropdown-link-text"><strong>FitTot</strong><span>Quality healthcare access</span></div></a>
+            </div>
+          </div>
+        </div>
+        <a href="index.html#gallery">Gallery</a>
+        <a href="volunteer.html">Volunteer</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      
+      <div class="nav-actions">
+        <a href="volunteer.html" class="btn btn-ghost" style="color:var(--slate)">Sign up</a>
+        <a href="#donate" class="btn btn-orange">Donate now</a>
+      </div>
+      <button class="menu-btn" id="menuToggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+    
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="programs.html">Programs</a>
+      <a href="index.html#gallery">Gallery</a>
+      <a href="volunteer.html">Volunteer</a>
+      <a href="contact.html">Contact</a>
+      <div class="mobile-actions">
+        <a href="volunteer.html" class="btn btn-light">Sign up</a>
+        <a href="#donate" class="btn btn-orange">Donate now</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Page Hero -->
+    <section class="page-hero">
+      <div class="container page-hero-inner animate-on-scroll">
+        <div class="eyebrow"><i data-lucide="layout-grid" style="width:16px; height:16px"></i> Our Initiatives</div>
+        <h1>Two focus areas. One complete mission.</h1>
+        <p>Happy Hands organizes its work around Education and Health, with practical initiatives that solve real problems.</p>
+      </div>
+    </section>
+
+    <!-- Programs Overview -->
+    <section class="section" style="padding-top: 60px;">
+      <div class="container">
+        
+        <!-- Education Pillar -->
+        <div class="pillar-block pillar-education animate-on-scroll">
+          <div class="pillar-head">
+            <div class="pillar-title">
+              <div class="pillar-icon"><i data-lucide="book-open" style="width:28px; height:28px"></i></div>
+              <div>
+                <small>Pillar one</small>
+                <h3>Education Programs</h3>
+              </div>
+            </div>
+            <a class="btn btn-light" href="#donate">Support education</a>
+          </div>
+          
+          <div class="program-grid">
+            <article class="program-card">
+              <div class="program-image">
+                <img src="assets/images/children-group.jpg" alt="Scholars Program" />
+                <div class="program-image-overlay"></div>
+                <div class="program-tag">Education</div>
+              </div>
+              <div class="program-body">
+                <h4>Scholars Program</h4>
+                <p class="program-sentence">Ensuring every child has access to basic education.</p>
+                <p class="program-desc">Scholarships for merit and need-based children, covering tuition, extra-curricular activities, monitoring, and inclusive development programs.</p>
+                <div class="program-actions">
+                  <a class="btn btn-dark" href="scholars-program.html">View Details</a>
+                </div>
+              </div>
+            </article>
+            
+            <article class="program-card">
+              <div class="program-image">
+                <img src="assets/images/volunteer-community.png" alt="Teachers on the Go" />
+                <div class="program-image-overlay"></div>
+                <div class="program-tag">Education</div>
+              </div>
+              <div class="program-body">
+                <h4>Teachers on the Go</h4>
+                <p class="program-sentence">Grooming well-rounded children beyond the classroom.</p>
+                <p class="program-desc">Volunteers and partner organizations teach non-academic topics in underserved schools and communities once or twice weekly.</p>
+                <div class="program-actions">
+                  <a class="btn btn-dark" href="teachers-on-the-go.html">View Details</a>
+                </div>
+              </div>
+            </article>
+            
+            <article class="program-card">
+              <div class="program-image">
+                <img src="assets/images/children-event.png" alt="Back-2-School" />
+                <div class="program-image-overlay"></div>
+                <div class="program-tag">Education</div>
+              </div>
+              <div class="program-body">
+                <h4>Back-2-School</h4>
+                <p class="program-sentence">Helping children learn in better conditions.</p>
+                <p class="program-desc">School supplies and learning support for children and schools, including books, boards, desks, chairs, and academic materials.</p>
+                <div class="program-actions">
+                  <a class="btn btn-dark" href="back-2-school.html">View Details</a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- Health Pillar -->
+        <div class="pillar-block pillar-health animate-on-scroll" style="margin-top: 80px;">
+          <div class="pillar-head">
+            <div class="pillar-title">
+              <div class="pillar-icon"><i data-lucide="heart-pulse" style="width:28px; height:28px"></i></div>
+              <div>
+                <small>Pillar two</small>
+                <h3>Health Programs</h3>
+              </div>
+            </div>
+            <a class="btn btn-orange" href="#donate">Support health</a>
+          </div>
+          
+          <div class="program-grid two">
+            <article class="program-card">
+              <div class="program-image">
+                <img src="assets/images/hero-volunteer.jpg" alt="Nourish Now" />
+                <div class="program-image-overlay"></div>
+                <div class="program-tag" style="color:var(--green)">Health</div>
+              </div>
+              <div class="program-body">
+                <h4>Nourish Now</h4>
+                <p class="program-sentence" style="color:var(--green)">Food relief for children and families in need.</p>
+                <p class="program-desc">Temporary food relief through Happy Boxes, Eat 'n' Learn, and future Food Bank campaigns that support vulnerable families.</p>
+                <div class="program-actions">
+                  <a class="btn btn-dark" href="nourish-now.html">View Details</a>
+                </div>
+              </div>
+            </article>
+            
+            <article class="program-card">
+              <div class="program-image">
+                <img src="assets/images/community-outreach.jpg" alt="FitTot" />
+                <div class="program-image-overlay"></div>
+                <div class="program-tag" style="color:var(--green)">Health</div>
+              </div>
+              <div class="program-body">
+                <h4>FitTot</h4>
+                <p class="program-sentence" style="color:var(--green)">Quality healthcare access for vulnerable children.</p>
+                <p class="program-desc">A coming-soon healthcare initiative designed around medical screenings, HMO partnerships, and affordable care access.</p>
+                <div class="program-actions">
+                  <a class="btn btn-dark" href="fittot.html">View Details</a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Donate Section -->
+    <section class="section" id="donate">
+      <div class="container donate-wrap">
+        <div class="donate-copy animate-on-scroll">
+          <div class="eyebrow" style="background:rgba(255,255,255,.1);color:#fed7aa;border-color:rgba(255,255,255,.12)">
+            <i data-lucide="gift" style="width:14px; height:14px"></i> Donation Experience
+          </div>
+          <h2>Give to all programs or support a specific initiative.</h2>
+          <p>Every donation plays a crucial role in supporting our initiatives. Choose to support a specific program or give to the general fund where it's needed most.</p>
+          
+          <div class="payment-cards">
+            <div class="payment-card">
+              <i data-lucide="credit-card" style="width:28px; height:28px"></i>
+              <h3>Card payment</h3>
+              <p>Secure online payment via Paystack or Flutterwave.</p>
+            </div>
+            <div class="payment-card">
+              <i data-lucide="building-2" style="width:28px; height:28px"></i>
+              <h3>Bank transfer</h3>
+              <p>Direct bank transfers with reference verification.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="donate-panel animate-on-scroll delay-2">
+          <div class="donation-card">
+            <p class="donation-label">Make a Donation</p>
+            <h3>Choose your impact</h3>
+            
+            <div class="amount-grid">
+              <button class="amount-btn">₦5k</button>
+              <button class="amount-btn active">₦10k</button>
+              <button class="amount-btn">₦25k</button>
+              <button class="amount-btn">₦50k</button>
+            </div>
+            
+            <div class="custom-amount">
+              <span>₦</span>
+              <input type="number" placeholder="Enter custom amount" />
+            </div>
+            
+            <div class="funds">
+              <p>Direct my donation to:</p>
+              <div class="fund-buttons">
+                <button class="fund-btn active">General Fund</button>
+                <button class="fund-btn">Scholars Program</button>
+                <button class="fund-btn">Nourish Now</button>
+                <button class="fund-btn">Back-2-School</button>
+              </div>
+            </div>
+            
+            <div class="donation-actions">
+              <button class="btn btn-orange" style="width: 100%">Donate Securely</button>
+            </div>
+            
+            <div class="ssl-badge">
+              <i data-lucide="lock" style="width:14px; height:14px"></i>
+              256-bit SSL Secure Donation
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="assets/logo.png" alt="Happy Hands Logo" />
+          <h3 style="margin: 0 0 8px; font-size: 18px; font-weight: 900;">Happy Hands Foundation</h3>
+          <p>Everything goes to child development. Creating a safe space for the African child with opportunities for inclusive growth.</p>
+        </div>
+        <div>
+          <h4 class="footer-heading">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="programs.html">Our Programs</a></li>
+            <li><a href="index.html#gallery">Gallery</a></li>
+            <li><a href="volunteer.html">Volunteer</a></li>
+            <li><a href="#donate">Donate</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-heading">Contact Info</h4>
+          <ul class="footer-links">
+            <li><a href="mailto:info@happyhandsfoundation.org">info@happyhandsfoundation.org</a></li>
+            <li><a href="tel:+2348188745474">+234 8188 745 474</a></li>
+            <li style="color: #64748b; font-size: 14px; font-weight: 700; margin-top: 8px;">2 Ikotun Road, Igando Bus Stop, Lagos State, Nigeria.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Happy Hands Foundation. All rights reserved.</span>
+        <span>Designed with purpose.</span>
+      </div>
+    </div>
+  </footer>
+
+  <button id="scrollTop" aria-label="Scroll to top"><i data-lucide="arrow-up"></i></button>
+  <script>lucide.createIcons();</script>
+  <script src="js/main.js"></script>
+</body>
+</html>

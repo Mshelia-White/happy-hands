@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us | Happy Hands Foundation</title>
+  <meta name="description" content="Learn about Happy Hands Foundation, our mission to nurture changemakers, and why we do what we do." />
+  
+  <link rel="icon" href="assets/logo.png" type="image/png" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a href="index.html" class="brand" aria-label="Happy Hands Foundation Home">
+        <div class="brand-mark">
+          <img src="assets/logo.png" alt="Happy Hands Logo" />
+        </div>
+        <div>
+          <p class="brand-name">Happy Hands</p>
+          <p class="brand-sub">Foundation</p>
+        </div>
+      </a>
+      
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html" style="color:var(--orange)">About</a>
+        
+        <!-- Dropdown -->
+        <div class="nav-item has-dropdown">
+          <span>Programs <i data-lucide="chevron-down" style="width:14px; height:14px"></i></span>
+          <div class="dropdown-menu">
+            <div class="dropdown-col">
+              <h4>Education Programs</h4>
+              <a href="scholars-program.html" class="dropdown-link">
+                <i data-lucide="graduation-cap"></i>
+                <div class="dropdown-link-text">
+                  <strong>Scholars Program</strong>
+                  <span>Basic education access</span>
+                </div>
+              </a>
+              <a href="teachers-on-the-go.html" class="dropdown-link">
+                <i data-lucide="bus-front"></i>
+                <div class="dropdown-link-text">
+                  <strong>Teachers on the Go</strong>
+                  <span>Beyond classroom learning</span>
+                </div>
+              </a>
+              <a href="back-2-school.html" class="dropdown-link">
+                <i data-lucide="backpack"></i>
+                <div class="dropdown-link-text">
+                  <strong>Back-2-School</strong>
+                  <span>School supplies support</span>
+                </div>
+              </a>
+            </div>
+            <div class="dropdown-col">
+              <h4>Health Programs</h4>
+              <a href="nourish-now.html" class="dropdown-link">
+                <i data-lucide="utensils"></i>
+                <div class="dropdown-link-text">
+                  <strong>Nourish Now</strong>
+                  <span>Food relief campaigns</span>
+                </div>
+              </a>
+              <a href="fittot.html" class="dropdown-link">
+                <i data-lucide="heart-pulse"></i>
+                <div class="dropdown-link-text">
+                  <strong>FitTot</strong>
+                  <span>Quality healthcare access</span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <a href="index.html#gallery">Gallery</a>
+        <a href="volunteer.html">Volunteer</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      
+      <div class="nav-actions">
+        <a href="volunteer.html" class="btn btn-ghost" style="color:var(--slate)">Sign up</a>
+        <a href="index.html#donate" class="btn btn-orange">Donate now</a>
+      </div>
+      
+      <button class="menu-btn" id="menuToggle" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="programs.html">Programs</a>
+      <a href="index.html#gallery">Gallery</a>
+      <a href="volunteer.html">Volunteer</a>
+      <a href="contact.html">Contact</a>
+      <div class="mobile-actions">
+        <a href="volunteer.html" class="btn btn-light">Sign up</a>
+        <a href="index.html#donate" class="btn btn-orange">Donate now</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Page Hero -->
+    <section class="page-hero">
+      <div class="container page-hero-inner animate-on-scroll">
+        <div class="eyebrow"><i data-lucide="book-open" style="width:16px; height:16px"></i> Our Story</div>
+        <h1>We exist to nurture changemakers.</h1>
+        <p>A safe space for the African child, providing opportunities for inclusive growth and development.</p>
+      </div>
+    </section>
+
+    <!-- Why Happy Hands (Split Layout) -->
+    <section class="section" style="padding-top: 120px;">
+      <div class="container split-layout">
+        <div class="split-image animate-on-scroll">
+          <img src="assets/images/children-event.png" alt="Children at a Happy Hands event" style="width:100%; height: 500px; object-fit: cover;" />
+        </div>
+        
+        <div class="split-content animate-on-scroll delay-2">
+          <p class="section-kicker">Why Happy Hands</p>
+          <h2>Happy hands are loving hearts translated into action.</h2>
+          <p>Happy Hands is not just the name of an organization. It's a noun, a description befitting everyone who translates love, joy, and happiness from their hearts to their hands.</p>
+          <p>At Happy Hands, we provide children in underserved areas with equal opportunities to become agents of lasting change. We do this by creating an environment for their all-inclusive welfare. Since 2020, we have been bridging education and health gaps while creating development opportunities for children who deserve the right environment to bloom.</p>
+          
+          <h3 style="margin: 40px 0 12px; font-size: 24px; font-weight: 800; color: var(--slate);">Is there more to our story?</h3>
+          <p>Yes, you are more to our story than we can ever tell. For every time you give your time, money, or resources, you make it possible for the children we serve to see the world we are creating, truly, for them.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quote Banner -->
+    <section class="quote-banner animate-on-scroll">
+      <div class="container">
+        <h3>"Money is not the problem."</h3>
+        <p>— Happiness (Founder), on creating avenues for access to quality education and health.</p>
+      </div>
+    </section>
+
+    <!-- Mission & Vision Cards (Overlapping) -->
+    <section style="margin-bottom: 120px;">
+      <div class="container">
+        <div class="mission-vision-wrapper animate-on-scroll delay-1">
+          <div class="mv-card">
+            <div class="mv-icon"><i data-lucide="target" style="width:32px; height:32px"></i></div>
+            <h3>Our Mission</h3>
+            <p>To incorporate a network of volunteers and partners who are passionate about helping children realize their full potential.</p>
+          </div>
+          
+          <div class="mv-card">
+            <div class="mv-icon"><i data-lucide="eye" style="width:32px; height:32px"></i></div>
+            <h3>Our Vision</h3>
+            <p>Creating a safe space for the African child while providing opportunities for inclusive growth.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section" style="padding-top: 0;">
+      <div class="container">
+        <div class="orange-panel animate-on-scroll text-center" style="text-align: center;">
+          <div class="orange-bg-img" style="background-image: url('assets/images/community-outreach.jpg')"></div>
+          <p class="section-kicker" style="color:#ffedd5; justify-content: center;">Join Our Community</p>
+          <h2 style="max-width: 600px; margin: 16px auto;">Become a beacon of hope for a child today.</h2>
+          <p class="section-lede" style="color: rgba(255,255,255,.9); margin: 20px auto 40px;">We are happy people, with lovely hearts, and hands that are willing to go the extra mile.</p>
+          
+          <div style="display: flex; gap: 16px; justify-content: center; position: relative; z-index: 1;">
+            <a class="btn btn-dark" href="programs.html">View Our Programs</a>
+            <a class="btn btn-light" href="volunteer.html">Volunteer with us</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="assets/logo.png" alt="Happy Hands Logo" />
+          <h3 style="margin: 0 0 8px; font-size: 18px; font-weight: 900;">Happy Hands Foundation</h3>
+          <p>Everything goes to child development. Creating a safe space for the African child with opportunities for inclusive growth.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook"><i data-lucide="facebook" style="width:18px; height:18px"></i></a>
+            <a href="https://www.instagram.com/Happyhandsfoundation_/" target="_blank" aria-label="Instagram"><i data-lucide="instagram" style="width:18px; height:18px"></i></a>
+            <a href="#" aria-label="LinkedIn"><i data-lucide="linkedin" style="width:18px; height:18px"></i></a>
+            <a href="#" aria-label="Twitter"><i data-lucide="twitter" style="width:18px; height:18px"></i></a>
+          </div>
+        </div>
+        
+        <div>
+          <h4 class="footer-heading">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="programs.html">Our Programs</a></li>
+            <li><a href="index.html#gallery">Gallery</a></li>
+            <li><a href="volunteer.html">Volunteer</a></li>
+            <li><a href="index.html#donate">Donate</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="footer-heading">Contact Info</h4>
+          <ul class="footer-links">
+            <li><a href="mailto:info@happyhandsfoundation.org">info@happyhandsfoundation.org</a></li>
+            <li><a href="tel:+2348188745474">+234 8188 745 474</a></li>
+            <li style="color: #64748b; font-size: 14px; font-weight: 700; margin-top: 8px;">2 Ikotun Road, Igando Bus Stop, Lagos State, Nigeria.</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <span>&copy; 2026 Happy Hands Foundation. All rights reserved.</span>
+        <span>Designed with purpose.</span>
+      </div>
+    </div>
+  </footer>
+
+  <button id="scrollTop" aria-label="Scroll to top"><i data-lucide="arrow-up"></i></button>
+
+  <script>lucide.createIcons();</script>
+  <script src="js/main.js"></script>
+</body>
+</html>
