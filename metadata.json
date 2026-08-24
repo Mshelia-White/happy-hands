@@ -1,0 +1,6 @@
+{
+  "name": "Happy Hands Foundation",
+  "description": "Happy Hands Foundation bridges education and health gaps for underprivileged children in Nigeria.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
