@@ -27,8 +27,8 @@ export const Footer: React.FC = () => {
               Happy Hands Foundation
             </h3>
             <p>
-              Everything goes to child development. Creating a safe space for the African child with
-              opportunities for inclusive growth and development since 2020.
+              Everything goes to child development. Creating a safe space for the African child while
+              providing opportunities for inclusive growth.
             </p>
             <div className="social-links">
               <a href="https://facebook.com" target="_blank" rel="noreferrer" aria-label="Facebook">
@@ -64,10 +64,16 @@ export const Footer: React.FC = () => {
                 <Link href="/scholars-program">Scholars Program</Link>
               </li>
               <li>
+                <Link href="/teachers-on-the-go">Teachers on the Go</Link>
+              </li>
+              <li>
+                <Link href="/back-2-school">Back-2-School</Link>
+              </li>
+              <li>
                 <Link href="/nourish-now">Nourish Now</Link>
               </li>
               <li>
-                <Link href="/#gallery">Photo Gallery</Link>
+                <Link href="/fittot">FitTot (Coming Soon)</Link>
               </li>
               <li>
                 <Link href="/volunteer">Volunteer Opportunities</Link>
@@ -88,7 +94,7 @@ export const Footer: React.FC = () => {
                     fontSize: 14,
                   }}
                 >
-                  <Heart size={14} /> Donate Now
+                  <Heart size={14} /> Become a Guardian / Donate
                 </button>
               </li>
             </ul>
@@ -99,19 +105,35 @@ export const Footer: React.FC = () => {
             <ul className="footer-links">
               <li>
                 <a
-                  href="mailto:info@happyhandsfoundation.org"
+                  href="mailto:partnerships@happyhandsfoundation.org"
                   style={{ display: 'flex', alignItems: 'center', gap: 8 }}
                 >
-                  <Mail size={16} color="var(--orange)" /> info@happyhandsfoundation.org
+                  <Mail size={16} color="var(--orange)" /> partnerships@happyhandsfoundation.org
                 </a>
               </li>
               <li>
                 <a
-                  href="tel:+2348188745474"
+                  href="mailto:projects@happyhandsfoundation.org"
                   style={{ display: 'flex', alignItems: 'center', gap: 8 }}
                 >
-                  <Phone size={16} color="var(--orange)" /> +234 8188 745 474
+                  <Mail size={16} color="var(--orange)" /> projects@happyhandsfoundation.org
                 </a>
+              </li>
+              <li>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 4, marginTop: 4 }}>
+                  <a
+                    href="tel:08121353755"
+                    style={{ display: 'flex', alignItems: 'center', gap: 8 }}
+                  >
+                    <Phone size={16} color="var(--orange)" /> 08121353755
+                  </a>
+                  <a
+                    href="tel:08188795474"
+                    style={{ display: 'flex', alignItems: 'center', gap: 8 }}
+                  >
+                    <Phone size={16} color="var(--orange)" /> 08188795474
+                  </a>
+                </div>
               </li>
               <li
                 style={{
@@ -133,8 +155,8 @@ export const Footer: React.FC = () => {
         </div>
 
         <div className="footer-bottom">
-          <span>&copy; {new Date().getFullYear()} Happy Hands Foundation. All rights reserved.</span>
-          <span>Designed with purpose for the African child.</span>
+          <span>&copy; {new Date().getFullYear()} Happy Hands Community Development Foundation. All rights reserved.</span>
+          <span>They&apos;re the reason we exist. But you&apos;re the reason this works.</span>
         </div>
       </div>
     </footer>

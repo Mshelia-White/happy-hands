@@ -6,6 +6,7 @@ import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { DonationModal } from '@/components/DonationModal';
 import { ScrollToTop } from '@/components/ScrollToTop';
+import { ScrollObserver } from '@/components/ScrollReveal';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -46,6 +47,7 @@ export default function RootLayout({
           <Footer />
           <DonationModal />
           <ScrollToTop />
+          <ScrollObserver />
         </DonationProvider>
       </body>
     </html>

@@ -41,8 +41,11 @@ export default function ContactPage() {
                 <div>
                   <strong>Call Us</strong>
                   <br />
-                  <a href="tel:+2348188745474" style={{ color: 'inherit' }}>
-                    +234 8188 745 474
+                  <a href="tel:08121353755" style={{ color: 'inherit', display: 'inline-block', marginRight: 12 }}>
+                    08121353755
+                  </a>
+                  <a href="tel:08188795474" style={{ color: 'inherit' }}>
+                    08188795474
                   </a>
                 </div>
               </div>
@@ -52,9 +55,18 @@ export default function ContactPage() {
                 <div>
                   <strong>Email Us</strong>
                   <br />
-                  <a href="mailto:info@happyhandsfoundation.org" style={{ color: 'inherit' }}>
-                    info@happyhandsfoundation.org
-                  </a>
+                  <div style={{ marginTop: 4 }}>
+                    <span style={{ fontSize: 13, color: 'var(--muted)' }}>For Partnerships: </span>
+                    <a href="mailto:partnerships@happyhandsfoundation.org" style={{ color: 'inherit', fontWeight: 700 }}>
+                      partnerships@happyhandsfoundation.org
+                    </a>
+                  </div>
+                  <div style={{ marginTop: 4 }}>
+                    <span style={{ fontSize: 13, color: 'var(--muted)' }}>For Projects: </span>
+                    <a href="mailto:projects@happyhandsfoundation.org" style={{ color: 'inherit', fontWeight: 700 }}>
+                      projects@happyhandsfoundation.org
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>

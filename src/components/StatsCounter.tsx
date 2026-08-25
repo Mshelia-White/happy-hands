@@ -22,11 +22,11 @@ interface StatItem {
 const statsData: StatItem[] = [
   {
     id: 'children',
-    target: 500,
+    target: 5000,
     suffix: '+',
     label: 'Children Educated',
     icon: <GraduationCap size={28} />,
-    barWidth: '85%',
+    barWidth: '95%',
   },
   {
     id: 'meals',
@@ -34,13 +34,13 @@ const statsData: StatItem[] = [
     suffix: '+',
     label: 'Meals Provided',
     icon: <Utensils size={28} />,
-    barWidth: '95%',
+    barWidth: '88%',
   },
   {
     id: 'outreaches',
     target: 15,
     suffix: '+',
-    label: 'Outreaches Done',
+    label: 'Community Outreaches',
     icon: <Users size={28} />,
     barWidth: '70%',
   },
@@ -50,23 +50,7 @@ const statsData: StatItem[] = [
     suffix: '+',
     label: 'Active Volunteers',
     icon: <HeartHandshake size={28} />,
-    barWidth: '80%',
-  },
-  {
-    id: 'programs',
-    target: 5,
-    suffix: '',
-    label: 'Impact Pillars',
-    icon: <Sparkles size={28} />,
-    barWidth: '100%',
-  },
-  {
-    id: 'dedication',
-    target: 100,
-    suffix: '%',
-    label: 'Community Driven',
-    icon: <Award size={28} />,
-    barWidth: '100%',
+    barWidth: '82%',
   },
 ];
 
@@ -77,8 +61,6 @@ export const StatsCounter: React.FC = () => {
     meals: 0,
     outreaches: 0,
     volunteers: 0,
-    programs: 0,
-    dedication: 0,
   });
   const [hasAnimated, setHasAnimated] = useState(false);
 
@@ -90,9 +72,9 @@ export const StatsCounter: React.FC = () => {
 
           statsData.forEach((stat) => {
             let current = 0;
-            const increment = stat.target / 45;
+            const step = stat.target > 100 ? stat.target / 50 : 1;
             const timer = setInterval(() => {
-              current += increment;
+              current += step;
               if (current >= stat.target) {
                 setCounts((prev) => ({ ...prev, [stat.id]: stat.target }));
                 clearInterval(timer);
@@ -120,20 +102,20 @@ export const StatsCounter: React.FC = () => {
       <div className="container">
         <div className="stats-header">
           <p className="section-kicker" style={{ color: '#fdba74' }}>
-            Transforming Lives Across Nigeria
+            Our Growth & Reach
           </p>
-          <h2 className="section-title">Our Impact in Numbers</h2>
-          <p className="section-lede" style={{ color: '#94a3b8', margin: '16px auto 0' }}>
-            Every contribution translates directly into real educational access, warm nutrition, and brighter futures for vulnerable children.
+          <h2 className="section-title">What We Are Doing Together</h2>
+          <p className="section-lede" style={{ color: '#94a3b8', margin: '12px auto 0' }}>
+            They’re the reason we exist. But you’re the reason this works.
           </p>
         </div>
 
-        <div className="stats-grid">
-          {statsData.map((stat) => (
-            <div key={stat.id} className="stat-card">
+        <div className="stats-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))' }}>
+          {statsData.map((stat, idx) => (
+            <div key={stat.id} className={`stat-card reveal-on-scroll reveal-delay-${idx + 1}`}>
               <div className="stat-icon">{stat.icon}</div>
               <strong>
-                {counts[stat.id]}
+                {counts[stat.id]?.toLocaleString()}
                 <small>{stat.suffix}</small>
               </strong>
               <span>{stat.label}</span>

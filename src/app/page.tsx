@@ -7,8 +7,8 @@ import { StatsCounter } from '@/components/StatsCounter';
 import { DonationWidget } from '@/components/DonationWidget';
 import { ContactForm } from '@/components/ContactForm';
 import { SafeImage } from '@/components/SafeImage';
+import { FAQAccordion, FAQItem } from '@/components/FAQAccordion';
 import { 
-  Sparkles, 
   ArrowRight, 
   Heart, 
   CheckCircle2, 
@@ -25,10 +25,35 @@ import {
   Quote,
   Target,
   Eye,
-  ShieldCheck,
-  Building2,
-  Calendar
+  Globe
 } from 'lucide-react';
+
+const homepageFAQs: FAQItem[] = [
+  {
+    question: 'How do I make a donation?',
+    answer: (
+      <span>
+        You can make a direct donation online in <strong>NGN (₦), USD ($), GBP (£), or EUR (€)</strong> using our secure multi-currency card gateway, or via direct bank transfer to our official GTBank account (<strong>0625489110</strong>). You can choose to support our general child development fund or direct your gift to a specific initiative like the Scholars Program or Nourish Now.{' '}
+        <a href="#donate" style={{ color: 'var(--orange)', fontWeight: 800, textDecoration: 'underline' }}>
+          Go to the donation section
+        </a>
+        .
+      </span>
+    ),
+  },
+  {
+    question: 'How do I volunteer?',
+    answer: (
+      <span>
+        We welcome passionate individuals across virtual roles (media, design, grant writing) and physical roles (teaching, event coordination, medical screenings). You can read more about volunteer benefits and submit your quick application on our{' '}
+        <Link href="/volunteer" style={{ color: 'var(--orange)', fontWeight: 800, textDecoration: 'underline' }}>
+          Volunteer Page
+        </Link>
+        .
+      </span>
+    ),
+  },
+];
 
 export default function HomePage() {
   const { openDonationModal } = useDonation();
@@ -40,27 +65,25 @@ export default function HomePage() {
         <div className="container hero-grid">
           <div>
             <div className="eyebrow">
-              <Sparkles size={16} color="var(--orange)" />
-              Everything goes to child development
+              <Heart size={14} color="var(--orange)" fill="var(--orange-soft)" />
+              Everything goes to child development.
             </div>
-            <h1>
-              Creating a safe space for the <span>African child.</span>
+            <h1 style={{ fontSize: 'clamp(28px, 3.5vw, 44px)', lineHeight: 1.18 }}>
+              Here’s an open secret: We are nurturing the next generation of changemakers.
             </h1>
-            <p className="section-lede">
-              Happy Hands Foundation is dedicated to child development through education access,
-              preventive health initiatives, and community relief across underserved areas.
+            <p className="section-lede" style={{ fontSize: 16, lineHeight: 1.65 }}>
+              We give our all to creating opportunities for children to learn, grow, stay healthy and become the best versions of themselves.
+            </p>
+            <p style={{ color: 'var(--orange-dark)', fontWeight: 800, fontSize: 15, margin: '0 0 22px' }}>
+              They’re the reason we exist. But you’re the reason this works.
             </p>
             <div className="hero-actions">
-              <Link href="/programs" className="btn btn-dark">
-                Explore our programs <ArrowRight size={16} />
+              <Link href="/about" className="btn btn-dark">
+                Learn More <ArrowRight size={16} />
               </Link>
-              <button
-                type="button"
-                className="btn btn-orange"
-                onClick={() => openDonationModal('General Fund')}
-              >
-                <Heart size={16} fill="white" /> Sponsor a child
-              </button>
+              <Link href="/volunteer" className="btn btn-orange">
+                Get Involved
+              </Link>
             </div>
             <div className="hero-badges">
               <div className="hero-badge">
@@ -100,8 +123,8 @@ export default function HomePage() {
               <HeartPulse size={18} /> Healthy Futures
             </div>
             <div className="impact-card">
-              <small>Real Impact</small>
-              <p>Over 500 children brought into learning classrooms.</p>
+              <small>Community Reach</small>
+              <p>Over 5,000 children educated across 4 states.</p>
             </div>
           </div>
         </div>
@@ -121,20 +144,17 @@ export default function HomePage() {
             <p className="section-kicker" style={{ color: 'white' }}>
               About Us
             </p>
-            <h2>We care about the child, you care about the future.</h2>
-            <p className="section-lede" style={{ color: 'rgba(255,255,255,.9)' }}>
-              Happy Hands Foundation (HHF) is an NGO created to champion the rights and welfare of
-              children, especially those in underprivileged communities across Nigeria and Africa.
+            <h2>Here’s an open secret: We are nurturing the next generation of changemakers.</h2>
+            <p className="section-lede" style={{ color: 'rgba(255,255,255,.95)', fontSize: 16, lineHeight: 1.7 }}>
+              We provide children with opportunities that extend beyond the classroom. Since 2020, we’ve been bridging the education and health gap and creating development opportunities for less privileged children.
             </p>
-
-            <div className="quote-box">
-              <strong>“A safe space with opportunities for inclusive growth.”</strong>
-              <small>Our foundational pledge to every child since inception.</small>
-            </div>
+            <p style={{ color: 'rgba(255,255,255,.95)', fontSize: 16, lineHeight: 1.7, margin: '14px 0 24px' }}>
+              And without you, we wouldn’t have been able to reach over 1,000 children across four states in Nigeria.
+            </p>
 
             <div className="about-actions">
               <Link href="/about" className="btn btn-light">
-                Read our story
+                Get to know more about us and our programs
               </Link>
             </div>
           </div>
@@ -149,10 +169,8 @@ export default function HomePage() {
                 style={{ objectFit: 'cover', borderRadius: 'var(--radius-md)' }}
               />
             </div>
-            <p>
-              We design sustainable, community-rooted programs around two core pillars: <strong>Education</strong> and{' '}
-              <strong>Health</strong>. Every initiative is built to break generational barriers through quality tutoring,
-              relieving hunger, providing school supplies, and protecting physical well-being.
+            <p style={{ color: '#475569', lineHeight: 1.7, fontSize: 15 }}>
+              Happy Hands isn&apos;t just the name of an organisation. It is a description of everyone who, through their interaction with what we do, translates love, joy and happiness from their hearts to their hands.
             </p>
 
             <div className="mission-grid">
@@ -160,16 +178,14 @@ export default function HomePage() {
                 <Target size={24} />
                 <h3>Our Mission</h3>
                 <p>
-                  To cultivate a nurturing environment for children through holistic education, nutrition, and
-                  preventive health care.
+                  To incorporate a network of volunteers and partners who are passionate about helping children realize their full potential.
                 </p>
               </div>
               <div className="mission-card alt">
                 <Eye size={24} />
                 <h3>Our Vision</h3>
                 <p>
-                  An Africa where every child, irrespective of background, has the fundamental resources to dream,
-                  learn, and thrive.
+                  Creating a safe space for the African child while providing opportunities for inclusive growth.
                 </p>
               </div>
             </div>
@@ -177,232 +193,128 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Programs Overview Section */}
-      <section className="section" id="programs" style={{ background: '#fffaf4' }}>
+      {/* Program Highlights Section (4 items) */}
+      <section className="section" id="highlights" style={{ background: '#fffaf4' }}>
         <div className="container">
           <div className="program-intro">
             <div>
-              <p className="section-kicker">Our Programs</p>
-              <h2 className="section-title">Designed for real transformation.</h2>
+              <p className="section-kicker">What Happy Hands is doing</p>
+              <h2 className="section-title">Nurturing Changemakers Beyond the Classroom</h2>
             </div>
             <p className="section-lede">
-              Explore how we create sustainable change through hands-on education programs and vital healthcare
-              interventions.
+              Explore how we create opportunities through our approved education and health initiatives.
             </p>
           </div>
 
-          {/* Education Pillar */}
-          <div className="pillar-block pillar-education">
-            <div className="pillar-head">
-              <div className="pillar-title">
-                <div className="pillar-icon">
-                  <GraduationCap size={28} />
-                </div>
-                <div>
-                  <small>Pillar One</small>
-                  <h3>Education Programs</h3>
-                </div>
+          <div className="program-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))' }}>
+            {/* Highlight 1: Scholars Program */}
+            <div className="program-card reveal-on-scroll reveal-delay-1">
+              <div className="program-image">
+                <SafeImage
+                  src="/assets/images/children-group.jpg"
+                  fallbackSrc="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=1200&q=80"
+                  alt="Scholars Program"
+                  fill
+                  style={{ objectFit: 'cover' }}
+                />
+                <div className="program-image-overlay" />
+                <span className="program-tag">Education</span>
               </div>
-              <Link href="/programs" className="btn btn-dark">
-                View Education Hub
-              </Link>
-            </div>
-
-            <div className="program-grid">
-              {/* Scholars Program */}
-              <div className="program-card">
-                <div className="program-image">
-                  <SafeImage
-                    src="/assets/images/children-group.jpg"
-                    fallbackSrc="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=1200&q=80"
-                    alt="Scholars Program"
-                    fill
-                    style={{ objectFit: 'cover' }}
-                  />
-                  <div className="program-image-overlay" />
-                  <span className="program-tag">Flagship</span>
-                </div>
-                <div className="program-body">
-                  <h4>Scholars Program</h4>
-                  <p className="program-sentence">Full basic education scholarship & academic tracking</p>
-                  <p className="program-desc">
-                    A comprehensive scholarship initiative covering tuition, books, uniforms, and regular academic
-                    assessments for vulnerable children.
-                  </p>
-                  <div className="program-actions">
-                    <Link href="/scholars-program" className="btn btn-dark" style={{ flexGrow: 1 }}>
-                      Learn more
-                    </Link>
-                    <button
-                      type="button"
-                      className="btn btn-light"
-                      onClick={() => openDonationModal('Scholars Program')}
-                    >
-                      Sponsor
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              {/* Teachers on the Go */}
-              <div className="program-card">
-                <div className="program-image">
-                  <SafeImage
-                    src="/assets/images/community-outreach.jpg"
-                    fallbackSrc="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=1200&q=80"
-                    alt="Teachers on the Go"
-                    fill
-                    style={{ objectFit: 'cover' }}
-                  />
-                  <div className="program-image-overlay" />
-                  <span className="program-tag">Community</span>
-                </div>
-                <div className="program-body">
-                  <h4>Teachers on the Go</h4>
-                  <p className="program-sentence">Bringing literacy & skill-building beyond standard classrooms</p>
-                  <p className="program-desc">
-                    Mobilizing volunteer educators into communities with remedial reading clinics, digital literacy, and
-                    practical vocational workshops.
-                  </p>
-                  <div className="program-actions">
-                    <Link href="/teachers-on-the-go" className="btn btn-dark" style={{ flexGrow: 1 }}>
-                      Learn more
-                    </Link>
-                    <button
-                      type="button"
-                      className="btn btn-light"
-                      onClick={() => openDonationModal('Teachers on the Go')}
-                    >
-                      Support
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              {/* Back-2-School */}
-              <div className="program-card">
-                <div className="program-image">
-                  <SafeImage
-                    src="/assets/images/children-event.png"
-                    fallbackSrc="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=1200&q=80"
-                    alt="Back-2-School Campaign"
-                    fill
-                    style={{ objectFit: 'cover' }}
-                  />
-                  <div className="program-image-overlay" />
-                  <span className="program-tag">Annual Drive</span>
-                </div>
-                <div className="program-body">
-                  <h4>Back-2-School</h4>
-                  <p className="program-sentence">Equipping students with essentials for the academic year</p>
-                  <p className="program-desc">
-                    Distributing school bags, exercise books, writing materials, mathematical sets, and shoes to keep
-                    children inspired in school.
-                  </p>
-                  <div className="program-actions">
-                    <Link href="/back-2-school" className="btn btn-dark" style={{ flexGrow: 1 }}>
-                      Learn more
-                    </Link>
-                    <button
-                      type="button"
-                      className="btn btn-light"
-                      onClick={() => openDonationModal('Back-2-School')}
-                    >
-                      Donate Kits
-                    </button>
-                  </div>
+              <div className="program-body">
+                <h4>Scholars Program</h4>
+                <p className="program-sentence">Ensuring every child has access to basic education.</p>
+                <p className="program-desc">
+                  Supporting children with tuition, educational costs, extracurriculars, academic monitoring, development sessions, and daily feeding during school hours.
+                </p>
+                <div className="program-actions">
+                  <Link href="/scholars-program" className="btn btn-dark" style={{ flexGrow: 1 }}>
+                    Learn More <ArrowRight size={14} />
+                  </Link>
                 </div>
               </div>
             </div>
-          </div>
 
-          {/* Health Pillar */}
-          <div className="pillar-block pillar-health">
-            <div className="pillar-head">
-              <div className="pillar-title">
-                <div className="pillar-icon">
-                  <HeartPulse size={28} />
-                </div>
-                <div>
-                  <small>Pillar Two</small>
-                  <h3 style={{ color: 'white' }}>Health Programs</h3>
+            {/* Highlight 2: Teachers on the Go */}
+            <div className="program-card reveal-on-scroll reveal-delay-2">
+              <div className="program-image">
+                <SafeImage
+                  src="/assets/images/community-outreach.jpg"
+                  fallbackSrc="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=1200&q=80"
+                  alt="Teachers on the Go"
+                  fill
+                  style={{ objectFit: 'cover' }}
+                />
+                <div className="program-image-overlay" />
+                <span className="program-tag">Education</span>
+              </div>
+              <div className="program-body">
+                <h4>Teachers on the Go</h4>
+                <p className="program-sentence">Help us take learning beyond the classroom.</p>
+                <p className="program-desc">
+                  Giving volunteers and organisations the opportunity to teach children in underserved schools creative, vocational, and essential life skills.
+                </p>
+                <div className="program-actions">
+                  <Link href="/teachers-on-the-go" className="btn btn-dark" style={{ flexGrow: 1 }}>
+                    Learn More <ArrowRight size={14} />
+                  </Link>
                 </div>
               </div>
-              <Link href="/programs" className="btn btn-orange">
-                View Health Hub
-              </Link>
             </div>
 
-            <div className="program-grid two">
-              {/* Nourish Now */}
-              <div className="program-card">
-                <div className="program-image">
-                  <SafeImage
-                    src="/assets/images/volunteer-community.png"
-                    fallbackSrc="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=1200&q=80"
-                    alt="Nourish Now Campaign"
-                    fill
-                    style={{ objectFit: 'cover' }}
-                  />
-                  <div className="program-image-overlay" />
-                  <span className="program-tag" style={{ background: '#fef08a', color: '#854d0e' }}>
-                    Nutrition
-                  </span>
-                </div>
-                <div className="program-body">
-                  <h4>Nourish Now</h4>
-                  <p className="program-sentence">Targeted food relief & nutrition outreach campaigns</p>
-                  <p className="program-desc">
-                    Combating child hunger with Happy Boxes, school hot meal drives (Eat &apos;n&apos; Learn), and community food
-                    banks for vulnerable families.
-                  </p>
-                  <div className="program-actions">
-                    <Link href="/nourish-now" className="btn btn-dark" style={{ flexGrow: 1 }}>
-                      Learn more
-                    </Link>
-                    <button
-                      type="button"
-                      className="btn btn-light"
-                      onClick={() => openDonationModal('Nourish Now')}
-                    >
-                      Fund Meals
-                    </button>
-                  </div>
+            {/* Highlight 3: Back-2-School */}
+            <div className="program-card reveal-on-scroll reveal-delay-3">
+              <div className="program-image">
+                <SafeImage
+                  src="/assets/images/children-event.png"
+                  fallbackSrc="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=1200&q=80"
+                  alt="Back-2-School Campaign"
+                  fill
+                  style={{ objectFit: 'cover' }}
+                />
+                <div className="program-image-overlay" />
+                <span className="program-tag">Education</span>
+              </div>
+              <div className="program-body">
+                <h4>Back-2-School</h4>
+                <p className="program-sentence">Creating a more conducive learning environment.</p>
+                <p className="program-desc">
+                  Supporting children with school supplies and providing schools with tables, chairs, boards, books, and materials to make learning easier.
+                </p>
+                <div className="program-actions">
+                  <Link href="/back-2-school" className="btn btn-dark" style={{ flexGrow: 1 }}>
+                    Learn More <ArrowRight size={14} />
+                  </Link>
                 </div>
               </div>
+            </div>
 
-              {/* FitTot */}
-              <div className="program-card">
-                <div className="program-image">
-                  <SafeImage
-                    src="/assets/images/hero-volunteer.jpg"
-                    fallbackSrc="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=1200&q=80"
-                    alt="FitTot Healthcare"
-                    fill
-                    style={{ objectFit: 'cover' }}
-                  />
-                  <div className="program-image-overlay" />
-                  <span className="program-tag">Healthcare</span>
-                </div>
-                <div className="program-body">
-                  <h4>FitTot</h4>
-                  <p className="program-sentence">Pediatric healthcare screenings, HMO plans & hygiene</p>
-                  <p className="program-desc">
-                    Partnering with health organizations and HMOs to provide routine medical checkups, immunizations, and
-                    emergency medical relief.
-                  </p>
-                  <div className="program-actions">
-                    <Link href="/fittot" className="btn btn-dark" style={{ flexGrow: 1 }}>
-                      Learn more
-                    </Link>
-                    <button
-                      type="button"
-                      className="btn btn-light"
-                      onClick={() => openDonationModal('FitTot')}
-                    >
-                      Partner
-                    </button>
-                  </div>
+            {/* Highlight 4: Nourish Now */}
+            <div className="program-card reveal-on-scroll reveal-delay-4">
+              <div className="program-image">
+                <SafeImage
+                  src="/assets/images/volunteer-community.png"
+                  fallbackSrc="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=1200&q=80"
+                  alt="Nourish Now Campaign"
+                  fill
+                  style={{ objectFit: 'cover' }}
+                />
+                <div className="program-image-overlay" />
+                <span className="program-tag" style={{ background: '#dcfce7', color: '#166534' }}>
+                  Health
+                </span>
+              </div>
+              <div className="program-body">
+                <h4>Nourish Now</h4>
+                <p className="program-sentence" style={{ color: 'var(--green)' }}>
+                  Temporary food relief for children and families.
+                </p>
+                <p className="program-desc">
+                  Providing temporary food relief to children and families through Happy Boxes (December) and Eat &apos;n&apos; Learn for students in schools.
+                </p>
+                <div className="program-actions">
+                  <Link href="/nourish-now" className="btn btn-dark" style={{ flexGrow: 1 }}>
+                    Learn More <ArrowRight size={14} />
+                  </Link>
                 </div>
               </div>
             </div>
@@ -410,30 +322,36 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Donation Section */}
+      {/* Global Multi-Currency Donation Section */}
       <section className="section" id="donate">
         <div className="container donate-wrap">
           <div className="donate-copy">
-            <p className="section-kicker" style={{ color: '#fdba74' }}>
-              Make A Difference
+            <div
+              className="eyebrow"
+              style={{
+                background: 'rgba(255,255,255,.1)',
+                color: '#fed7aa',
+                borderColor: 'rgba(255,255,255,.12)',
+              }}
+            >
+              <Heart size={14} /> Support From Anywhere
+            </div>
+            <h2>Wherever you are, you can be part of this.</h2>
+            <p style={{ fontSize: 16, lineHeight: 1.7, color: 'rgba(255,255,255,0.92)' }}>
+              Every donation plays a role in helping us create better opportunities for the children we serve. Give what you can, from wherever you are.
             </p>
-            <h2>Your generosity transforms young lives.</h2>
-            <p>
-              When you give to Happy Hands, you directly fund school fees, hot balanced meals, learning supplies, and
-              medical care for children in urgent need.
+            <p style={{ fontSize: 16, fontWeight: 800, color: '#fed7aa', marginTop: 12 }}>
+              They’re the reason we exist. You’re the reason this works.
             </p>
 
-            <div className="payment-cards">
-              <div className="payment-card">
-                <GraduationCap size={24} />
-                <h3>₦10,000 / month</h3>
-                <p>Funds complete school books and exam fees for one scholar child.</p>
+            <div style={{ marginTop: 24, padding: 18, background: 'rgba(255,255,255,0.08)', borderRadius: 16, border: '1px solid rgba(255,255,255,0.14)' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 8, color: 'white', fontWeight: 800 }}>
+                <Globe size={18} color="#fed7aa" />
+                <span>International & Nigerian Supporters Welcome</span>
               </div>
-              <div className="payment-card">
-                <Utensils size={24} />
-                <h3>₦25,000 one-time</h3>
-                <p>Feeds a family in our Nourish Now emergency food relief drive.</p>
-              </div>
+              <p style={{ margin: 0, fontSize: 14, color: 'rgba(255,255,255,0.85)', lineHeight: 1.5 }}>
+                Support easily in <strong>₦ NGN, $ USD, £ GBP, or € EUR</strong>. You can enter any custom amount with your local card or bank transfer.
+              </p>
             </div>
           </div>
 
@@ -462,7 +380,7 @@ export default function HomePage() {
           </div>
 
           <div className="gallery-grid">
-            <div className="gallery-card tall">
+            <div className="gallery-card tall reveal-on-scroll reveal-delay-1">
               <SafeImage
                 src="/assets/images/hero-volunteer.jpg"
                 fallbackSrc="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1200&q=80"
@@ -475,7 +393,7 @@ export default function HomePage() {
                 <h3>Community Impact Day</h3>
               </div>
             </div>
-            <div className="gallery-card">
+            <div className="gallery-card reveal-on-scroll reveal-delay-2">
               <SafeImage
                 src="/assets/images/children-group.jpg"
                 fallbackSrc="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1200&q=80"
@@ -488,7 +406,7 @@ export default function HomePage() {
                 <h3>Scholars in Class</h3>
               </div>
             </div>
-            <div className="gallery-card">
+            <div className="gallery-card reveal-on-scroll reveal-delay-3">
               <SafeImage
                 src="/assets/images/children-event.png"
                 fallbackSrc="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=1200&q=80"
@@ -501,7 +419,7 @@ export default function HomePage() {
                 <h3>Nourish Now Food Drive</h3>
               </div>
             </div>
-            <div className="gallery-card">
+            <div className="gallery-card reveal-on-scroll reveal-delay-4">
               <SafeImage
                 src="/assets/images/community-outreach.jpg"
                 fallbackSrc="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=1200&q=80"
@@ -514,7 +432,7 @@ export default function HomePage() {
                 <h3>Back-2-School Packets</h3>
               </div>
             </div>
-            <div className="gallery-card">
+            <div className="gallery-card reveal-on-scroll reveal-delay-5">
               <SafeImage
                 src="/assets/images/volunteer-community.png"
                 fallbackSrc="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=1200&q=80"
@@ -531,21 +449,21 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Testimonials */}
+      {/* Testimonials - Restored exact quotes per brief */}
       <section className="section">
         <div className="container">
           <div className="testimonial-head">
             <div>
               <p className="section-kicker">Testimonials</p>
-              <h2 className="section-title">Stories from the people this work touches.</h2>
+              <h2 className="section-title">Voices From Our Community</h2>
             </div>
             <p className="section-lede">
-              Voices from parents, staff, and volunteers making the impact feel real, authentic, and human.
+              Real reflections from the people who work with and experience Happy Hands.
             </p>
           </div>
 
           <div className="testimonial-grid">
-            <blockquote>
+            <blockquote className="reveal-on-scroll reveal-delay-1">
               <Quote className="quote-icon" />
               <p>
                 &quot;It&apos;s been a while since I last saw my daughter this excited. Sometimes, I&apos;d catch Esther
@@ -561,11 +479,10 @@ export default function HomePage() {
               </footer>
             </blockquote>
 
-            <blockquote>
+            <blockquote className="reveal-on-scroll reveal-delay-2">
               <Quote className="quote-icon" />
               <p>
-                &quot;What isn&apos;t there to love about Happy Hands? I feel fulfilled knowing that the little effort we
-                put in translates to big smiles on the faces of these children.&quot;
+                &quot;What isn&apos;t there to love about Happy Hands? I feel fulfilled.&quot;
               </p>
               <footer>
                 <div className="avatar">S</div>
@@ -576,11 +493,10 @@ export default function HomePage() {
               </footer>
             </blockquote>
 
-            <blockquote>
+            <blockquote className="reveal-on-scroll reveal-delay-3">
               <Quote className="quote-icon" />
               <p>
-                &quot;I&apos;ve been given the opportunity to grow into a better version of myself. Volunteering here is
-                more than just giving; it&apos;s also receiving immense joy and purpose.&quot;
+                &quot;I&apos;ve been given the opportunity to grow into a better version of myself.&quot;
               </p>
               <footer>
                 <div className="avatar">T</div>
@@ -602,23 +518,17 @@ export default function HomePage() {
               className="orange-bg-img"
               style={{ backgroundImage: "url('/assets/images/volunteer-community.png'), url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1200&q=80')" }}
             />
-            <h2>Join us in nurturing the future!</h2>
-            <p className="section-lede" style={{ color: 'rgba(255,255,255,.9)' }}>
-              Your desire to go the extra mile makes us super happy. Your time and input help us do more for the
-              children while giving you the opportunity to make a difference.
+            <p className="section-kicker" style={{ color: '#ffedd5' }}>
+              Volunteer With Us
             </p>
-
-            <div className="quote-box">
-              <strong>Volunteer Benefit</strong>
-              <small>
-                Eligible volunteers receive a community service certificate or reference letter after 6-10 months of
-                proven contribution.
-              </small>
-            </div>
+            <h2>Your desire to join us in going the extra mile to nurture the future makes us super duper happy.</h2>
+            <p className="section-lede" style={{ color: 'rgba(255,255,255,.95)', fontSize: 16, lineHeight: 1.7 }}>
+              Together, we can nurture a future we can be proud of. As a volunteer, you are at the heart of what we do. Your time and contribution help us do more for the children we serve.
+            </p>
 
             <div className="about-actions">
               <Link href="/volunteer" className="btn btn-light">
-                Apply now
+                Volunteer with us
               </Link>
             </div>
           </div>
@@ -662,8 +572,20 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Simple Homepage FAQs */}
+      <section className="section" style={{ background: '#ffffff', borderTop: '1px solid var(--line)' }}>
+        <div className="container">
+          <FAQAccordion
+            items={homepageFAQs}
+            title="Frequently Asked Questions"
+            kicker="Got Questions?"
+            description="Quick answers on how to donate, volunteer, and get involved with Happy Hands Foundation."
+          />
+        </div>
+      </section>
+
       {/* Contact Section */}
-      <section className="section" id="contact" style={{ background: '#ffffff' }}>
+      <section className="section" id="contact" style={{ background: '#fffaf4' }}>
         <div className="container contact-grid">
           <div>
             <p className="section-kicker">Contact Us</p>
@@ -680,11 +602,16 @@ export default function HomePage() {
               <div className="contact-two">
                 <div className="contact-card">
                   <Phone size={24} />
-                  <div>+234 8188 745 474</div>
+                  <div>
+                    <a href="tel:08121353755" style={{ color: 'inherit' }}>08121353755</a>,{' '}
+                    <a href="tel:08188795474" style={{ color: 'inherit' }}>08188795474</a>
+                  </div>
                 </div>
                 <div className="contact-card">
                   <Mail size={24} />
-                  <div>info@happyhandsfoundation.org</div>
+                  <div>
+                    <a href="mailto:partnerships@happyhandsfoundation.org" style={{ color: 'inherit' }}>partnerships@happyhandsfoundation.org</a>
+                  </div>
                 </div>
               </div>
             </div>

@@ -5,7 +5,67 @@ import Link from 'next/link';
 import { useDonation } from '@/context/DonationContext';
 import { DonationWidget } from '@/components/DonationWidget';
 import { SafeImage } from '@/components/SafeImage';
-import { BusFront, CheckCircle2, ArrowRight, Heart, CreditCard, Building2 } from 'lucide-react';
+import { FAQAccordion, FAQItem } from '@/components/FAQAccordion';
+import { 
+  BusFront, 
+  CheckCircle2, 
+  ArrowRight, 
+  Heart, 
+  Sparkles,
+  Palette,
+  Lightbulb,
+  Coins,
+  ShieldCheck,
+  Scale,
+  Award,
+  Hammer,
+  Smile
+} from 'lucide-react';
+
+const topics = [
+  'Art and craft',
+  'Creativity',
+  'Personal finance',
+  'Integrity',
+  'Equity',
+  'Discipline',
+  'Dignity of labour',
+  'Focus',
+  'Vocational activities',
+  'Recreational activities',
+  'Other areas that support the child\'s development',
+];
+
+const teachersFAQs: FAQItem[] = [
+  {
+    question: 'How long does the program last?',
+    answer: 'The teaching sessions run for an agreed period tailored with the host school or community, typically scheduled on designated days across academic terms or during community outreaches.',
+  },
+  {
+    question: 'How are participating communities or schools identified?',
+    answer: 'Happy Hands identifies underserved schools and community spaces through field evaluations, community leader partnerships, and direct requests from schools in low-income neighborhoods.',
+  },
+  {
+    question: 'How is the program funded?',
+    answer: 'Through generous donations from individuals, corporate partnerships, and grants that provide workshop materials, stationery, and logistical support.',
+  },
+  {
+    question: 'What does it mean to become a Teacher-on-the-Go?',
+    answer: 'A Teacher-on-the-Go is a volunteer educator, mentor, or professional who commits their time and skills to facilitate practical, character-building, or creative sessions for children.',
+  },
+  {
+    question: 'How can I become a Teacher-on-the-Go?',
+    answer: (
+      <span>
+        You can apply directly through our{' '}
+        <Link href="/volunteer" style={{ color: 'var(--orange)', fontWeight: 800, textDecoration: 'underline' }}>
+          Volunteer Form
+        </Link>
+        . We provide simple onboarding and lesson orientation to get you started smoothly.
+      </span>
+    ),
+  },
+];
 
 export default function TeachersOnTheGoPage() {
   const { openDonationModal } = useDonation();
@@ -16,14 +76,14 @@ export default function TeachersOnTheGoPage() {
       <section className="page-hero" style={{ background: 'var(--orange-soft)' }}>
         <div className="container page-hero-inner">
           <div className="eyebrow" style={{ color: 'var(--orange-dark)', borderColor: 'var(--orange)' }}>
-            <BusFront size={16} /> Education Pillar
+            <BusFront size={16} /> Education Program
           </div>
           <h1>Teachers on the Go</h1>
-          <p>Grooming well-rounded children beyond the traditional classroom walls.</p>
+          <p>Help us take learning beyond the classroom.</p>
         </div>
       </section>
 
-      {/* Content Split Layout */}
+      {/* Program Details */}
       <section className="section">
         <div className="container split-layout">
           <div className="split-image" style={{ height: 480, position: 'relative' }}>
@@ -37,48 +97,43 @@ export default function TeachersOnTheGoPage() {
           </div>
 
           <div className="split-content">
-            <h2>Learning beyond academics.</h2>
-            <p>
-              We believe that true education is more than just memorizing formulas. To prepare the next generation for a
-              complex world, we must equip them with practical life skills, character building, and creative confidence.
+            <p className="section-kicker">Learning Beyond the Classroom</p>
+            <h2>Grooming well-rounded children.</h2>
+            <p style={{ fontSize: 16, lineHeight: 1.7, color: '#334155' }}>
+              Teachers on the Go gives volunteers and organisations the opportunity to teach children in underserved schools and communities for an agreed period.
             </p>
-            <p>
-              The <strong>Teachers on the Go</strong> initiative deploys passionate volunteer educators, mentors, and
-              partner organizations to teach non-academic topics in underserved schools and communities once or twice
-              weekly.
+            <p style={{ fontSize: 16, lineHeight: 1.7, color: '#334155' }}>
+              The program helps children explore ideas and life skills they may not always encounter in their regular academic lessons.
+            </p>
+            <p style={{ fontSize: 16, lineHeight: 1.7, color: '#334155', fontWeight: 700 }}>
+              Simply put, through Teachers on the Go, we are on the path to grooming well-rounded children.
             </p>
 
-            <div className="role-card" style={{ marginTop: 32, boxShadow: 'none', border: '1px solid var(--line)', padding: 24 }}>
-              <h3 style={{ margin: '0 0 16px', fontSize: 20 }}>What we teach:</h3>
-              <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 12 }}>
-                <li style={{ display: 'flex', gap: 12, color: '#475569', fontWeight: 700, alignItems: 'center' }}>
-                  <CheckCircle2 size={18} color="var(--orange)" /> Social and emotional intelligence
-                </li>
-                <li style={{ display: 'flex', gap: 12, color: '#475569', fontWeight: 700, alignItems: 'center' }}>
-                  <CheckCircle2 size={18} color="var(--orange)" /> Critical thinking & creative problem solving
-                </li>
-                <li style={{ display: 'flex', gap: 12, color: '#475569', fontWeight: 700, alignItems: 'center' }}>
-                  <CheckCircle2 size={18} color="var(--orange)" /> Health, hygiene, and personal grooming
-                </li>
-                <li style={{ display: 'flex', gap: 12, color: '#475569', fontWeight: 700, alignItems: 'center' }}>
-                  <CheckCircle2 size={18} color="var(--orange)" /> Basic financial literacy & money management
-                </li>
-              </ul>
+            <div className="role-card" style={{ marginTop: 24, boxShadow: 'none', border: '1px solid var(--line)', padding: 22 }}>
+              <h3 style={{ margin: '0 0 14px', fontSize: 18 }}>Topics may include:</h3>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 8 }}>
+                {topics.map((topic, i) => (
+                  <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 14, color: '#475569', fontWeight: 600 }}>
+                    <CheckCircle2 size={16} color="var(--orange)" style={{ flexShrink: 0 }} />
+                    <span>{topic}</span>
+                  </div>
+                ))}
+              </div>
             </div>
 
-            <div style={{ marginTop: 32, display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+            <div style={{ marginTop: 28, display: 'flex', gap: 12, flexWrap: 'wrap' }}>
               <Link className="btn btn-orange" href="/volunteer">
                 Volunteer to Teach
               </Link>
               <Link className="btn btn-light" href="/contact">
-                Partner Your School
+                Partner with us
               </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Donate Section */}
+      {/* Primary CTA / Donation Section */}
       <section className="section" id="donate">
         <div className="container donate-wrap">
           <div className="donate-copy">
@@ -90,31 +145,45 @@ export default function TeachersOnTheGoPage() {
                 borderColor: 'rgba(255,255,255,.12)',
               }}
             >
-              <Heart size={14} /> Support Life Skills
+              <Heart size={14} /> Call to Action
             </div>
-            <h2>Fuel Mobile Mentorship Across Communities</h2>
-            <p>
-              Your support funds workshop kits, teaching supplies, and logistics to reach children in grassroots
-              neighborhoods.
+            <h2>Help us take learning beyond the classroom.</h2>
+            <p style={{ fontSize: 16, lineHeight: 1.7, color: 'rgba(255,255,255,0.95)' }}>
+              Every donation helps provide teaching materials, art supplies, and logistics to take life skills training into underserved schools and communities.
+            </p>
+            <p style={{ color: '#fed7aa', fontWeight: 800, marginTop: 14 }}>
+              They’re the reason we exist. But you’re the reason this works.
             </p>
 
-            <div className="payment-cards">
-              <div className="payment-card">
-                <CreditCard size={28} />
-                <h3>Card Payment</h3>
-                <p>Fast online giving via Paystack or Flutterwave.</p>
-              </div>
-              <div className="payment-card">
-                <Building2 size={28} />
-                <h3>Bank Transfer</h3>
-                <p>Direct bank transfers with verified accounting records.</p>
-              </div>
+            <div style={{ marginTop: 24, display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+              <button
+                type="button"
+                className="btn btn-light"
+                onClick={() => openDonationModal('Teachers on the Go')}
+              >
+                Support Teachers on the Go
+              </button>
+              <Link href="/volunteer" className="btn btn-dark" style={{ background: 'rgba(0,0,0,0.5)', borderColor: 'rgba(255,255,255,0.2)' }}>
+                Become a Volunteer Teacher
+              </Link>
             </div>
           </div>
 
           <div className="donate-panel">
             <DonationWidget initialFund="Teachers on the Go" />
           </div>
+        </div>
+      </section>
+
+      {/* Teachers on the Go FAQs */}
+      <section className="section" style={{ background: '#ffffff', borderTop: '1px solid var(--line)' }}>
+        <div className="container">
+          <FAQAccordion
+            items={teachersFAQs}
+            title="Teachers on the Go FAQs"
+            kicker="Program Questions"
+            description="Details about curriculum topics, volunteering commitments, and school partnerships."
+          />
         </div>
       </section>
     </>

@@ -11,8 +11,7 @@ import {
   HeartPulse, 
   ArrowRight, 
   Heart, 
-  CreditCard, 
-  Building2 
+  Sparkles
 } from 'lucide-react';
 
 export default function ProgramsPage() {
@@ -24,12 +23,11 @@ export default function ProgramsPage() {
       <section className="page-hero">
         <div className="container page-hero-inner">
           <div className="eyebrow">
-            <LayoutGrid size={16} color="var(--orange)" /> Our Initiatives
+            <LayoutGrid size={16} color="var(--orange)" /> What Happy Hands is doing
           </div>
-          <h1>Two focus areas. One complete mission.</h1>
+          <h1>We are nurturing the next generation of changemakers.</h1>
           <p>
-            Happy Hands organizes its work around Education and Health, with practical initiatives that solve real
-            problems for the African child.
+            By providing children with opportunities that extend beyond the classroom.
           </p>
         </div>
       </section>
@@ -37,7 +35,17 @@ export default function ProgramsPage() {
       {/* Programs Overview */}
       <section className="section" style={{ paddingTop: '60px' }}>
         <div className="container">
-          {/* Education Pillar */}
+          <div style={{ textAlign: 'center', marginBottom: 48 }}>
+            <p className="section-kicker" style={{ justifyContent: 'center' }}>
+              How Happy Hands is getting this done
+            </p>
+            <h2 className="section-title">Education and Health Programs</h2>
+            <p className="section-lede" style={{ maxWidth: 650, margin: '12px auto 0' }}>
+              Focused interventions designed to ensure every child has access to basic education, nourishment, and growth.
+            </p>
+          </div>
+
+          {/* Education Programs */}
           <div className="pillar-block pillar-education">
             <div className="pillar-head">
               <div className="pillar-title">
@@ -45,7 +53,7 @@ export default function ProgramsPage() {
                   <BookOpen size={28} />
                 </div>
                 <div>
-                  <small>Pillar one</small>
+                  <small>Category One</small>
                   <h3>Education Programs</h3>
                 </div>
               </div>
@@ -54,11 +62,12 @@ export default function ProgramsPage() {
                 className="btn btn-light"
                 onClick={() => openDonationModal('Scholars Program')}
               >
-                Support education
+                Become a Guardian
               </button>
             </div>
 
             <div className="program-grid">
+              {/* Scholars Program */}
               <article className="program-card">
                 <div className="program-image">
                   <SafeImage
@@ -75,8 +84,7 @@ export default function ProgramsPage() {
                   <h4>Scholars Program</h4>
                   <p className="program-sentence">Ensuring every child has access to basic education.</p>
                   <p className="program-desc">
-                    Scholarships for merit and need-based children, covering tuition, books, school supplies, monitoring,
-                    and inclusive personal development.
+                    Through the Scholars Program, we become guardians by supporting children who have academic potential but lack the financial means to remain in school, including daily feeding during school hours.
                   </p>
                   <div className="program-actions">
                     <Link className="btn btn-dark" href="/scholars-program" style={{ flexGrow: 1 }}>
@@ -86,6 +94,7 @@ export default function ProgramsPage() {
                 </div>
               </article>
 
+              {/* Teachers on the Go */}
               <article className="program-card">
                 <div className="program-image">
                   <SafeImage
@@ -100,10 +109,9 @@ export default function ProgramsPage() {
                 </div>
                 <div className="program-body">
                   <h4>Teachers on the Go</h4>
-                  <p className="program-sentence">Grooming well-rounded children beyond the classroom.</p>
+                  <p className="program-sentence">Help us take learning beyond the classroom.</p>
                   <p className="program-desc">
-                    Volunteers and partner educators teach creative, vocational, and digital literacy topics in
-                    underserved schools and communities.
+                    Giving volunteers and organisations the opportunity to teach children in underserved schools creative and life skills they may not encounter in regular lessons.
                   </p>
                   <div className="program-actions">
                     <Link className="btn btn-dark" href="/teachers-on-the-go" style={{ flexGrow: 1 }}>
@@ -113,6 +121,7 @@ export default function ProgramsPage() {
                 </div>
               </article>
 
+              {/* Back-2-School */}
               <article className="program-card">
                 <div className="program-image">
                   <SafeImage
@@ -127,10 +136,9 @@ export default function ProgramsPage() {
                 </div>
                 <div className="program-body">
                   <h4>Back-2-School</h4>
-                  <p className="program-sentence">Helping children learn in better conditions.</p>
+                  <p className="program-sentence">Creating a more conducive learning environment.</p>
                   <p className="program-desc">
-                    School supplies and learning kits for children and under-resourced schools, including books, writing
-                    materials, bags, and desks.
+                    Supporting children with supplies at the start of the year, and assisting schools with tables, chairs, boards, books, and learning materials.
                   </p>
                   <div className="program-actions">
                     <Link className="btn btn-dark" href="/back-2-school" style={{ flexGrow: 1 }}>
@@ -142,7 +150,7 @@ export default function ProgramsPage() {
             </div>
           </div>
 
-          {/* Health Pillar */}
+          {/* Health Programs */}
           <div className="pillar-block pillar-health" style={{ marginTop: '60px' }}>
             <div className="pillar-head">
               <div className="pillar-title">
@@ -150,7 +158,7 @@ export default function ProgramsPage() {
                   <HeartPulse size={28} />
                 </div>
                 <div>
-                  <small>Pillar two</small>
+                  <small>Category Two</small>
                   <h3 style={{ color: 'white' }}>Health Programs</h3>
                 </div>
               </div>
@@ -159,11 +167,12 @@ export default function ProgramsPage() {
                 className="btn btn-orange"
                 onClick={() => openDonationModal('Nourish Now')}
               >
-                Support health
+                Support Health
               </button>
             </div>
 
             <div className="program-grid two">
+              {/* Nourish Now */}
               <article className="program-card">
                 <div className="program-image">
                   <SafeImage
@@ -175,17 +184,16 @@ export default function ProgramsPage() {
                   />
                   <div className="program-image-overlay" />
                   <div className="program-tag" style={{ color: 'var(--green)' }}>
-                    Health & Nutrition
+                    Health
                   </div>
                 </div>
                 <div className="program-body">
                   <h4>Nourish Now</h4>
                   <p className="program-sentence" style={{ color: 'var(--green)' }}>
-                    Food relief for children and families in need.
+                    Temporary food relief for children and families.
                   </p>
                   <p className="program-desc">
-                    Direct food relief through Happy Boxes, Eat &apos;n&apos; Learn school hot meal days, and community food banks
-                    to stop malnutrition.
+                    Providing food relief through Happy Boxes (December) and Eat &apos;n&apos; Learn for students in schools, with our Community Food Bank coming soon.
                   </p>
                   <div className="program-actions">
                     <Link className="btn btn-dark" href="/nourish-now" style={{ flexGrow: 1 }}>
@@ -195,6 +203,7 @@ export default function ProgramsPage() {
                 </div>
               </article>
 
+              {/* FitTot */}
               <article className="program-card">
                 <div className="program-image">
                   <SafeImage
@@ -205,18 +214,22 @@ export default function ProgramsPage() {
                     style={{ objectFit: 'cover' }}
                   />
                   <div className="program-image-overlay" />
-                  <div className="program-tag" style={{ color: 'var(--green)' }}>
-                    Healthcare
+                  <div className="program-tag" style={{ background: '#fef3c7', color: '#92400e' }}>
+                    Coming Soon
                   </div>
                 </div>
                 <div className="program-body">
-                  <h4>FitTot</h4>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
+                    <h4 style={{ margin: 0 }}>FitTot</h4>
+                    <span style={{ fontSize: 11, fontWeight: 800, background: '#fef3c7', color: '#92400e', padding: '2px 8px', borderRadius: 999 }}>
+                      Launch Phase
+                    </span>
+                  </div>
                   <p className="program-sentence" style={{ color: 'var(--green)' }}>
-                    Quality healthcare access for vulnerable children.
+                    Every child deserves a shot at quality healthcare.
                   </p>
                   <p className="program-desc">
-                    A dedicated healthcare initiative providing pediatric medical screenings, HMO partnerships, and
-                    emergency medicine support.
+                    Bridging the healthcare gap for vulnerable families by creating opportunities for children to access proper healthcare at affordable costs.
                   </p>
                   <div className="program-actions">
                     <Link className="btn btn-dark" href="/fittot" style={{ flexGrow: 1 }}>
@@ -230,7 +243,7 @@ export default function ProgramsPage() {
         </div>
       </section>
 
-      {/* Donate Section */}
+      {/* Global Multi-Currency Donate Section */}
       <section className="section" id="donate">
         <div className="container donate-wrap">
           <div className="donate-copy">
@@ -242,26 +255,15 @@ export default function ProgramsPage() {
                 borderColor: 'rgba(255,255,255,.12)',
               }}
             >
-              <Heart size={14} /> Donation Experience
+              <Heart size={14} /> Support Our Initiatives
             </div>
-            <h2>Give to all programs or support a specific initiative.</h2>
+            <h2>Wherever you are, you can be part of this.</h2>
             <p>
-              Every donation plays a crucial role in sustaining our work. Choose to support a specific program or give
-              to the general fund where it is needed most.
+              Every donation plays a role in helping us create better opportunities for the children we serve. Give what you can, from wherever you are.
             </p>
-
-            <div className="payment-cards">
-              <div className="payment-card">
-                <CreditCard size={28} />
-                <h3>Card payment</h3>
-                <p>Secure online instant donation via Paystack or Flutterwave.</p>
-              </div>
-              <div className="payment-card">
-                <Building2 size={28} />
-                <h3>Bank transfer</h3>
-                <p>Direct bank transfers with verified accounting records.</p>
-              </div>
-            </div>
+            <p style={{ fontWeight: 800, color: '#fed7aa', marginTop: 12 }}>
+              They’re the reason we exist. You’re the reason this works.
+            </p>
           </div>
 
           <div className="donate-panel">

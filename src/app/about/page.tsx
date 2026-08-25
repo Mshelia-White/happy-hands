@@ -6,7 +6,7 @@ import { SafeImage } from '@/components/SafeImage';
 
 export const metadata: Metadata = {
   title: 'About Us | Happy Hands Foundation',
-  description: 'Learn about Happy Hands Foundation, our mission to nurture changemakers, and why we do what we do.',
+  description: 'Learn why Happy Hands exists and how we are nurturing the next generation of changemakers.',
 };
 
 export default function AboutPage() {
@@ -20,14 +20,13 @@ export default function AboutPage() {
           </div>
           <h1>We exist to nurture changemakers.</h1>
           <p>
-            A safe space for the African child, providing genuine opportunities for inclusive growth and lifelong
-            development.
+            Creating a safe space for the African child while providing opportunities for inclusive growth.
           </p>
         </div>
       </section>
 
-      {/* Why Happy Hands (Split Layout) */}
-      <section className="section" style={{ paddingTop: '80px' }}>
+      {/* Why Happy Hands */}
+      <section className="section" style={{ paddingTop: '70px' }}>
         <div className="container split-layout">
           <div className="split-image" style={{ height: 480, position: 'relative' }}>
             <SafeImage
@@ -41,40 +40,34 @@ export default function AboutPage() {
 
           <div className="split-content">
             <p className="section-kicker">Why Happy Hands</p>
-            <h2>Happy hands are loving hearts translated into action.</h2>
-            <p>
-              Happy Hands is not just the name of an organization. It&apos;s a description befitting everyone who
-              translates love, joy, and kindness from their hearts to their hands.
+            <h2>Happy Hands isn&apos;t just the name of an organisation.</h2>
+            <p style={{ fontSize: 16, lineHeight: 1.7, color: '#334155' }}>
+              It is a description of everyone who, through their interaction with what we do, translates love, joy and happiness from their hearts to their hands.
             </p>
-            <p>
-              At Happy Hands, we provide children in underserved areas with equal opportunities to become agents of
-              lasting change. We do this by creating an environment for their all-inclusive welfare. Since 2020, we have
-              been bridging education and health gaps while cultivating development opportunities for children who
-              deserve the right environment to bloom.
+            <p style={{ fontSize: 16, lineHeight: 1.7, color: '#334155' }}>
+              We are happy people, with loving hearts and hands willing to go the extra mile to be a beacon of hope for every child.
+            </p>
+            <p style={{ fontSize: 16, lineHeight: 1.7, color: '#334155' }}>
+              At Happy Hands, we provide children in underserved areas with equal opportunities to become agents of lasting change by creating an environment for their all-inclusive welfare.
+            </p>
+            <p style={{ fontSize: 16, lineHeight: 1.7, color: '#334155' }}>
+              We believe that every child, given the opportunity and the right environment, can bloom into the best version of themselves.
             </p>
 
-            <h3 style={{ margin: '32px 0 12px', fontSize: '22px', fontWeight: 800, color: 'var(--slate)' }}>
-              Is there more to our story?
-            </h3>
-            <p>
-              Yes, you are more to our story than we can ever tell. Every time you give your time, expertise, or
-              financial sponsorship, you make it possible for the children we serve to flourish in the world we are
-              creating together.
-            </p>
+            <div style={{ marginTop: 28, padding: 20, background: 'var(--cream)', borderRadius: 16, border: '1px solid var(--line)' }}>
+              <h3 style={{ margin: '0 0 8px', fontSize: 18, fontWeight: 800, color: 'var(--orange-dark)' }}>
+                Is there more to our story?
+              </h3>
+              <p style={{ margin: 0, fontSize: 15, lineHeight: 1.6, color: 'var(--slate)' }}>
+                Yes. You are more to our story than we can ever tell.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Quote Banner */}
-      <section className="quote-banner">
-        <div className="container">
-          <h3>&quot;Money is not the problem.&quot;</h3>
-          <p>— Happiness (Founder), on creating avenues for access to quality education and health.</p>
-        </div>
-      </section>
-
-      {/* Mission & Vision Cards (Overlapping) */}
-      <section style={{ marginBottom: '100px' }}>
+      {/* Mission & Vision Cards */}
+      <section style={{ marginBottom: '80px', marginTop: '20px' }}>
         <div className="container">
           <div className="mission-vision-wrapper">
             <div className="mv-card">
@@ -83,8 +76,7 @@ export default function AboutPage() {
               </div>
               <h3>Our Mission</h3>
               <p>
-                To incorporate a vibrant network of volunteers and partners who are passionate about helping children
-                realize their full potential through education and health interventions.
+                To incorporate a network of volunteers and partners who are passionate about helping children realize their full potential.
               </p>
             </div>
 
@@ -94,8 +86,7 @@ export default function AboutPage() {
               </div>
               <h3>Our Vision</h3>
               <p>
-                Creating a safe space for the African child while providing opportunities for inclusive growth,
-                dignity, and academic excellence.
+                Creating a safe space for the African child while providing opportunities for inclusive growth.
               </p>
             </div>
           </div>
@@ -111,16 +102,16 @@ export default function AboutPage() {
               style={{ backgroundImage: "url('/assets/images/community-outreach.jpg'), url('https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1200&q=80')" }}
             />
             <p className="section-kicker" style={{ color: '#ffedd5', justifyContent: 'center' }}>
-              Join Our Community
+              Together We Can
             </p>
             <h2 style={{ maxWidth: 650, margin: '16px auto' }}>
-              Become a beacon of hope for a child today.
+              Together, we can nurture a future we can be proud of.
             </h2>
-            <p className="section-lede" style={{ color: 'rgba(255,255,255,.9)', margin: '20px auto 36px' }}>
-              We are happy people, with loving hearts, and hands that are willing to go the extra mile.
+            <p className="section-lede" style={{ color: 'rgba(255,255,255,.95)', margin: '16px auto 32px', fontSize: 16 }}>
+              They’re the reason we exist. But you’re the reason this works.
             </p>
 
-            <div style={{ display: 'flex', gap: 16, justifyContent: 'center', position: 'relative', zIndex: 1 }}>
+            <div style={{ display: 'flex', gap: 16, justifyContent: 'center', position: 'relative', zIndex: 1, flexWrap: 'wrap' }}>
               <Link className="btn btn-dark" href="/programs">
                 View Our Programs <ArrowRight size={16} />
               </Link>

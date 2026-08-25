@@ -2,7 +2,48 @@
 
 import React, { useState, useEffect } from 'react';
 import { useDonation, ProgramFund } from '@/context/DonationContext';
-import { X, Lock, CreditCard, Building2, CheckCircle2, Copy, Check, Heart, ShieldCheck } from 'lucide-react';
+import { X, Lock, CreditCard, Building2, CheckCircle2, Copy, Check, Heart, Globe } from 'lucide-react';
+
+export type CurrencyCode = 'NGN' | 'USD' | 'GBP' | 'EUR';
+
+export interface CurrencyConfig {
+  code: CurrencyCode;
+  symbol: string;
+  label: string;
+  presets: number[];
+  defaultAmount: number;
+}
+
+export const CURRENCIES: Record<CurrencyCode, CurrencyConfig> = {
+  NGN: {
+    code: 'NGN',
+    symbol: '₦',
+    label: 'NGN',
+    presets: [5000, 10000, 25000, 50000, 100000],
+    defaultAmount: 10000,
+  },
+  USD: {
+    code: 'USD',
+    symbol: '$',
+    label: 'USD',
+    presets: [10, 25, 50, 100, 250],
+    defaultAmount: 50,
+  },
+  GBP: {
+    code: 'GBP',
+    symbol: '£',
+    label: 'GBP',
+    presets: [10, 20, 50, 100, 200],
+    defaultAmount: 40,
+  },
+  EUR: {
+    code: 'EUR',
+    symbol: '€',
+    label: 'EUR',
+    presets: [10, 25, 50, 100, 250],
+    defaultAmount: 45,
+  },
+};
 
 const funds: ProgramFund[] = [
   'General Fund',
@@ -13,11 +54,10 @@ const funds: ProgramFund[] = [
   'FitTot',
 ];
 
-const presetAmounts = [5000, 10000, 25000, 50000, 100000];
-
 export const DonationModal: React.FC = () => {
-  const { isModalOpen, selectedFund, defaultAmount, closeDonationModal } = useDonation();
+  const { isModalOpen, selectedFund, closeDonationModal } = useDonation();
   const [activeFund, setActiveFund] = useState<ProgramFund>('General Fund');
+  const [currency, setCurrency] = useState<CurrencyCode>('NGN');
   const [amount, setAmount] = useState<number>(10000);
   const [customAmount, setCustomAmount] = useState<string>('');
   const [paymentMethod, setPaymentMethod] = useState<'card' | 'bank'>('card');
@@ -31,16 +71,23 @@ export const DonationModal: React.FC = () => {
   useEffect(() => {
     if (isModalOpen) {
       setActiveFund(selectedFund);
-      setAmount(defaultAmount);
       setCustomAmount('');
       setIsSuccess(false);
       setIsProcessing(false);
     }
-  }, [isModalOpen, selectedFund, defaultAmount]);
+  }, [isModalOpen, selectedFund]);
+
+  const handleCurrencyChange = (newCurrency: CurrencyCode) => {
+    setCurrency(newCurrency);
+    setAmount(CURRENCIES[newCurrency].defaultAmount);
+    setCustomAmount('');
+  };
 
   if (!isModalOpen) return null;
 
+  const currentCurrencyConfig = CURRENCIES[currency];
   const currentAmount = customAmount ? parseFloat(customAmount) || 0 : amount;
+  const formattedAmount = `${currentCurrencyConfig.symbol}${currentAmount.toLocaleString()}`;
 
   const handleCopyAccount = (text: string) => {
     navigator.clipboard.writeText(text);
@@ -101,11 +148,14 @@ export const DonationModal: React.FC = () => {
               <CheckCircle2 size={44} />
             </div>
             <h3 style={{ fontSize: 26, fontWeight: 900, margin: '0 0 10px' }}>
-              Thank You for Your Generosity!
+              Thank You for Your Support!
             </h3>
             <p style={{ color: '#475569', fontSize: 16, lineHeight: 1.6, margin: '0 0 24px' }}>
-              Your donation of <strong>₦{currentAmount.toLocaleString()}</strong> to the{' '}
-              <strong>{activeFund}</strong> makes a transformative difference in a child&apos;s life.
+              Your donation of <strong>{formattedAmount}</strong> to the{' '}
+              <strong>{activeFund}</strong> creates meaningful opportunities for the children we serve.
+            </p>
+            <p style={{ color: 'var(--orange-dark)', fontWeight: 800, fontSize: 14, margin: '0 0 20px' }}>
+              They&apos;re the reason we exist. You&apos;re the reason this works.
             </p>
             <div
               style={{
@@ -143,20 +193,61 @@ export const DonationModal: React.FC = () => {
                 Support Happy Hands
               </span>
             </div>
-            <h3 style={{ fontSize: 24, fontWeight: 900, margin: '6px 0 18px', letterSpacing: '-0.03em' }}>
-              Make a Lasting Impact
+            <h3 style={{ fontSize: 24, fontWeight: 900, margin: '6px 0 6px', letterSpacing: '-0.03em' }}>
+              Wherever you are, you can be part of this.
             </h3>
+            <p style={{ color: '#64748b', fontSize: 14, lineHeight: 1.5, margin: '0 0 16px' }}>
+              Every donation plays a role in helping us create better opportunities for the children we serve. Give what you can, from wherever you are.
+            </p>
+
+            {/* Currency Selector */}
+            <div style={{ marginBottom: 16 }}>
+              <label style={{ display: 'block', fontSize: 12, fontWeight: 800, marginBottom: 6, color: 'var(--slate)' }}>
+                Choose your currency
+              </label>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 6 }}>
+                {(Object.keys(CURRENCIES) as CurrencyCode[]).map((curCode) => {
+                  const isCurSelected = currency === curCode;
+                  const cur = CURRENCIES[curCode];
+                  return (
+                    <button
+                      key={curCode}
+                      type="button"
+                      onClick={() => handleCurrencyChange(curCode)}
+                      style={{
+                        padding: '8px 4px',
+                        borderRadius: 10,
+                        border: `1.5px solid ${isCurSelected ? 'var(--orange)' : 'var(--line)'}`,
+                        background: isCurSelected ? 'var(--orange-soft)' : 'white',
+                        color: isCurSelected ? 'var(--orange-dark)' : 'var(--slate)',
+                        fontWeight: 800,
+                        fontSize: 13,
+                        cursor: 'pointer',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        gap: 4,
+                        transition: 'all 0.2s',
+                      }}
+                    >
+                      <span>{cur.symbol}</span>
+                      <span>{cur.code}</span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
 
             {/* Frequency toggle */}
             <div
               style={{
                 display: 'grid',
                 gridTemplateColumns: '1fr 1fr',
-                gap: 8,
+                gap: 6,
                 background: 'var(--cream)',
                 padding: 4,
                 borderRadius: 999,
-                marginBottom: 20,
+                marginBottom: 16,
                 border: '1px solid var(--line)',
               }}
             >
@@ -199,13 +290,13 @@ export const DonationModal: React.FC = () => {
             </div>
 
             {/* Amount Grid */}
-            <div style={{ marginBottom: 14 }}>
-              <label style={{ display: 'block', fontSize: 13, fontWeight: 800, marginBottom: 8, color: 'var(--slate)' }}>
+            <div style={{ marginBottom: 12 }}>
+              <label style={{ display: 'block', fontSize: 12, fontWeight: 800, marginBottom: 6, color: 'var(--slate)' }}>
                 Select Amount
               </label>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 6 }}>
-                {presetAmounts.map((amt) => {
-                  const label = amt >= 1000 ? `₦${amt / 1000}k` : `₦${amt}`;
+              <div style={{ display: 'grid', gridTemplateColumns: `repeat(${currentCurrencyConfig.presets.length}, 1fr)`, gap: 6 }}>
+                {currentCurrencyConfig.presets.map((amt) => {
+                  const label = `${currentCurrencyConfig.symbol}${amt >= 1000 ? `${amt / 1000}k` : amt}`;
                   const isSelected = !customAmount && amount === amt;
                   return (
                     <button
@@ -216,7 +307,7 @@ export const DonationModal: React.FC = () => {
                         setAmount(amt);
                         setCustomAmount('');
                       }}
-                      style={{ padding: '10px 4px', fontSize: 13 }}
+                      style={{ padding: '8px 2px', fontSize: 12 }}
                     >
                       {label}
                     </button>
@@ -226,19 +317,19 @@ export const DonationModal: React.FC = () => {
             </div>
 
             {/* Custom Amount */}
-            <div className="custom-amount" style={{ marginBottom: 18 }}>
-              <span>₦</span>
+            <div className="custom-amount" style={{ marginBottom: 16 }}>
+              <span>{currentCurrencyConfig.symbol}</span>
               <input
                 type="number"
-                placeholder="Or enter custom amount in Naira"
+                placeholder={`Enter custom amount in ${currentCurrencyConfig.code}`}
                 value={customAmount}
                 onChange={(e) => setCustomAmount(e.target.value)}
               />
             </div>
 
             {/* Program Fund Selection */}
-            <div style={{ marginBottom: 18 }}>
-              <label style={{ display: 'block', fontSize: 13, fontWeight: 800, marginBottom: 8, color: 'var(--slate)' }}>
+            <div style={{ marginBottom: 16 }}>
+              <label style={{ display: 'block', fontSize: 12, fontWeight: 800, marginBottom: 6, color: 'var(--slate)' }}>
                 Direct my donation to:
               </label>
               <div className="fund-buttons">
@@ -256,11 +347,11 @@ export const DonationModal: React.FC = () => {
             </div>
 
             {/* Payment Method Selector */}
-            <div style={{ marginBottom: 20 }}>
-              <label style={{ display: 'block', fontSize: 13, fontWeight: 800, marginBottom: 8, color: 'var(--slate)' }}>
+            <div style={{ marginBottom: 16 }}>
+              <label style={{ display: 'block', fontSize: 12, fontWeight: 800, marginBottom: 6, color: 'var(--slate)' }}>
                 Payment Method
               </label>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
                 <button
                   type="button"
                   onClick={() => setPaymentMethod('card')}
@@ -268,18 +359,18 @@ export const DonationModal: React.FC = () => {
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    gap: 8,
-                    padding: '12px',
-                    borderRadius: 14,
+                    gap: 6,
+                    padding: '10px 8px',
+                    borderRadius: 12,
                     border: `2px solid ${paymentMethod === 'card' ? 'var(--orange)' : 'var(--line)'}`,
                     background: paymentMethod === 'card' ? 'var(--orange-soft)' : 'white',
                     color: paymentMethod === 'card' ? 'var(--orange-dark)' : 'var(--slate)',
                     fontWeight: 800,
-                    fontSize: 13,
+                    fontSize: 12,
                     cursor: 'pointer',
                   }}
                 >
-                  <CreditCard size={18} /> Card (Paystack/Flutterwave)
+                  <CreditCard size={16} /> International / Local Card
                 </button>
                 <button
                   type="button"
@@ -288,18 +379,18 @@ export const DonationModal: React.FC = () => {
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    gap: 8,
-                    padding: '12px',
-                    borderRadius: 14,
+                    gap: 6,
+                    padding: '10px 8px',
+                    borderRadius: 12,
                     border: `2px solid ${paymentMethod === 'bank' ? 'var(--orange)' : 'var(--line)'}`,
                     background: paymentMethod === 'bank' ? 'var(--orange-soft)' : 'white',
                     color: paymentMethod === 'bank' ? 'var(--orange-dark)' : 'var(--slate)',
                     fontWeight: 800,
-                    fontSize: 13,
+                    fontSize: 12,
                     cursor: 'pointer',
                   }}
                 >
-                  <Building2 size={18} /> Direct Bank Transfer
+                  <Building2 size={16} /> Direct Bank Transfer
                 </button>
               </div>
             </div>
@@ -309,15 +400,15 @@ export const DonationModal: React.FC = () => {
                 style={{
                   background: 'var(--cream)',
                   border: '1px solid var(--line)',
-                  borderRadius: 16,
-                  padding: 20,
-                  marginBottom: 20,
+                  borderRadius: 14,
+                  padding: 16,
+                  marginBottom: 16,
                 }}
               >
-                <p style={{ margin: '0 0 12px', fontSize: 13, fontWeight: 800, color: 'var(--orange-dark)' }}>
+                <p style={{ margin: '0 0 10px', fontSize: 13, fontWeight: 800, color: 'var(--orange-dark)' }}>
                   Happy Hands Foundation Official Account
                 </p>
-                <div style={{ display: 'grid', gap: 10, fontSize: 13 }}>
+                <div style={{ display: 'grid', gap: 8, fontSize: 13 }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <span style={{ color: 'var(--muted)' }}>Bank Name:</span>
                     <strong>Guaranty Trust Bank (GTBank)</strong>
@@ -329,7 +420,7 @@ export const DonationModal: React.FC = () => {
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <span style={{ color: 'var(--muted)' }}>Account Number:</span>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                      <strong style={{ fontSize: 16, letterSpacing: 1 }}>0625489110</strong>
+                      <strong style={{ fontSize: 15, letterSpacing: 1 }}>0625489110</strong>
                       <button
                         type="button"
                         onClick={() => handleCopyAccount('0625489110')}
@@ -352,14 +443,14 @@ export const DonationModal: React.FC = () => {
                     </div>
                   </div>
                 </div>
-                <p style={{ margin: '14px 0 0', fontSize: 12, color: 'var(--muted)', lineHeight: 1.5 }}>
-                  Please include &quot;{activeFund}&quot; in your transfer description or email transfer receipt to{' '}
-                  <strong>info@happyhandsfoundation.org</strong>.
+                <p style={{ margin: '12px 0 0', fontSize: 12, color: 'var(--muted)', lineHeight: 1.5 }}>
+                  Please include &quot;{activeFund}&quot; in your transfer narration, or send receipt to{' '}
+                  <strong>projects@happyhandsfoundation.org</strong>.
                 </p>
               </div>
             ) : (
               <form onSubmit={handleDonate}>
-                <div className="form-group" style={{ marginBottom: 12 }}>
+                <div className="form-group" style={{ marginBottom: 10 }}>
                   <input
                     type="text"
                     className="form-control"
@@ -369,11 +460,11 @@ export const DonationModal: React.FC = () => {
                     required
                   />
                 </div>
-                <div className="form-group" style={{ marginBottom: 18 }}>
+                <div className="form-group" style={{ marginBottom: 14 }}>
                   <input
                     type="email"
                     className="form-control"
-                    placeholder="Email Address (for tax/impact receipt)"
+                    placeholder="Email Address (for donation receipt)"
                     value={donorEmail}
                     onChange={(e) => setDonorEmail(e.target.value)}
                     required
@@ -385,7 +476,7 @@ export const DonationModal: React.FC = () => {
                   style={{ width: '100%' }}
                   disabled={isProcessing || currentAmount <= 0}
                 >
-                  {isProcessing ? 'Processing Secure Donation...' : `Donate ₦${currentAmount.toLocaleString()} Now`}
+                  {isProcessing ? 'Processing Secure Donation...' : `Donate ${formattedAmount} Now`}
                 </button>
               </form>
             )}
@@ -401,9 +492,9 @@ export const DonationModal: React.FC = () => {
               </button>
             )}
 
-            <div className="ssl-badge" style={{ marginTop: 16 }}>
+            <div className="ssl-badge" style={{ marginTop: 14 }}>
               <Lock size={14} />
-              256-bit SSL Secure Donation • Verified NGO in Nigeria
+              256-bit SSL Secure Global Donation • Verified Non-Profit
             </div>
           </div>
         )}
