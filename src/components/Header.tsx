@@ -27,7 +27,7 @@ export const Header: React.FC = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 40);
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -35,6 +35,21 @@ export const Header: React.FC = () => {
   useEffect(() => {
     setMobileMenuOpen(false);
   }, [pathname]);
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
+    };
+  }, [mobileMenuOpen]);
 
   const isProgramsActive = 
     pathname === '/programs' ||
@@ -44,10 +59,12 @@ export const Header: React.FC = () => {
     pathname === '/nourish-now' ||
     pathname === '/fittot';
 
+  const closeMenu = () => setMobileMenuOpen(false);
+
   return (
     <header className={`site-header ${isScrolled ? 'scrolled' : ''}`}>
       <div className="container nav-wrap">
-        <Link href="/" className="brand" aria-label="Happy Hands Foundation Home">
+        <Link href="/" className="brand" aria-label="Happy Hands Foundation Home" onClick={closeMenu}>
           <div className="brand-mark">
             <BrandLogo width={44} height={44} priority />
           </div>
@@ -146,6 +163,8 @@ export const Header: React.FC = () => {
           className="menu-btn"
           id="menuToggle"
           aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={mobileMenuOpen}
+          aria-controls="mobileMenu"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
           {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -153,62 +172,100 @@ export const Header: React.FC = () => {
       </div>
 
       {/* Mobile Menu Backdrop */}
-      {mobileMenuOpen && (
-        <div className="mobile-backdrop" onClick={() => setMobileMenuOpen(false)} />
-      )}
+      <div 
+        className={`mobile-backdrop ${mobileMenuOpen ? 'open' : ''}`} 
+        onClick={closeMenu} 
+        aria-hidden="true"
+      />
 
       {/* Mobile Drawer */}
-      <div className={`mobile-menu ${mobileMenuOpen ? 'open' : ''}`} id="mobileMenu">
-        <Link href="/" className={pathname === '/' ? 'active' : ''}>
-          Home
-        </Link>
-        <Link href="/about" className={pathname === '/about' ? 'active' : ''}>
-          About
-        </Link>
-        <Link href="/programs" className={pathname === '/programs' ? 'active' : ''}>
-          Our Programs
-        </Link>
-        <div style={{ paddingLeft: 12, display: 'flex', flexDirection: 'column', gap: 6, margin: '-6px 0 10px' }}>
-          <Link href="/scholars-program" style={{ fontSize: 15, color: '#64748b', borderBottom: 'none' }}>
-            • Scholars Program
+      <aside 
+        className={`mobile-menu ${mobileMenuOpen ? 'open' : ''}`} 
+        id="mobileMenu"
+        aria-hidden={!mobileMenuOpen}
+      >
+        <div className="mobile-menu-header">
+          <Link href="/" className="brand" onClick={closeMenu}>
+            <div className="brand-mark">
+              <BrandLogo width={36} height={36} priority />
+            </div>
+            <div>
+              <p className="brand-name" style={{ fontSize: 17 }}>Happy Hands</p>
+              <p className="brand-sub" style={{ fontSize: 9 }}>Foundation</p>
+            </div>
           </Link>
-          <Link href="/teachers-on-the-go" style={{ fontSize: 15, color: '#64748b', borderBottom: 'none' }}>
-            • Teachers on the Go
-          </Link>
-          <Link href="/back-2-school" style={{ fontSize: 15, color: '#64748b', borderBottom: 'none' }}>
-            • Back-2-School
-          </Link>
-          <Link href="/nourish-now" style={{ fontSize: 15, color: '#64748b', borderBottom: 'none' }}>
-            • Nourish Now
-          </Link>
-          <Link href="/fittot" style={{ fontSize: 15, color: '#64748b', borderBottom: 'none' }}>
-            • FitTot
-          </Link>
+          <button 
+            type="button"
+            className="mobile-close-btn"
+            aria-label="Close navigation"
+            onClick={closeMenu}
+          >
+            <X size={22} />
+          </button>
         </div>
-        <Link href="/#gallery">Gallery</Link>
-        <Link href="/volunteer" className={pathname === '/volunteer' ? 'active' : ''}>
-          Volunteer
-        </Link>
-        <Link href="/contact" className={pathname === '/contact' ? 'active' : ''}>
-          Contact
-        </Link>
+
+        <nav className="mobile-nav-list" aria-label="Mobile navigation">
+          <Link href="/" className={pathname === '/' ? 'active' : ''} onClick={closeMenu}>
+            Home
+          </Link>
+          <Link href="/about" className={pathname === '/about' ? 'active' : ''} onClick={closeMenu}>
+            About
+          </Link>
+          
+          <div className="mobile-nav-group">
+            <Link 
+              href="/programs" 
+              className={isProgramsActive ? 'active' : ''} 
+              onClick={closeMenu}
+            >
+              Our Programs
+            </Link>
+            <div className="mobile-sublinks">
+              <Link href="/scholars-program" onClick={closeMenu}>
+                • Scholars Program
+              </Link>
+              <Link href="/teachers-on-the-go" onClick={closeMenu}>
+                • Teachers on the Go
+              </Link>
+              <Link href="/back-2-school" onClick={closeMenu}>
+                • Back-2-School
+              </Link>
+              <Link href="/nourish-now" onClick={closeMenu}>
+                • Nourish Now
+              </Link>
+              <Link href="/fittot" onClick={closeMenu}>
+                • FitTot
+              </Link>
+            </div>
+          </div>
+
+          <Link href="/#gallery" onClick={closeMenu}>
+            Gallery
+          </Link>
+          <Link href="/volunteer" className={pathname === '/volunteer' ? 'active' : ''} onClick={closeMenu}>
+            Volunteer
+          </Link>
+          <Link href="/contact" className={pathname === '/contact' ? 'active' : ''} onClick={closeMenu}>
+            Contact
+          </Link>
+        </nav>
 
         <div className="mobile-actions">
-          <Link href="/volunteer" className="btn btn-light">
+          <Link href="/volunteer" className="btn btn-light" onClick={closeMenu}>
             Volunteer with us
           </Link>
           <button
             type="button"
             className="btn btn-orange"
             onClick={() => {
-              setMobileMenuOpen(false);
+              closeMenu();
               openDonationModal('General Fund');
             }}
           >
-            Donate now
+            <Heart size={16} fill="white" /> Donate now
           </button>
         </div>
-      </div>
+      </aside>
     </header>
   );
 };
