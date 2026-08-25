@@ -75,9 +75,9 @@ export default function HomePage() {
           <div className="hero-collage">
             <div className="hero-img-main">
               <SafeImage
-                src="/assets/images/volunteer-community.png"
+                src="/assets/images/hero-volunteer.jpg"
                 fallbackSrc="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1200&q=80"
-                alt="Happy Hands Foundation Outreach"
+                alt="Happy Hands Foundation Volunteers and Children"
                 fill
                 priority
                 style={{ objectFit: 'cover' }}
@@ -86,7 +86,7 @@ export default function HomePage() {
             </div>
             <div className="hero-img-secondary">
               <SafeImage
-                src="/assets/images/community-outreach.jpg"
+                src="/assets/images/children-group.jpg"
                 fallbackSrc="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1200&q=80"
                 alt="Community Children Outreach"
                 fill
@@ -116,7 +116,7 @@ export default function HomePage() {
           <div className="orange-panel">
             <div
               className="orange-bg-img"
-              style={{ backgroundImage: "url('/assets/images/volunteer-community.png'), url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1200&q=80')" }}
+              style={{ backgroundImage: "url('/assets/images/children-event.png'), url('/assets/images/volunteer-community.png')" }}
             />
             <p className="section-kicker" style={{ color: 'white' }}>
               About Us
@@ -213,7 +213,7 @@ export default function HomePage() {
               <div className="program-card">
                 <div className="program-image">
                   <SafeImage
-                    src="/assets/images/volunteer-community.png"
+                    src="/assets/images/children-group.jpg"
                     fallbackSrc="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=1200&q=80"
                     alt="Scholars Program"
                     fill
@@ -283,7 +283,7 @@ export default function HomePage() {
               <div className="program-card">
                 <div className="program-image">
                   <SafeImage
-                    src="/assets/images/volunteer-community.png"
+                    src="/assets/images/children-event.png"
                     fallbackSrc="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=1200&q=80"
                     alt="Back-2-School Campaign"
                     fill
@@ -338,7 +338,7 @@ export default function HomePage() {
               <div className="program-card">
                 <div className="program-image">
                   <SafeImage
-                    src="/assets/images/community-outreach.jpg"
+                    src="/assets/images/volunteer-community.png"
                     fallbackSrc="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=1200&q=80"
                     alt="Nourish Now Campaign"
                     fill
@@ -375,7 +375,7 @@ export default function HomePage() {
               <div className="program-card">
                 <div className="program-image">
                   <SafeImage
-                    src="/assets/images/volunteer-community.png"
+                    src="/assets/images/hero-volunteer.jpg"
                     fallbackSrc="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=1200&q=80"
                     alt="FitTot Healthcare"
                     fill
@@ -464,7 +464,7 @@ export default function HomePage() {
           <div className="gallery-grid">
             <div className="gallery-card tall">
               <SafeImage
-                src="/assets/images/volunteer-community.png"
+                src="/assets/images/hero-volunteer.jpg"
                 fallbackSrc="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1200&q=80"
                 alt="Community Volunteer Program"
                 fill
@@ -477,7 +477,7 @@ export default function HomePage() {
             </div>
             <div className="gallery-card">
               <SafeImage
-                src="/assets/images/community-outreach.jpg"
+                src="/assets/images/children-group.jpg"
                 fallbackSrc="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1200&q=80"
                 alt="Scholars in Classroom"
                 fill
@@ -490,7 +490,7 @@ export default function HomePage() {
             </div>
             <div className="gallery-card">
               <SafeImage
-                src="/assets/images/volunteer-community.png"
+                src="/assets/images/children-event.png"
                 fallbackSrc="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=1200&q=80"
                 alt="Nourish Now Distribution"
                 fill

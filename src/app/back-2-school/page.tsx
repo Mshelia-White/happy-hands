@@ -28,7 +28,7 @@ export default function Back2SchoolPage() {
         <div className="container split-layout">
           <div className="split-image" style={{ height: 480, position: 'relative' }}>
             <SafeImage
-              src="/assets/images/community-outreach.jpg"
+              src="/assets/images/children-event.png"
               fallbackSrc="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=1200&q=80"
               alt="Children receiving school supplies"
               fill

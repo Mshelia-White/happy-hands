@@ -62,7 +62,7 @@ export default function ProgramsPage() {
               <article className="program-card">
                 <div className="program-image">
                   <SafeImage
-                    src="/assets/images/volunteer-community.png"
+                    src="/assets/images/children-group.jpg"
                     fallbackSrc="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=1200&q=80"
                     alt="Scholars Program"
                     fill
@@ -116,7 +116,7 @@ export default function ProgramsPage() {
               <article className="program-card">
                 <div className="program-image">
                   <SafeImage
-                    src="/assets/images/volunteer-community.png"
+                    src="/assets/images/children-event.png"
                     fallbackSrc="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=1200&q=80"
                     alt="Back-2-School"
                     fill
@@ -167,7 +167,7 @@ export default function ProgramsPage() {
               <article className="program-card">
                 <div className="program-image">
                   <SafeImage
-                    src="/assets/images/community-outreach.jpg"
+                    src="/assets/images/volunteer-community.png"
                     fallbackSrc="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=1200&q=80"
                     alt="Nourish Now"
                     fill
@@ -198,7 +198,7 @@ export default function ProgramsPage() {
               <article className="program-card">
                 <div className="program-image">
                   <SafeImage
-                    src="/assets/images/volunteer-community.png"
+                    src="/assets/images/hero-volunteer.jpg"
                     fallbackSrc="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=1200&q=80"
                     alt="FitTot"
                     fill

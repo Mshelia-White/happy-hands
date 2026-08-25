@@ -28,7 +28,7 @@ export default function ScholarsProgramPage() {
         <div className="container split-layout">
           <div className="split-image" style={{ height: 480, position: 'relative' }}>
             <SafeImage
-              src="/assets/images/volunteer-community.png"
+              src="/assets/images/children-group.jpg"
               fallbackSrc="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=1200&q=80"
               alt="Children in the Scholars Program"
               fill

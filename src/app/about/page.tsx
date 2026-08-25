@@ -31,7 +31,7 @@ export default function AboutPage() {
         <div className="container split-layout">
           <div className="split-image" style={{ height: 480, position: 'relative' }}>
             <SafeImage
-              src="/assets/images/volunteer-community.png"
+              src="/assets/images/children-group.jpg"
               fallbackSrc="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1200&q=80"
               alt="Children at a Happy Hands event"
               fill

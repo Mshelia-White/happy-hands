@@ -30,7 +30,7 @@ export default function VolunteerPage() {
           <div className="white-panel">
             <div style={{ position: 'relative', width: '100%', height: 320, borderRadius: 'var(--radius-sm)', overflow: 'hidden' }}>
               <SafeImage
-                src="/assets/images/volunteer-community.png"
+                src="/assets/images/hero-volunteer.jpg"
                 fallbackSrc="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1200&q=80"
                 alt="Happy Hands Volunteers"
                 fill

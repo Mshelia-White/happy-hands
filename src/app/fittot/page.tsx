@@ -28,7 +28,7 @@ export default function FitTotPage() {
         <div className="container split-layout">
           <div className="split-image" style={{ height: 480, position: 'relative' }}>
             <SafeImage
-              src="/assets/images/community-outreach.jpg"
+              src="/assets/images/hero-volunteer.jpg"
               fallbackSrc="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=1200&q=80"
               alt="Children receiving health screening"
               fill
