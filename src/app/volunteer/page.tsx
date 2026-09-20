@@ -2,423 +2,585 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
+import { FAQAccordion, FAQItem } from '@/components/FAQAccordion';
+import { CtaBanner } from '@/components/CtaBanner';
 import { 
-  HeartHandshake, 
-  CheckCircle2, 
-  ArrowRight, 
-  Laptop, 
-  Users, 
+  GraduationCap, 
+  Truck, 
+  Palette, 
   Stethoscope, 
-  Award, 
-  Sparkles,
+  Check, 
+  ChevronRight, 
+  ChevronLeft, 
+  Building2, 
+  Package, 
+  Gift, 
+  Award,
   Clock,
   ShieldCheck,
   Send,
-  Check
+  Heart
 } from 'lucide-react';
-import { FAQAccordion, FAQItem } from '@/components/FAQAccordion';
+
+interface Track {
+  id: string;
+  title: string;
+  desc: string;
+  icon: React.ReactNode;
+  popularRoles: string[];
+}
+
+const tracks: Track[] = [
+  {
+    id: 'teaching',
+    title: 'Teaching & Mentorship',
+    desc: 'Facilitate interactive classroom workshops, character sessions, and after-school academic support.',
+    icon: <GraduationCap size={24} color="var(--primary-red)" />,
+    popularRoles: ['Volunteer Instructor (Teachers on the Go)', 'Weekend Academic Mentor', 'Literacy & Numeracy Tutor'],
+  },
+  {
+    id: 'logistics',
+    title: 'Operations & Logistics',
+    desc: 'Coordinate outreach day logistics, kit packaging, event coordination, and school relations.',
+    icon: <Truck size={24} color="var(--primary-green)" />,
+    popularRoles: ['Outreach Field Coordinator', 'Supply Distribution Lead', 'Inventory & Packing Volunteer'],
+  },
+  {
+    id: 'creative',
+    title: 'Creative & Media',
+    desc: 'Capture outreach stories, manage social media communities, design graphics, or write grants.',
+    icon: <Palette size={24} color="var(--primary-red)" />,
+    popularRoles: ['Graphic Designer', 'Photographer / Videographer', 'Content & Grant Writer', 'Social Media Manager'],
+  },
+  {
+    id: 'healthcare',
+    title: 'Healthcare & Wellness',
+    desc: 'Conduct pediatric health screenings, vision tests, dental checks, and maternal wellness workshops.',
+    icon: <Stethoscope size={24} color="var(--primary-green)" />,
+    popularRoles: ['Doctor / Clinical Volunteer', 'Registered Nurse', 'Pediatric Optometrist / Dentist'],
+  },
+];
 
 const volunteerFAQs: FAQItem[] = [
   {
     question: 'Can I volunteer remotely?',
-    answer: 'Yes! We have dedicated virtual roles including Media & Graphic Design, Grant Writing, Content Writing, Social Media, and Online Fundraising.',
+    answer: 'Yes! We offer dedicated virtual roles including Graphic Design, Grant Writing, Content Writing, Social Media Management, and Online Campaign Coordination.',
   },
   {
     question: 'How much time do I need to commit?',
-    answer: 'Commitment varies by role. Most virtual roles require 3–5 hours per week, while physical outreach and event roles take place during designated weekend project dates.',
+    answer: 'Commitment varies by track. Most virtual roles require 3–5 hours per week, while on-ground outreach and teaching sessions take place on scheduled weekend project dates.',
   },
   {
-    question: 'Is there an age limit for volunteers?',
-    answer: 'Volunteers should generally be at least 16 years old. Anyone with a passion for child development is welcome to apply.',
+    question: 'Is there an age requirement?',
+    answer: 'Volunteers should generally be at least 16 years old. Anyone passionate about child development and community welfare is welcome to apply.',
   },
   {
-    question: 'Do I need previous experience to volunteer?',
-    answer: 'No prior NGO experience is required for most general and outreach roles! We provide clear onboarding. However, specialized roles (medical, legal, grant writing) may require relevant background.',
+    question: 'Do I need previous NGO experience?',
+    answer: 'No prior NGO experience is required! We provide comprehensive onboarding and curriculum kits. Specialized roles (clinical healthcare, legal, accounting) require relevant credentials.',
   },
   {
-    question: 'How will I be contacted after applying?',
-    answer: 'Our volunteer coordination team will reach out to you via email or WhatsApp within 3 to 5 business days with details about the next onboarding session.',
+    question: 'How soon will I hear back after submitting?',
+    answer: 'Our volunteer coordination team will review your application and contact you via email and WhatsApp within 3 to 5 business days with details regarding the next cohort orientation.',
   },
 ];
 
 export default function VolunteerPage() {
-  const [formData, setFormData] = useState({
-    fullName: '',
-    email: '',
-    phone: '',
-    city: '',
-    category: 'Virtual Roles',
-    role: 'Media & Graphics Design',
-    message: '',
-  });
-  const [submitted, setSubmitted] = useState(false);
+  const [step, setStep] = useState<number>(1);
+  const [selectedTrack, setSelectedTrack] = useState<string>('teaching');
+  const [role, setRole] = useState<string>('');
+  
+  // Step 2 state
+  const [availability, setAvailability] = useState<'weekends' | 'weekdays' | 'both'>('weekends');
+  const [mode, setMode] = useState<'on-ground' | 'virtual' | 'hybrid'>('hybrid');
+  const [city, setCity] = useState<string>('Lagos');
+  const [skills, setSkills] = useState<string>('');
+
+  // Step 3 state
+  const [fullName, setFullName] = useState<string>('');
+  const [email, setEmail] = useState<string>('');
+  const [phone, setPhone] = useState<string>('');
+  const [submitted, setSubmitted] = useState<boolean>(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitted(true);
   };
 
+  const steps = [
+    { num: 1, title: 'Select Track' },
+    { num: 2, title: 'Preferences' },
+    { num: 3, title: 'Personal Details' },
+  ];
+
   return (
-    <>
-      {/* Page Hero */}
-      <section className="page-hero">
-        <div className="container page-hero-inner">
-          <div className="eyebrow">
-            <HeartHandshake size={16} color="var(--orange)" /> Join Our Community
-          </div>
-          <h1>
-            Your desire to join us in going the extra mile to nurture the future makes us super duper happy.
-          </h1>
-          <p>
-            Together, we can nurture a future we can be proud of.
-          </p>
-        </div>
-      </section>
-
-      {/* Why Volunteer */}
-      <section className="section" style={{ paddingTop: '70px' }}>
-        <div className="container split-layout">
-          <div className="split-content">
-            <p className="section-kicker">Volunteer With Happy Hands</p>
-            <h2>As a volunteer, you are at the heart of what we do.</h2>
-            <p style={{ fontSize: 16, lineHeight: 1.7, color: '#334155' }}>
-              Your time, energy and contribution help us do more for the children we serve.
+    <main>
+      {/* 1. HERO (Board 07) */}
+      <section className="hero-section" aria-label="Volunteer Hero">
+        <div className="container">
+          <div className="section-header text-center" style={{ maxWidth: 760, margin: '0 auto 36px' }}>
+            <span className="section-title-red">Join The Hands That Care</span>
+            <h1 style={{ margin: '8px 0 16px' }}>Lend your hands. Change a child&apos;s story.</h1>
+            <p className="hero-subtitle" style={{ fontSize: 18 }}>
+              Join a dedicated community of volunteers creating direct impact across education, nutrition, and wellness.
             </p>
-
-            <div style={{ marginTop: 24, display: 'flex', flexDirection: 'column', gap: 14 }}>
-              <div style={{ display: 'flex', gap: 12 }}>
-                <CheckCircle2 size={20} color="var(--orange)" style={{ flexShrink: 0, marginTop: 2 }} />
-                <div>
-                  <strong style={{ fontSize: 15, color: 'var(--slate)' }}>Make a tangible difference:</strong>
-                  <p style={{ margin: '2px 0 0', fontSize: 14, color: '#475569', lineHeight: 1.5 }}>
-                    Support programs that bring hope and better opportunities to children and families.
-                  </p>
-                </div>
-              </div>
-
-              <div style={{ display: 'flex', gap: 12 }}>
-                <CheckCircle2 size={20} color="var(--orange)" style={{ flexShrink: 0, marginTop: 2 }} />
-                <div>
-                  <strong style={{ fontSize: 15, color: 'var(--slate)' }}>Build meaningful connections:</strong>
-                  <p style={{ margin: '2px 0 0', fontSize: 14, color: '#475569', lineHeight: 1.5 }}>
-                    Join a community of passionate individuals who share your drive to create change.
-                  </p>
-                </div>
-              </div>
-
-              <div style={{ display: 'flex', gap: 12 }}>
-                <CheckCircle2 size={20} color="var(--orange)" style={{ flexShrink: 0, marginTop: 2 }} />
-                <div>
-                  <strong style={{ fontSize: 15, color: 'var(--slate)' }}>Grow your skills:</strong>
-                  <p style={{ margin: '2px 0 0', fontSize: 14, color: '#475569', lineHeight: 1.5 }}>
-                    Gain hands-on experience in community development, project management, leadership, teamwork and more.
-                  </p>
-                </div>
-              </div>
-
-              <div style={{ display: 'flex', gap: 12 }}>
-                <CheckCircle2 size={20} color="var(--orange)" style={{ flexShrink: 0, marginTop: 2 }} />
-                <div>
-                  <strong style={{ fontSize: 15, color: 'var(--slate)' }}>Be part of something bigger:</strong>
-                  <p style={{ margin: '2px 0 0', fontSize: 14, color: '#475569', lineHeight: 1.5 }}>
-                    Help shape a future where every child has the chance to thrive.
-                  </p>
-                </div>
-              </div>
-
-              <div style={{ display: 'flex', gap: 12 }}>
-                <CheckCircle2 size={20} color="var(--orange)" style={{ flexShrink: 0, marginTop: 2 }} />
-                <div>
-                  <strong style={{ fontSize: 15, color: 'var(--slate)' }}>Get recognized:</strong>
-                  <p style={{ margin: '2px 0 0', fontSize: 14, color: '#475569', lineHeight: 1.5 }}>
-                    Outstanding contributions are celebrated, and you will receive recommendations or certificates where applicable.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div style={{ marginTop: 28 }}>
-              <a href="#apply" className="btn btn-orange">
-                Join us <ArrowRight size={16} />
-              </a>
-            </div>
           </div>
 
-          {/* Volunteer Roles Card Grid */}
-          <div>
-            <p className="section-kicker">Volunteer Roles</p>
-            <h3 style={{ fontSize: 22, margin: '0 0 20px', fontWeight: 800 }}>Explore How You Can Serve</h3>
-
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-              {/* Category 1: Virtual Roles */}
-              <div className="role-card" style={{ padding: 22 }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
-                  <div className="role-icon">
-                    <Laptop size={20} />
-                  </div>
-                  <h4 style={{ margin: 0, fontSize: 17 }}>Virtual Roles</h4>
-                </div>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8, fontSize: 13, color: '#475569' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                    <Check size={14} color="var(--orange)" /> Media &amp; Graphics Design
-                  </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                    <Check size={14} color="var(--orange)" /> Grant Writing
-                  </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                    <Check size={14} color="var(--orange)" /> Content Writing
-                  </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                    <Check size={14} color="var(--orange)" /> Social Media
-                  </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                    <Check size={14} color="var(--orange)" /> Partnership
-                  </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                    <Check size={14} color="var(--orange)" /> Fundraising
-                  </div>
-                </div>
-              </div>
-
-              {/* Category 2: Physical Roles */}
-              <div className="role-card" style={{ padding: 22 }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
-                  <div className="role-icon">
-                    <Users size={20} />
-                  </div>
-                  <h4 style={{ margin: 0, fontSize: 17 }}>Physical Roles</h4>
-                </div>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8, fontSize: 13, color: '#475569' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                    <Check size={14} color="var(--orange)" /> Mentors &amp; Teachers
-                  </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                    <Check size={14} color="var(--orange)" /> Event Volunteers
-                  </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                    <Check size={14} color="var(--orange)" /> Community Outreaches
-                  </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                    <Check size={14} color="var(--orange)" /> Logistics &amp; Distribution
-                  </div>
-                </div>
-              </div>
-
-              {/* Category 3: Specialised Roles */}
-              <div className="role-card" style={{ padding: 22 }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
-                  <div className="role-icon">
-                    <Stethoscope size={20} />
-                  </div>
-                  <h4 style={{ margin: 0, fontSize: 17 }}>Specialised Roles</h4>
-                </div>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8, fontSize: 13, color: '#475569' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                    <Check size={14} color="var(--orange)" /> Healthcare Professionals
-                  </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                    <Check size={14} color="var(--orange)" /> Legal Professionals
-                  </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 6, gridColumn: '1 / -1' }}>
-                    <Check size={14} color="var(--orange)" /> Other fields supporting community development
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Volunteer Requirements & How to Join */}
-      <section className="section" style={{ background: '#fffaf4' }}>
-        <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 32 }}>
-            {/* Requirements */}
-            <div className="white-panel" style={{ padding: 32 }}>
-              <p className="section-kicker">Simple Standards</p>
-              <h3 style={{ fontSize: 20, margin: '0 0 16px', fontWeight: 800 }}>Volunteer Requirements</h3>
-              <ul style={{ margin: 0, paddingLeft: 18, color: '#475569', fontSize: 14, lineHeight: 1.8 }}>
-                <li>Willingness to commit time and effort to our cause</li>
-                <li>Openness to learn, collaborate and work within a team</li>
-                <li>A shared passion for child development and community empowerment</li>
-                <li>Specific skills or experience may be required for certain technical or specialized roles</li>
-              </ul>
-            </div>
-
-            {/* How to Join (3 Steps) */}
-            <div className="white-panel" style={{ padding: 32 }}>
-              <p className="section-kicker">Simple Process</p>
-              <h3 style={{ fontSize: 20, margin: '0 0 16px', fontWeight: 800 }}>How to Join</h3>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-                <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
-                  <span style={{ width: 32, height: 32, borderRadius: '50%', background: 'var(--orange-soft)', color: 'var(--orange-dark)', fontWeight: 900, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                    1
-                  </span>
-                  <div>
-                    <strong style={{ fontSize: 15 }}>Fill out the application form</strong>
-                    <p style={{ margin: 0, fontSize: 13, color: 'var(--muted)' }}>Share your basic background and interests.</p>
-                  </div>
-                </div>
-
-                <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
-                  <span style={{ width: 32, height: 32, borderRadius: '50%', background: 'var(--orange-soft)', color: 'var(--orange-dark)', fontWeight: 900, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                    2
-                  </span>
-                  <div>
-                    <strong style={{ fontSize: 15 }}>Join our onboarding session</strong>
-                    <p style={{ margin: 0, fontSize: 13, color: 'var(--muted)' }}>Get introduced to our programs and safety guidelines.</p>
-                  </div>
-                </div>
-
-                <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
-                  <span style={{ width: 32, height: 32, borderRadius: '50%', background: 'var(--orange-soft)', color: 'var(--orange-dark)', fontWeight: 900, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                    3
-                  </span>
-                  <div>
-                    <strong style={{ fontSize: 15 }}>Start making an impact</strong>
-                    <p style={{ margin: 0, fontSize: 13, color: 'var(--muted)' }}>Work directly with our team to nurture children.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Volunteer Application Form Section */}
-      <section className="section" id="apply">
-        <div className="container" style={{ maxWidth: 760 }}>
-          <div className="white-panel" style={{ padding: 40, border: '1px solid var(--line)' }}>
-            <div style={{ textAlign: 'center', marginBottom: 28 }}>
-              <div className="eyebrow" style={{ margin: '0 auto 10px', display: 'inline-flex' }}>
-                <Send size={14} color="var(--orange)" /> Application Form
-              </div>
-              <h2 style={{ margin: '4px 0 8px', fontSize: 26, fontWeight: 900 }}>Join the Happy Hands Team</h2>
-              <p style={{ color: 'var(--muted)', fontSize: 15, margin: 0 }}>
-                Please fill in your details below and we&apos;ll be in touch soon.
-              </p>
-            </div>
-
-            {submitted ? (
-              <div style={{ textAlign: 'center', padding: '32px 16px' }}>
-                <div style={{ width: 64, height: 64, borderRadius: '50%', background: 'var(--green-bg)', color: 'var(--green)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px' }}>
-                  <CheckCircle2 size={36} />
-                </div>
-                <h3 style={{ fontSize: 22, fontWeight: 900, margin: '0 0 8px' }}>Application Submitted!</h3>
-                <p style={{ color: '#475569', fontSize: 15, maxWidth: 480, margin: '0 auto' }}>
-                  Thank you for applying to volunteer with Happy Hands Foundation. We have received your details and will contact you via email or WhatsApp within 3 to 5 business days.
-                </p>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 16 }}>
-                  <div>
-                    <label style={{ display: 'block', fontSize: 13, fontWeight: 800, marginBottom: 6 }}>Full Name *</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="Jane Doe"
-                      required
-                      value={formData.fullName}
-                      onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                    />
-                  </div>
-                  <div>
-                    <label style={{ display: 'block', fontSize: 13, fontWeight: 800, marginBottom: 6 }}>Email Address *</label>
-                    <input
-                      type="email"
-                      className="form-control"
-                      placeholder="jane@example.com"
-                      required
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    />
-                  </div>
-                </div>
-
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 16 }}>
-                  <div>
-                    <label style={{ display: 'block', fontSize: 13, fontWeight: 800, marginBottom: 6 }}>Phone / WhatsApp Number *</label>
-                    <input
-                      type="tel"
-                      className="form-control"
-                      placeholder="0812 345 6789"
-                      required
-                      value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    />
-                  </div>
-                  <div>
-                    <label style={{ display: 'block', fontSize: 13, fontWeight: 800, marginBottom: 6 }}>City / Location *</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="e.g. Lagos, Abuja, London"
-                      required
-                      value={formData.city}
-                      onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-                    />
-                  </div>
-                </div>
-
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 16 }}>
-                  <div>
-                    <label style={{ display: 'block', fontSize: 13, fontWeight: 800, marginBottom: 6 }}>Category *</label>
-                    <select
-                      className="form-control"
-                      value={formData.category}
-                      onChange={(e) => setFormData({ ...formData, category: e.target.value })}
+          {/* Stepper indicator */}
+          {!submitted && (
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 20, marginBottom: 40 }}>
+              {steps.map((st, i) => (
+                <React.Fragment key={st.num}>
+                  <div
+                    onClick={() => step > st.num && setStep(st.num)}
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: 8,
+                      fontSize: 14,
+                      fontWeight: 700,
+                      cursor: step > st.num ? 'pointer' : 'default',
+                      color: step === st.num ? 'var(--primary-red)' : step > st.num ? 'var(--primary-green)' : 'var(--text-light)',
+                    }}
+                  >
+                    <div
+                      style={{
+                        width: 30,
+                        height: 30,
+                        borderRadius: '50%',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        fontSize: 13,
+                        background: step === st.num ? 'var(--primary-red)' : step > st.num ? 'var(--primary-green)' : 'var(--light-neutral)',
+                        color: step >= st.num ? '#ffffff' : 'var(--text-muted)',
+                      }}
                     >
-                      <option value="Virtual Roles">Virtual Roles</option>
-                      <option value="Physical Roles">Physical Roles</option>
-                      <option value="Specialised Roles">Specialised Roles</option>
-                    </select>
+                      {step > st.num ? <Check size={16} /> : st.num}
+                    </div>
+                    <span>{st.title}</span>
                   </div>
-                  <div>
-                    <label style={{ display: 'block', fontSize: 13, fontWeight: 800, marginBottom: 6 }}>Preferred Role *</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="e.g. Graphic Design, Mentor, Medical"
-                      required
-                      value={formData.role}
-                      onChange={(e) => setFormData({ ...formData, role: e.target.value })}
-                    />
-                  </div>
-                </div>
+                  {i < steps.length - 1 && <span style={{ color: 'var(--border-warm-dark)' }}>›</span>}
+                </React.Fragment>
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
 
-                <div>
-                  <label style={{ display: 'block', fontSize: 13, fontWeight: 800, marginBottom: 6 }}>Why would you like to volunteer with Happy Hands? *</label>
-                  <textarea
-                    className="form-control"
-                    rows={4}
-                    placeholder="Tell us a little about yourself and your motivation..."
-                    required
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  />
-                </div>
-
-                <button type="submit" className="btn btn-orange" style={{ width: '100%', padding: '14px', fontSize: 16 }}>
-                  Submit Volunteer Application
+      {/* 2. THREE-STEP ONBOARDING FLOW */}
+      <section className="section section-bg-light" style={{ paddingTop: 0 }}>
+        <div className="container" style={{ maxWidth: 840 }}>
+          {submitted ? (
+            <div
+              style={{
+                background: '#ffffff',
+                border: '1px solid var(--border-warm)',
+                borderRadius: 16,
+                padding: '48px 36px',
+                textAlign: 'center',
+                boxShadow: 'var(--shadow-card)',
+              }}
+            >
+              <div
+                style={{
+                  width: 64,
+                  height: 64,
+                  borderRadius: '50%',
+                  background: 'var(--primary-green-light)',
+                  color: 'var(--primary-green)',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  marginBottom: 20,
+                }}
+              >
+                <Check size={36} strokeWidth={2.5} />
+              </div>
+              <h2>Application Received!</h2>
+              <p style={{ color: 'var(--text-muted)', fontSize: 16, lineHeight: 1.6, maxWidth: 540, margin: '12px auto 24px' }}>
+                Thank you, <strong>{fullName}</strong>! We have received your application for the{' '}
+                <strong>{tracks.find((t) => t.id === selectedTrack)?.title}</strong> track. Our coordinator will reach out to <strong>{email}</strong> within 3 to 5 business days.
+              </p>
+              <div style={{ display: 'flex', justifyContent: 'center', gap: 14 }}>
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  onClick={() => {
+                    setSubmitted(false);
+                    setStep(1);
+                  }}
+                >
+                  Submit Another Application
                 </button>
-              </form>
-            )}
+                <Link href="/" className="btn btn-tertiary">
+                  Return to Homepage ›
+                </Link>
+              </div>
+            </div>
+          ) : (
+            <div
+              style={{
+                background: '#ffffff',
+                border: '1px solid var(--border-warm)',
+                borderRadius: 16,
+                padding: '36px',
+                boxShadow: 'var(--shadow-card)',
+              }}
+            >
+              {/* STEP 1: SELECT ROLE TRACK */}
+              {step === 1 && (
+                <div>
+                  <h2 style={{ fontSize: 22, margin: '0 0 6px' }}>Step 1: Choose Your Volunteer Track</h2>
+                  <p style={{ color: 'var(--text-muted)', fontSize: 14, margin: '0 0 24px' }}>
+                    Select the field where your passions and talents can best serve children.
+                  </p>
+
+                  <div style={{ display: 'grid', gap: 16, marginBottom: 32 }}>
+                    {tracks.map((t) => {
+                      const isSelected = selectedTrack === t.id;
+                      return (
+                        <div
+                          key={t.id}
+                          onClick={() => setSelectedTrack(t.id)}
+                          style={{
+                            border: `2px solid ${isSelected ? 'var(--primary-red)' : 'var(--border-warm)'}`,
+                            background: isSelected ? 'var(--primary-red-light)' : '#ffffff',
+                            borderRadius: 12,
+                            padding: 20,
+                            cursor: 'pointer',
+                            display: 'flex',
+                            gap: 16,
+                            alignItems: 'flex-start',
+                          }}
+                        >
+                          <div style={{ width: 44, height: 44, borderRadius: '50%', background: 'var(--light-neutral)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                            {t.icon}
+                          </div>
+                          <div style={{ flex: 1 }}>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 4 }}>
+                              <h3 style={{ fontSize: 17, margin: 0 }}>{t.title}</h3>
+                              <div
+                                style={{
+                                  width: 20,
+                                  height: 20,
+                                  borderRadius: '50%',
+                                  border: `2px solid ${isSelected ? 'var(--primary-red)' : 'var(--border-warm-dark)'}`,
+                                  display: 'flex',
+                                  alignItems: 'center',
+                                  justifyContent: 'center',
+                                }}
+                              >
+                                {isSelected && <div style={{ width: 10, height: 10, borderRadius: '50%', background: 'var(--primary-red)' }} />}
+                              </div>
+                            </div>
+                            <p style={{ color: 'var(--text-muted)', fontSize: 13.5, margin: '0 0 10px', lineHeight: 1.5 }}>
+                              {t.desc}
+                            </p>
+                            <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
+                              {t.popularRoles.map((r, idx) => (
+                                <span key={idx} style={{ fontSize: 11.5, background: '#ffffff', border: '1px solid var(--border-warm)', padding: '2px 8px', borderRadius: 6, color: 'var(--dark-neutral)' }}>
+                                  {r}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+
+                  <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                    <button
+                      type="button"
+                      className="btn btn-primary"
+                      onClick={() => setStep(2)}
+                    >
+                      Continue to Availability & Preferences <ChevronRight size={16} />
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              {/* STEP 2: AVAILABILITY & PREFERENCES */}
+              {step === 2 && (
+                <div>
+                  <h2 style={{ fontSize: 22, margin: '0 0 6px' }}>Step 2: Availability & Preferences</h2>
+                  <p style={{ color: 'var(--text-muted)', fontSize: 14, margin: '0 0 24px' }}>
+                    Help us match you to the right projects and schedules.
+                  </p>
+
+                  <div style={{ display: 'grid', gap: 20, marginBottom: 32 }}>
+                    <div>
+                      <label style={{ display: 'block', fontSize: 14, fontWeight: 700, marginBottom: 8 }}>
+                        Preferred Engagement Mode:
+                      </label>
+                      <div style={{ display: 'flex', gap: 10 }}>
+                        <button
+                          type="button"
+                          onClick={() => setMode('on-ground')}
+                          className={`chip ${mode === 'on-ground' ? 'selected' : ''}`}
+                        >
+                          On-ground / Field Outreaches
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => setMode('virtual')}
+                          className={`chip ${mode === 'virtual' ? 'selected' : ''}`}
+                        >
+                          Virtual / Remote Only
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => setMode('hybrid')}
+                          className={`chip ${mode === 'hybrid' ? 'selected' : ''}`}
+                        >
+                          Hybrid (Both)
+                        </button>
+                      </div>
+                    </div>
+
+                    <div>
+                      <label style={{ display: 'block', fontSize: 14, fontWeight: 700, marginBottom: 8 }}>
+                        When are you typically available?
+                      </label>
+                      <div style={{ display: 'flex', gap: 10 }}>
+                        <button
+                          type="button"
+                          onClick={() => setAvailability('weekends')}
+                          className={`chip ${availability === 'weekends' ? 'selected' : ''}`}
+                        >
+                          Weekends
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => setAvailability('weekdays')}
+                          className={`chip ${availability === 'weekdays' ? 'selected' : ''}`}
+                        >
+                          Weekdays
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => setAvailability('both')}
+                          className={`chip ${availability === 'both' ? 'selected' : ''}`}
+                        >
+                          Flexible / Both
+                        </button>
+                      </div>
+                    </div>
+
+                    <div>
+                      <label style={{ display: 'block', fontSize: 14, fontWeight: 700, marginBottom: 8 }}>
+                        Current City / State of Residence:
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        value={city}
+                        onChange={(e) => setCity(e.target.value)}
+                        placeholder="e.g. Lagos, Abuja, Port Harcourt, Ibadan, or International"
+                        style={{ width: '100%', padding: '12px 14px', borderRadius: 8, border: '1px solid var(--border-warm)', fontSize: 14 }}
+                      />
+                    </div>
+
+                    <div>
+                      <label style={{ display: 'block', fontSize: 14, fontWeight: 700, marginBottom: 8 }}>
+                        Key Skills & Talents:
+                      </label>
+                      <textarea
+                        rows={3}
+                        value={skills}
+                        onChange={(e) => setSkills(e.target.value)}
+                        placeholder="e.g. Mathematics teaching, photography, graphic design in Figma, pediatric nursing, event MC, storytelling..."
+                        style={{ width: '100%', padding: '12px 14px', borderRadius: 8, border: '1px solid var(--border-warm)', fontSize: 14, resize: 'vertical' }}
+                      />
+                    </div>
+                  </div>
+
+                  <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                    <button
+                      type="button"
+                      className="btn btn-tertiary"
+                      onClick={() => setStep(1)}
+                    >
+                      <ChevronLeft size={16} /> Back
+                    </button>
+                    <button
+                      type="button"
+                      className="btn btn-primary"
+                      onClick={() => setStep(3)}
+                    >
+                      Continue to Personal Details <ChevronRight size={16} />
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              {/* STEP 3: PERSONAL DETAILS & SUBMIT */}
+              {step === 3 && (
+                <form onSubmit={handleSubmit}>
+                  <h2 style={{ fontSize: 22, margin: '0 0 6px' }}>Step 3: Personal Details</h2>
+                  <p style={{ color: 'var(--text-muted)', fontSize: 14, margin: '0 0 24px' }}>
+                    Where should we send your orientation invite and project toolkit?
+                  </p>
+
+                  <div style={{ display: 'grid', gap: 16, marginBottom: 32 }}>
+                    <div>
+                      <label style={{ display: 'block', fontSize: 14, fontWeight: 700, marginBottom: 6 }}>Full Name *</label>
+                      <input
+                        type="text"
+                        required
+                        value={fullName}
+                        onChange={(e) => setFullName(e.target.value)}
+                        placeholder="e.g. Olumide Adeleke"
+                        style={{ width: '100%', padding: '12px 14px', borderRadius: 8, border: '1px solid var(--border-warm)', fontSize: 14 }}
+                      />
+                    </div>
+
+                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+                      <div>
+                        <label style={{ display: 'block', fontSize: 14, fontWeight: 700, marginBottom: 6 }}>Email Address *</label>
+                        <input
+                          type="email"
+                          required
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          placeholder="olumide@example.com"
+                          style={{ width: '100%', padding: '12px 14px', borderRadius: 8, border: '1px solid var(--border-warm)', fontSize: 14 }}
+                        />
+                      </div>
+                      <div>
+                        <label style={{ display: 'block', fontSize: 14, fontWeight: 700, marginBottom: 6 }}>Phone / WhatsApp *</label>
+                        <input
+                          type="tel"
+                          required
+                          value={phone}
+                          onChange={(e) => setPhone(e.target.value)}
+                          placeholder="08012345678"
+                          style={{ width: '100%', padding: '12px 14px', borderRadius: 8, border: '1px solid var(--border-warm)', fontSize: 14 }}
+                        />
+                      </div>
+                    </div>
+
+                    <div style={{ background: 'var(--light-neutral)', padding: 16, borderRadius: 10, border: '1px solid var(--border-warm)', fontSize: 13, color: 'var(--text-muted)' }}>
+                      <strong>Summary of application:</strong>
+                      <div style={{ marginTop: 4 }}>
+                        Track: <strong>{tracks.find((t) => t.id === selectedTrack)?.title}</strong> · Mode: <strong>{mode}</strong> · Location: <strong>{city}</strong>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                    <button
+                      type="button"
+                      className="btn btn-tertiary"
+                      onClick={() => setStep(2)}
+                    >
+                      <ChevronLeft size={16} /> Back
+                    </button>
+                    <button
+                      type="submit"
+                      className="btn btn-secondary"
+                      style={{ padding: '12px 24px' }}
+                    >
+                      <Send size={16} /> Submit Volunteer Application ›
+                    </button>
+                  </div>
+                </form>
+              )}
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* 3. OTHER WAYS TO GET INVOLVED (Board 07) */}
+      <section className="section" aria-label="Other Ways to Get Involved">
+        <div className="container">
+          <div className="section-header text-center">
+            <span className="section-title-red">Broaden Your Impact</span>
+            <h2>Other Ways to Get Involved</h2>
+            <p style={{ color: 'var(--text-muted)', fontSize: 16 }}>
+              Explore collaborative avenues to support children through corporate, material, and community initiatives.
+            </p>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 20 }}>
+            {/* 1. Corporate Partnerships */}
+            <div style={{ background: '#ffffff', borderRadius: 12, border: '1px solid var(--border-warm)', padding: 24, boxShadow: 'var(--shadow-card)' }}>
+              <div style={{ width: 44, height: 44, borderRadius: '50%', background: 'var(--primary-red-light)', color: 'var(--primary-red)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 14 }}>
+                <Building2 size={22} />
+              </div>
+              <h3 style={{ fontSize: 17, margin: '0 0 8px' }}>Corporate Partnerships</h3>
+              <p style={{ color: 'var(--text-muted)', fontSize: 13.5, lineHeight: 1.5, margin: '0 0 14px' }}>
+                Co-create CSR programs, sponsor a whole school cohort, or host corporate volunteer days for your team.
+              </p>
+              <Link href="/contact?subject=corporate" style={{ color: 'var(--primary-red)', fontWeight: 700, fontSize: 13.5 }}>
+                Partner with us ›
+              </Link>
+            </div>
+
+            {/* 2. Host a School Supply Drive */}
+            <div style={{ background: '#ffffff', borderRadius: 12, border: '1px solid var(--border-warm)', padding: 24, boxShadow: 'var(--shadow-card)' }}>
+              <div style={{ width: 44, height: 44, borderRadius: '50%', background: 'var(--primary-green-light)', color: 'var(--primary-green)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 14 }}>
+                <Package size={22} />
+              </div>
+              <h3 style={{ fontSize: 17, margin: '0 0 8px' }}>School Supply Drives</h3>
+              <p style={{ color: 'var(--text-muted)', fontSize: 13.5, lineHeight: 1.5, margin: '0 0 14px' }}>
+                Mobilize your church, office, or university community to gather backpacks, notebooks, and writing materials.
+              </p>
+              <Link href="/back-2-school" style={{ color: 'var(--primary-green)', fontWeight: 700, fontSize: 13.5 }}>
+                Host a drive ›
+              </Link>
+            </div>
+
+            {/* 3. In-Kind Giving */}
+            <div style={{ background: '#ffffff', borderRadius: 12, border: '1px solid var(--border-warm)', padding: 24, boxShadow: 'var(--shadow-card)' }}>
+              <div style={{ width: 44, height: 44, borderRadius: '50%', background: 'var(--accent-yellow-light)', color: '#6A5300', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 14 }}>
+                <Gift size={22} />
+              </div>
+              <h3 style={{ fontSize: 17, margin: '0 0 8px' }}>In-Kind Giving</h3>
+              <p style={{ color: 'var(--text-muted)', fontSize: 13.5, lineHeight: 1.5, margin: '0 0 14px' }}>
+                Donate bags of rice, educational toys, medical supplies, classroom furniture, or professional services.
+              </p>
+              <Link href="/nourish-now" style={{ color: 'var(--primary-red)', fontWeight: 700, fontSize: 13.5 }}>
+                Donate goods ›
+              </Link>
+            </div>
+
+            {/* 4. Community Champion */}
+            <div style={{ background: '#ffffff', borderRadius: 12, border: '1px solid var(--border-warm)', padding: 24, boxShadow: 'var(--shadow-card)' }}>
+              <div style={{ width: 44, height: 44, borderRadius: '50%', background: 'var(--primary-green-light)', color: 'var(--primary-green)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 14 }}>
+                <Award size={22} />
+              </div>
+              <h3 style={{ fontSize: 17, margin: '0 0 8px' }}>Community Champion</h3>
+              <p style={{ color: 'var(--text-muted)', fontSize: 13.5, lineHeight: 1.5, margin: '0 0 14px' }}>
+                Celebrate your birthday, milestone, or run a marathon to raise funds and awareness for Happy Hands scholars.
+              </p>
+              <Link href="/donate" style={{ color: 'var(--primary-green)', fontWeight: 700, fontSize: 13.5 }}>
+                Start a fundraiser ›
+              </Link>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Volunteer FAQs */}
-      <section className="section" style={{ background: '#ffffff', borderTop: '1px solid var(--line)' }}>
+      {/* 4. FAQS */}
+      <section className="section section-bg-light" aria-label="Volunteer FAQs">
         <div className="container">
-          <FAQAccordion
-            items={volunteerFAQs}
-            title="Volunteer FAQs"
-            kicker="Helpful Information"
-            description="Answers to common questions about remote volunteering, time requirements, and onboarding."
-          />
+          <div className="section-header text-center">
+            <span className="section-title-red">Questions & Answers</span>
+            <h2>Frequently Asked Questions</h2>
+            <p style={{ color: 'var(--text-muted)', fontSize: 16 }}>
+              Insights into our volunteer onboarding process and requirements.
+            </p>
+          </div>
+
+          <FAQAccordion items={volunteerFAQs} />
         </div>
       </section>
-    </>
+
+      {/* 5. CTA BANNER */}
+      <CtaBanner />
+    </main>
   );
 }

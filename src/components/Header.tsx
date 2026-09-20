@@ -7,16 +7,14 @@ import { useDonation } from '@/context/DonationContext';
 import { BrandLogo } from '@/components/BrandLogo';
 import { 
   ChevronDown, 
-  GraduationCap, 
-  BusFront, 
-  Backpack, 
-  Utensils, 
-  HeartPulse, 
+  Menu, 
+  X, 
   Heart,
-  Menu,
-  X,
-  LayoutGrid,
-  ArrowRight
+  GraduationCap,
+  Sparkles,
+  Utensils,
+  BookOpen,
+  Apple
 } from 'lucide-react';
 
 export const Header: React.FC = () => {
@@ -38,18 +36,15 @@ export const Header: React.FC = () => {
     setMobileMenuOpen(false);
   }, [pathname]);
 
-  // Lock body scroll when mobile menu is open
+  // Prevent background scroll when mobile menu is open
   useEffect(() => {
     if (mobileMenuOpen) {
       document.body.style.overflow = 'hidden';
-      document.documentElement.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
-      document.documentElement.style.overflow = '';
     }
     return () => {
       document.body.style.overflow = '';
-      document.documentElement.style.overflow = '';
     };
   }, [mobileMenuOpen]);
 
@@ -61,325 +56,250 @@ export const Header: React.FC = () => {
     pathname === '/nourish-now' ||
     pathname === '/fittot';
 
-  const closeMenu = () => setMobileMenuOpen(false);
-
   return (
-    <div className={`site-header-wrapper ${isScrolled ? 'is-scrolled' : ''}`}>
-      <header className="glass-header-capsule" aria-label="Main Navigation">
-        {/* Subtle Specular Glow Rim */}
-        <div className="glass-specular-highlight" aria-hidden="true" />
-
-        <div className="glass-nav-inner">
-          {/* Brand Mark */}
-          <Link href="/" className="glass-brand" aria-label="Happy Hands Foundation Home" onClick={closeMenu}>
-            <div className="glass-brand-emblem">
-              <BrandLogo width={36} height={36} priority />
+    <>
+      <header className={`site-header ${isScrolled ? 'is-scrolled' : ''}`}>
+        <div className="container site-header-inner">
+          {/* Logo Lockup (Master Visual Direction) */}
+          <Link href="/" className="brand-lockup" aria-label="Happy Hands Foundation Home">
+            <div className="brand-emblem-wrap">
+              <BrandLogo width={42} height={42} priority />
             </div>
-            <div className="glass-brand-text">
-              <span className="glass-brand-title">Happy Hands</span>
-              <span className="glass-brand-tag">Foundation</span>
+            <div className="brand-meta">
+              <span className="brand-name">Happy Hands</span>
+              <span className="brand-subtitle">Community Development Foundation</span>
+              <span className="brand-rc">RC No: 183177</span>
             </div>
           </Link>
 
           {/* Desktop Navigation Links */}
-          <nav className="glass-nav-links" aria-label="Primary navigation">
+          <nav className="nav-links-desktop" aria-label="Main Navigation">
             <Link 
               href="/" 
-              className={`glass-nav-link ${pathname === '/' ? 'active' : ''}`}
+              className={`nav-link ${pathname === '/' ? 'active' : ''}`}
             >
               Home
             </Link>
+
             <Link 
               href="/about" 
-              className={`glass-nav-link ${pathname === '/about' ? 'active' : ''}`}
+              className={`nav-link ${pathname === '/about' ? 'active' : ''}`}
             >
-              About
+              About Us
             </Link>
 
             {/* Programs Dropdown */}
-            <div className="glass-nav-item has-dropdown">
-              <button 
-                type="button" 
-                className={`glass-nav-link dropdown-trigger ${isProgramsActive ? 'active' : ''}`}
-                aria-expanded="false"
+            <div className="nav-dropdown-item">
+              <Link 
+                href="/programs" 
+                className={`nav-link ${isProgramsActive ? 'active' : ''}`}
               >
-                <span>Programs</span>
-                <ChevronDown size={13} className="dropdown-chevron" />
-              </button>
-              
-              <div className="glass-dropdown-panel" role="region" aria-label="Programs submenu">
-                <div className="glass-dropdown-specular" aria-hidden="true" />
-                <div className="glass-dropdown-grid">
-                  <div className="glass-dropdown-col">
-                    <span className="glass-dropdown-heading">Education Initiatives</span>
-                    <Link href="/scholars-program" className="glass-dropdown-item" onClick={closeMenu}>
-                      <div className="glass-item-icon">
-                        <GraduationCap size={18} />
-                      </div>
-                      <div className="glass-item-text">
-                        <strong>Scholars Program</strong>
-                        <span>Tuition & school support</span>
-                      </div>
-                    </Link>
-                    <Link href="/teachers-on-the-go" className="glass-dropdown-item" onClick={closeMenu}>
-                      <div className="glass-item-icon">
-                        <BusFront size={18} />
-                      </div>
-                      <div className="glass-item-text">
-                        <strong>Teachers on the Go</strong>
-                        <span>Mobile life-skills tutoring</span>
-                      </div>
-                    </Link>
-                    <Link href="/back-2-school" className="glass-dropdown-item" onClick={closeMenu}>
-                      <div className="glass-item-icon">
-                        <Backpack size={18} />
-                      </div>
-                      <div className="glass-item-text">
-                        <strong>Back-2-School</strong>
-                        <span>Kits & classroom supplies</span>
-                      </div>
-                    </Link>
-                  </div>
+                Our Programs <ChevronDown size={14} />
+              </Link>
 
-                  <div className="glass-dropdown-col">
-                    <span className="glass-dropdown-heading">Health & Nutrition</span>
-                    <Link href="/nourish-now" className="glass-dropdown-item" onClick={closeMenu}>
-                      <div className="glass-item-icon">
-                        <Utensils size={18} />
-                      </div>
-                      <div className="glass-item-text">
-                        <strong>Nourish Now</strong>
-                        <span>Hunger & food parcel relief</span>
-                      </div>
-                    </Link>
-                    <Link href="/fittot" className="glass-dropdown-item" onClick={closeMenu}>
-                      <div className="glass-item-icon">
-                        <HeartPulse size={18} />
-                      </div>
-                      <div className="glass-item-text">
-                        <strong>FitTot</strong>
-                        <span>Pediatric health screenings</span>
-                      </div>
-                    </Link>
-                    <Link href="/programs" className="glass-dropdown-item glass-dropdown-item-all" onClick={closeMenu}>
-                      <div className="glass-item-icon">
-                        <LayoutGrid size={18} />
-                      </div>
-                      <div className="glass-item-text">
-                        <strong>All Programs</strong>
-                        <span>Explore full impact portfolio</span>
-                      </div>
-                    </Link>
-                  </div>
-                </div>
+              <div className="nav-dropdown-menu">
+                <div className="dropdown-group-title">Education</div>
+                <Link href="/scholars-program" className="dropdown-sublink">
+                  <span>Scholars Program</span>
+                </Link>
+                <Link href="/teachers-on-the-go" className="dropdown-sublink">
+                  <span>Teachers on the Go</span>
+                </Link>
+                <Link href="/back-2-school" className="dropdown-sublink">
+                  <span>Back-2-School</span>
+                </Link>
+
+                <div className="dropdown-divider" />
+
+                <div className="dropdown-group-title">Health & Nutrition</div>
+                <Link href="/nourish-now" className="dropdown-sublink">
+                  <span>Nourish Now</span>
+                </Link>
+                <Link href="/fittot" className="dropdown-sublink">
+                  <span>FitTot</span>
+                  <span className="dropdown-tag-coming">Coming Soon</span>
+                </Link>
+
+                <div className="dropdown-divider" />
+
+                <Link href="/programs" className="dropdown-view-all">
+                  View all programs ›
+                </Link>
               </div>
             </div>
 
             <Link 
-              href="/#gallery" 
-              className="glass-nav-link"
+              href="/get-involved" 
+              className={`nav-link ${pathname === '/get-involved' || pathname === '/volunteer' ? 'active' : ''}`}
             >
-              Gallery
+              Get Involved
             </Link>
+
             <Link 
-              href="/volunteer" 
-              className={`glass-nav-link ${pathname === '/volunteer' ? 'active' : ''}`}
+              href="/impact" 
+              className={`nav-link ${pathname.startsWith('/impact') ? 'active' : ''}`}
             >
-              Volunteer
+              Impact
             </Link>
+
+            <Link 
+              href="/news" 
+              className={`nav-link ${pathname === '/news' ? 'active' : ''}`}
+            >
+              News
+            </Link>
+
             <Link 
               href="/contact" 
-              className={`glass-nav-link ${pathname === '/contact' ? 'active' : ''}`}
+              className={`nav-link ${pathname === '/contact' ? 'active' : ''}`}
             >
               Contact
             </Link>
           </nav>
 
-          {/* Action Buttons (Frosted Segmented Capsule Style) */}
-          <div className="glass-actions-cluster">
-            <Link 
-              href="/volunteer" 
-              className="glass-btn-secondary"
+          {/* Right Actions */}
+          <div className="header-actions">
+            <button 
+              type="button" 
+              className="btn btn-primary"
+              onClick={() => openDonationModal('General Fund')}
+              aria-label="Donate Now"
             >
-              Sign Up
-            </Link>
+              Donate Now ♡
+            </button>
+
+            {/* Mobile Menu Trigger */}
             <button
               type="button"
-              className="glass-btn-primary"
-              onClick={() => openDonationModal('General Fund')}
+              className="mobile-menu-btn"
+              onClick={() => setMobileMenuOpen(true)}
+              aria-label="Open Mobile Menu"
             >
-              <Heart size={14} fill="currentColor" />
-              <span>Donate</span>
+              <Menu size={22} />
             </button>
           </div>
-
-          {/* Sleek Mobile Menu Button */}
-          <button
-            type="button"
-            className="glass-mobile-toggle"
-            id="menuToggle"
-            aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
-            aria-expanded={mobileMenuOpen}
-            aria-controls="mobileMenu"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
-          </button>
         </div>
       </header>
 
-      {/* Mobile Backdrop */}
-      <div 
-        className={`glass-mobile-backdrop ${mobileMenuOpen ? 'open' : ''}`} 
-        onClick={closeMenu} 
-        aria-hidden="true"
-      />
-
-      {/* Mobile Floating Glass Sheet */}
-      <aside 
-        className={`glass-mobile-sheet ${mobileMenuOpen ? 'open' : ''}`} 
-        id="mobileMenu"
-        aria-hidden={!mobileMenuOpen}
-      >
-        <div className="glass-sheet-specular" aria-hidden="true" />
-        
-        <div className="glass-sheet-header">
-          <Link href="/" className="glass-brand" onClick={closeMenu}>
-            <div className="glass-brand-emblem" style={{ width: 34, height: 34 }}>
-              <BrandLogo width={30} height={30} priority />
-            </div>
-            <div className="glass-brand-text">
-              <span className="glass-brand-title" style={{ fontSize: 16 }}>Happy Hands</span>
-              <span className="glass-brand-tag" style={{ fontSize: 8 }}>Foundation</span>
-            </div>
-          </Link>
-          <button 
-            type="button"
-            className="glass-sheet-close"
-            aria-label="Close navigation"
-            onClick={closeMenu}
-          >
-            <X size={18} />
-          </button>
-        </div>
-
-        <nav className="glass-sheet-nav" aria-label="Mobile navigation">
-          <Link 
-            href="/" 
-            className={`glass-sheet-link ${pathname === '/' ? 'active' : ''}`} 
-            onClick={closeMenu}
-          >
-            <span>Home</span>
-          </Link>
-          <Link 
-            href="/about" 
-            className={`glass-sheet-link ${pathname === '/about' ? 'active' : ''}`} 
-            onClick={closeMenu}
-          >
-            <span>About Us</span>
-          </Link>
-          
-          <div className="glass-sheet-group">
-            <div className="glass-sheet-group-title">
-              <span>Programs & Initiatives</span>
-            </div>
-            <div className="glass-sheet-sublinks">
-              <Link 
-                href="/scholars-program" 
-                className={`glass-sheet-sublink ${pathname === '/scholars-program' ? 'active' : ''}`}
-                onClick={closeMenu}
-              >
-                <GraduationCap size={16} />
-                <span>Scholars Program</span>
-              </Link>
-              <Link 
-                href="/teachers-on-the-go" 
-                className={`glass-sheet-sublink ${pathname === '/teachers-on-the-go' ? 'active' : ''}`}
-                onClick={closeMenu}
-              >
-                <BusFront size={16} />
-                <span>Teachers on the Go</span>
-              </Link>
-              <Link 
-                href="/back-2-school" 
-                className={`glass-sheet-sublink ${pathname === '/back-2-school' ? 'active' : ''}`}
-                onClick={closeMenu}
-              >
-                <Backpack size={16} />
-                <span>Back-2-School</span>
-              </Link>
-              <Link 
-                href="/nourish-now" 
-                className={`glass-sheet-sublink ${pathname === '/nourish-now' ? 'active' : ''}`}
-                onClick={closeMenu}
-              >
-                <Utensils size={16} />
-                <span>Nourish Now</span>
-              </Link>
-              <Link 
-                href="/fittot" 
-                className={`glass-sheet-sublink ${pathname === '/fittot' ? 'active' : ''}`}
-                onClick={closeMenu}
-              >
-                <HeartPulse size={16} />
-                <span>FitTot Healthcare</span>
-              </Link>
-              <Link 
-                href="/programs" 
-                className={`glass-sheet-sublink ${pathname === '/programs' ? 'active' : ''}`}
-                onClick={closeMenu}
-              >
-                <LayoutGrid size={16} />
-                <span>View All Initiatives</span>
-              </Link>
-            </div>
+      {/* Mobile Menu Panel (Board 08 Mobile Open) */}
+      {mobileMenuOpen && (
+        <div className="mobile-nav-panel" role="dialog" aria-modal="true" aria-label="Navigation Menu">
+          <div className="mobile-nav-head">
+            <Link href="/" className="brand-lockup" onClick={() => setMobileMenuOpen(false)}>
+              <div className="brand-emblem-wrap">
+                <BrandLogo width={36} height={36} />
+              </div>
+              <div className="brand-meta">
+                <span className="brand-name" style={{ fontSize: 16 }}>Happy Hands</span>
+                <span className="brand-subtitle" style={{ fontSize: 9 }}>Community Development Foundation</span>
+                <span className="brand-rc" style={{ fontSize: 8 }}>RC No: 183177</span>
+              </div>
+            </Link>
+            <button 
+              type="button" 
+              className="mobile-menu-btn" 
+              onClick={() => setMobileMenuOpen(false)}
+              aria-label="Close Mobile Menu"
+            >
+              <X size={22} />
+            </button>
           </div>
 
-          <Link 
-            href="/#gallery" 
-            className="glass-sheet-link" 
-            onClick={closeMenu}
-          >
-            <span>Gallery</span>
-          </Link>
-          <Link 
-            href="/volunteer" 
-            className={`glass-sheet-link ${pathname === '/volunteer' ? 'active' : ''}`} 
-            onClick={closeMenu}
-          >
-            <span>Volunteer</span>
-          </Link>
-          <Link 
-            href="/contact" 
-            className={`glass-sheet-link ${pathname === '/contact' ? 'active' : ''}`} 
-            onClick={closeMenu}
-          >
-            <span>Contact Us</span>
-          </Link>
-        </nav>
+          <div className="mobile-nav-list">
+            <Link 
+              href="/" 
+              className={`mobile-nav-link ${pathname === '/' ? 'active' : ''}`}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Home
+            </Link>
 
-        <div className="glass-sheet-actions">
-          <Link 
-            href="/volunteer" 
-            className="glass-sheet-btn-secondary" 
-            onClick={closeMenu}
-          >
-            Sign Up to Volunteer
-          </Link>
-          <button
-            type="button"
-            className="glass-sheet-btn-primary"
-            onClick={() => {
-              closeMenu();
-              openDonationModal('General Fund');
-            }}
-          >
-            <Heart size={16} fill="currentColor" />
-            <span>Donate Now</span>
-          </button>
+            <Link 
+              href="/about" 
+              className={`mobile-nav-link ${pathname === '/about' ? 'active' : ''}`}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              About Us
+            </Link>
+
+            <div>
+              <Link 
+                href="/programs" 
+                className={`mobile-nav-link ${isProgramsActive ? 'active' : ''}`}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Our Programs
+              </Link>
+              <div className="mobile-nav-subgroup">
+                <Link href="/scholars-program" className="mobile-nav-sublink" onClick={() => setMobileMenuOpen(false)}>
+                  • Scholars Program
+                </Link>
+                <Link href="/teachers-on-the-go" className="mobile-nav-sublink" onClick={() => setMobileMenuOpen(false)}>
+                  • Teachers on the Go
+                </Link>
+                <Link href="/back-2-school" className="mobile-nav-sublink" onClick={() => setMobileMenuOpen(false)}>
+                  • Back-2-School
+                </Link>
+                <Link href="/nourish-now" className="mobile-nav-sublink" onClick={() => setMobileMenuOpen(false)}>
+                  • Nourish Now
+                </Link>
+                <Link href="/fittot" className="mobile-nav-sublink" onClick={() => setMobileMenuOpen(false)}>
+                  • FitTot (Coming Soon)
+                </Link>
+              </div>
+            </div>
+
+            <Link 
+              href="/get-involved" 
+              className={`mobile-nav-link ${pathname === '/get-involved' ? 'active' : ''}`}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Get Involved
+            </Link>
+
+            <Link 
+              href="/impact" 
+              className={`mobile-nav-link ${pathname.startsWith('/impact') ? 'active' : ''}`}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Impact
+            </Link>
+
+            <Link 
+              href="/news" 
+              className={`mobile-nav-link ${pathname === '/news' ? 'active' : ''}`}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              News
+            </Link>
+
+            <Link 
+              href="/contact" 
+              className={`mobile-nav-link ${pathname === '/contact' ? 'active' : ''}`}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Contact
+            </Link>
+          </div>
+
+          <div className="mobile-nav-footer">
+            <button 
+              type="button" 
+              className="btn btn-primary"
+              style={{ width: '100%', padding: '14px' }}
+              onClick={() => {
+                setMobileMenuOpen(false);
+                openDonationModal('General Fund');
+              }}
+            >
+              Donate Now ♡
+            </button>
+            <p style={{ textAlign: 'center', fontSize: 12, color: 'var(--text-light)', margin: 0 }}>
+              Building brighter tomorrows, together.
+            </p>
+          </div>
         </div>
-      </aside>
-    </div>
+      )}
+    </>
   );
 };
-

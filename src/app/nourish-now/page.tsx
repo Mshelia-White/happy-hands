@@ -2,248 +2,286 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useDonation } from '@/context/DonationContext';
-import { DonationWidget } from '@/components/DonationWidget';
-import { SafeImage } from '@/components/SafeImage';
 import { FAQAccordion, FAQItem } from '@/components/FAQAccordion';
+import { CtaBanner } from '@/components/CtaBanner';
 import { 
   Utensils, 
-  CheckCircle2, 
-  ArrowRight, 
-  Heart, 
-  Clock, 
   Package, 
+  Apple, 
+  Droplet, 
+  Heart, 
   Soup, 
-  Building2 
+  ShieldAlert, 
+  CheckCircle2, 
+  PhoneCall,
+  Sparkles
 } from 'lucide-react';
+
+const nourishItems = [
+  { icon: <Utensils size={20} color="var(--primary-green)" />, label: 'Daily Hot School Lunches' },
+  { icon: <Package size={20} color="var(--primary-red)" />, label: 'Happy Boxes Family Food Parcels' },
+  { icon: <Apple size={20} color="var(--primary-green)" />, label: 'Fresh Fruits & Micronutrient Relief' },
+  { icon: <Droplet size={20} color="var(--primary-red)" />, label: 'Clean Drinking Water Access' },
+  { icon: <Soup size={20} color="var(--primary-green)" />, label: 'Community Outreaches in Grassroots Neighborhoods' },
+  { icon: <ShieldAlert size={20} color="var(--primary-red)" />, label: 'Emergency Nutrition for Vulnerable Households' },
+];
+
+const nourishFAQs: FAQItem[] = [
+  {
+    question: 'How do we identify the communities or families who benefit?',
+    answer: 'Our field teams conduct local household poverty assessments and collaborate with vetted community leaders to identify families facing acute food insecurity.',
+  },
+  {
+    question: 'How is Nourish Now funded?',
+    answer: 'Nourish Now is funded through voluntary monetary donations, corporate CSR grants, and partnerships with philanthropic food production companies.',
+  },
+  {
+    question: 'Can I donate food items instead of money?',
+    answer: 'Yes! We warmly welcome non-perishable food items (such as bags of rice, beans, grains, cooking oil, and canned goods) at our Lagos collection center during scheduled seasonal drives.',
+  },
+  {
+    question: 'How do I coordinate a physical food drop-off?',
+    answer: 'To coordinate a food drop-off or corporate pantry drive, please email projects@happyhandsfoundation.org or call our logistics team directly at 08121353755.',
+  },
+  {
+    question: 'What does it mean to sponsor a "Happy Box"?',
+    answer: 'Sponsoring a Happy Box provides the funding or groceries to pack a full family food parcel designed to feed a household throughout the festive or holiday season.',
+  },
+];
 
 export default function NourishNowPage() {
   const { openDonationModal } = useDonation();
 
-  const nourishFAQs: FAQItem[] = [
-    {
-      question: 'How do we identify the communities or families who benefit?',
-      answer: 'Our teams conduct local community assessments and collaborate with verified community leaders to identify families and children facing severe nutritional and food security challenges.',
-    },
-    {
-      question: 'How is the program funded?',
-      answer: 'Nourish Now is funded through voluntary monetary contributions from caring donors, corporate CSR grants, and partnerships with philanthropic groups.',
-    },
-    {
-      question: 'Can I donate food items instead of money?',
-      answer: 'Yes! We warmly accept non-perishable food items (such as rice, beans, grains, cooking oil, packaged staples, and canned goods) during our planned seasonal drives and outreaches.',
-    },
-    {
-      question: 'How do I donate food items?',
-      answer: (
-        <span>
-          To coordinate a physical food drop-off or bulk donation, please email{' '}
-          <a href="mailto:projects@happyhandsfoundation.org" style={{ color: 'var(--orange)', fontWeight: 800, textDecoration: 'underline' }}>
-            projects@happyhandsfoundation.org
-          </a>{' '}
-          or call our projects line at <strong>08121353755</strong>.
-        </span>
-      ),
-    },
-    {
-      question: 'What does it mean to sponsor a food box?',
-      answer: (
-        <span>
-          Sponsoring a Happy Box means providing the funds or groceries required to pack a family food parcel containing essential nutrition for the holiday season.{' '}
-          <button
-            type="button"
-            onClick={() => openDonationModal('Nourish Now')}
-            style={{
-              background: 'none',
-              border: 'none',
-              padding: 0,
-              color: 'var(--orange)',
-              fontWeight: 800,
-              textDecoration: 'underline',
-              cursor: 'pointer',
-            }}
-          >
-            Click here to sponsor a box today
-          </button>
-          .
-        </span>
-      ),
-    },
-  ];
-
   return (
-    <>
-      {/* Page Hero */}
-      <section className="page-hero" style={{ background: '#f0fdf4' }}>
-        <div className="container page-hero-inner">
-          <div className="eyebrow" style={{ color: '#15803d', borderColor: '#86efac' }}>
-            <Utensils size={16} /> Health Program
-          </div>
-          <h1 style={{ color: '#14532d' }}>Nourish Now</h1>
-          <p style={{ color: '#166534' }}>
-            Providing temporary food relief for children and families.
-          </p>
+    <main>
+      {/* 1. BREADCRUMB */}
+      <div style={{ background: 'var(--light-neutral)', padding: '12px 0', borderBottom: '1px solid var(--border-warm)', fontSize: 13.5 }}>
+        <div className="container" style={{ display: 'flex', alignItems: 'center', gap: 8, color: 'var(--text-muted)' }}>
+          <Link href="/" style={{ color: 'var(--dark-neutral)' }}>Home</Link>
+          <span>›</span>
+          <Link href="/programs" style={{ color: 'var(--dark-neutral)' }}>Our Programs</Link>
+          <span>›</span>
+          <strong style={{ color: 'var(--primary-green)' }}>Nourish Now</strong>
         </div>
-      </section>
+      </div>
 
-      {/* Program Details */}
-      <section className="section">
-        <div className="container split-layout">
-          <div className="split-image" style={{ height: 480, position: 'relative' }}>
-            <SafeImage
-              src="/assets/images/volunteer-community.png"
-              fallbackSrc="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=1200&q=80"
-              alt="Volunteers sharing food packages"
-              fill
-              style={{ objectFit: 'cover' }}
-            />
-          </div>
-
-          <div className="split-content">
-            <p className="section-kicker" style={{ color: '#15803d' }}>
-              Temporary Food Relief
-            </p>
-            <h2>Nourishing young minds and families.</h2>
-            <p style={{ fontSize: 16, lineHeight: 1.7, color: '#334155' }}>
-              Nourish Now provides temporary food relief for children and families. Hunger and malnutrition directly affect a child&apos;s ability to concentrate, stay in school, and thrive.
-            </p>
-
-            <div style={{ marginTop: 24, display: 'flex', flexDirection: 'column', gap: 16 }}>
-              {/* Active Initiative 1: Happy Boxes */}
-              <div
-                style={{
-                  background: '#ffffff',
-                  border: '1px solid var(--line)',
-                  borderRadius: 16,
-                  padding: 20,
-                  boxShadow: 'var(--shadow-sm)',
-                }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 8 }}>
-                  <Package size={20} color="var(--orange)" />
-                  <h3 style={{ margin: 0, fontSize: 17, fontWeight: 800 }}>Happy Boxes</h3>
-                  <span style={{ fontSize: 11, fontWeight: 800, background: 'var(--orange-soft)', color: 'var(--orange-dark)', padding: '2px 8px', borderRadius: 999 }}>
-                    Active
-                  </span>
-                </div>
-                <p style={{ margin: 0, color: '#475569', fontSize: 14, lineHeight: 1.6 }}>
-                  Food packages shared with children and families in underserved communities every December.
-                </p>
-              </div>
-
-              {/* Active Initiative 2: Eat 'n' Learn */}
-              <div
-                style={{
-                  background: '#ffffff',
-                  border: '1px solid var(--line)',
-                  borderRadius: 16,
-                  padding: 20,
-                  boxShadow: 'var(--shadow-sm)',
-                }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 8 }}>
-                  <Soup size={20} color="#15803d" />
-                  <h3 style={{ margin: 0, fontSize: 17, fontWeight: 800 }}>Eat &apos;n&apos; Learn</h3>
-                  <span style={{ fontSize: 11, fontWeight: 800, background: '#dcfce7', color: '#15803d', padding: '2px 8px', borderRadius: 999 }}>
-                    Active
-                  </span>
-                </div>
-                <p style={{ margin: 0, color: '#475569', fontSize: 14, lineHeight: 1.6 }}>
-                  Food support for students in schools to ensure children stay healthy, nourished, and focused in class.
-                </p>
-              </div>
-
-              {/* Coming Soon: Community Food Bank */}
-              <div
-                style={{
-                  background: '#f8fafc',
-                  border: '1px dashed #cbd5e1',
-                  borderRadius: 16,
-                  padding: 20,
-                }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 8 }}>
-                  <Building2 size={20} color="#64748b" />
-                  <h3 style={{ margin: 0, fontSize: 17, fontWeight: 800, color: '#475569' }}>Community Food Bank</h3>
-                  <span style={{ fontSize: 11, fontWeight: 800, background: '#f1f5f9', color: '#64748b', padding: '2px 8px', borderRadius: 999, border: '1px solid #cbd5e1' }}>
-                    Coming Soon
-                  </span>
-                </div>
-                <p style={{ margin: 0, color: '#64748b', fontSize: 14, lineHeight: 1.6 }}>
-                  A planned permanent community pantry and food distribution hub to provide continuous nutritional support for vulnerable households.
-                </p>
-              </div>
-            </div>
-
-            <div style={{ marginTop: 28, display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-              <button
-                type="button"
-                className="btn btn-orange"
-                onClick={() => openDonationModal('Nourish Now')}
-              >
-                <Heart size={16} fill="white" /> Support Nourish Now
-              </button>
-              <Link className="btn btn-light" href="/contact">
-                Donate Food Items
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Primary CTA / Donation Section */}
-      <section className="section" id="donate">
-        <div className="container donate-wrap">
-          <div className="donate-copy">
-            <div
-              className="eyebrow"
-              style={{
-                background: 'rgba(255,255,255,.1)',
-                color: '#fed7aa',
-                borderColor: 'rgba(255,255,255,.12)',
-              }}
-            >
-              <Heart size={14} /> Nutrition Relief
-            </div>
-            <h2>Help Us Keep Children Nourished and In School</h2>
-            <p style={{ fontSize: 16, lineHeight: 1.7, color: 'rgba(255,255,255,0.95)' }}>
-              Your support powers our Happy Boxes holiday outreach and Eat &apos;n&apos; Learn school feeding initiatives.
-            </p>
-            <p style={{ color: '#fed7aa', fontWeight: 800, marginTop: 14 }}>
-              They’re the reason we exist. But you’re the reason this works.
-            </p>
-
-            <div style={{ marginTop: 24, display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-              <button
-                type="button"
-                className="btn btn-light"
-                onClick={() => openDonationModal('Nourish Now')}
-              >
-                Donate to Nourish Now
-              </button>
-              <Link href="/volunteer" className="btn btn-dark" style={{ background: 'rgba(0,0,0,0.5)', borderColor: 'rgba(255,255,255,0.2)' }}>
-                Volunteer for Food Drives
-              </Link>
-            </div>
-          </div>
-
-          <div className="donate-panel">
-            <DonationWidget initialFund="Nourish Now" />
-          </div>
-        </div>
-      </section>
-
-      {/* Nourish Now FAQs */}
-      <section className="section" style={{ background: '#ffffff', borderTop: '1px solid var(--line)' }}>
+      {/* 2. SHORT HERO (Board 03) */}
+      <section className="hero-section" aria-label="Nourish Now Hero">
         <div className="container">
-          <FAQAccordion
-            items={nourishFAQs}
-            title="Nourish Now FAQs"
-            kicker="Food Relief Questions"
-            description="Details about family identification, food donations, and Happy Boxes sponsorship."
-          />
+          <div className="hero-grid" style={{ alignItems: 'center' }}>
+            <div>
+              <span className="section-title-red" style={{ color: 'var(--primary-green)' }}>Nutrition & Food Security</span>
+              <h1 style={{ margin: '8px 0 14px' }}>Nourish Now</h1>
+              <p className="hero-subtitle">
+                Nutritional food distribution and school lunch relief.
+              </p>
+              <p style={{ color: 'var(--text-muted)', fontSize: 16, lineHeight: 1.65, margin: '0 0 28px' }}>
+                A child cannot learn on an empty stomach. Nourish Now provides consistent, nutrient-dense school lunches and distributes family food parcels (&quot;Happy Boxes&quot;) to combat childhood malnutrition across underserved communities.
+              </p>
+              <div style={{ display: 'flex', gap: 14 }}>
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  onClick={() => openDonationModal('Nourish Now')}
+                >
+                  Sponsor a Meal ♡
+                </button>
+                <Link href="/contact" className="btn btn-tertiary">
+                  Donate Food Items ›
+                </Link>
+              </div>
+            </div>
+
+            <div style={{ position: 'relative' }}>
+              <Image
+                src="/assets/images/community-outreach.jpg"
+                alt="Community food outreach"
+                width={560}
+                height={420}
+                className="hero-photo"
+                priority
+                unoptimized
+              />
+              <div
+                style={{
+                  position: 'absolute',
+                  top: 20,
+                  right: 20,
+                  width: 52,
+                  height: 52,
+                  borderRadius: '50%',
+                  background: 'var(--primary-green)',
+                  color: '#ffffff',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  boxShadow: '0 4px 14px rgba(0,0,0,0.15)',
+                }}
+              >
+                <Utensils size={26} />
+              </div>
+            </div>
+          </div>
         </div>
       </section>
-    </>
+
+      {/* 3. WHAT THE PROGRAM DOES (Icon List) */}
+      <section className="section section-bg-light" aria-label="Program Capabilities">
+        <div className="container">
+          <div className="section-header text-center">
+            <span className="section-title-red">Interventions</span>
+            <h2>What the Program Does</h2>
+            <p style={{ color: 'var(--text-muted)', fontSize: 16 }}>
+              Direct nutrition channels tackling classroom hunger and domestic food shortages.
+            </p>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 16 }}>
+            {nourishItems.map((item, idx) => (
+              <div
+                key={idx}
+                style={{
+                  background: '#ffffff',
+                  border: '1px solid var(--border-warm)',
+                  borderRadius: 12,
+                  padding: '18px 16px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 12,
+                  boxShadow: 'var(--shadow-card)',
+                }}
+              >
+                <div style={{ width: 38, height: 38, borderRadius: '50%', background: 'var(--light-neutral)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  {item.icon}
+                </div>
+                <strong style={{ fontSize: 14, color: 'var(--dark-neutral)' }}>{item.label}</strong>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 4. WHAT IT PROVIDES (3 Feature Tiles) */}
+      <section className="section" aria-label="What It Provides">
+        <div className="container">
+          <div className="section-header text-center">
+            <span className="section-title-red">Key Initiatives</span>
+            <h2>What It Provides</h2>
+            <p style={{ color: 'var(--text-muted)', fontSize: 16 }}>
+              Two core mechanisms protecting children from hunger throughout the year.
+            </p>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24 }}>
+            <div style={{ background: '#ffffff', borderRadius: 14, border: '1px solid var(--border-warm)', padding: 28, boxShadow: 'var(--shadow-card)' }}>
+              <div style={{ width: 44, height: 44, borderRadius: '50%', background: 'var(--primary-green-light)', color: 'var(--primary-green)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 16 }}>
+                <Utensils size={22} />
+              </div>
+              <h3 style={{ fontSize: 18, margin: '0 0 10px' }}>School Lunch Subsidy</h3>
+              <p style={{ color: 'var(--text-muted)', fontSize: 14, lineHeight: 1.55, margin: 0 }}>
+                Every weekday lunch is provided for enrolled scholars so they stay awake, engaged, and physically thriving during class.
+              </p>
+            </div>
+
+            <div style={{ background: '#ffffff', borderRadius: 14, border: '1px solid var(--border-warm)', padding: 28, boxShadow: 'var(--shadow-card)' }}>
+              <div style={{ width: 44, height: 44, borderRadius: '50%', background: 'var(--primary-red-light)', color: 'var(--primary-red)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 16 }}>
+                <Package size={22} />
+              </div>
+              <h3 style={{ fontSize: 18, margin: '0 0 10px' }}>The Happy Boxes Drive</h3>
+              <p style={{ color: 'var(--text-muted)', fontSize: 14, lineHeight: 1.55, margin: 0 }}>
+                Holiday food hampers containing rice, beans, cooking oil, and nutritious dry goods for families that have little to celebrate with.
+              </p>
+            </div>
+
+            <div style={{ background: '#ffffff', borderRadius: 14, border: '1px solid var(--border-warm)', padding: 28, boxShadow: 'var(--shadow-card)' }}>
+              <div style={{ width: 44, height: 44, borderRadius: '50%', background: 'var(--accent-yellow-light)', color: '#6A5300', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 16 }}>
+                <Apple size={22} />
+              </div>
+              <h3 style={{ fontSize: 18, margin: '0 0 10px' }}>Nutritional Monitoring</h3>
+              <p style={{ color: 'var(--text-muted)', fontSize: 14, lineHeight: 1.55, margin: 0 }}>
+                Periodic height-for-age and BMI checkups tracking growth progress to ensure early intervention for any deficiency.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. EVIDENCE & GALLERY */}
+      <section className="section section-bg-light" aria-label="Evidence and Gallery">
+        <div className="container">
+          <div className="section-header text-center">
+            <span className="section-title-red">Outreach Impact</span>
+            <h2>Over 2,000+ Meals Served</h2>
+            <p style={{ color: 'var(--text-muted)', fontSize: 16 }}>
+              Moments from our grassroots food distributions and happy box deliveries.
+            </p>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20 }}>
+            <div style={{ height: 260, borderRadius: 12, overflow: 'hidden', position: 'relative', border: '1px solid var(--border-warm)' }}>
+              <Image src="/assets/images/community-outreach.jpg" alt="Food parcel handover" fill style={{ objectFit: 'cover' }} unoptimized />
+            </div>
+            <div style={{ height: 260, borderRadius: 12, overflow: 'hidden', position: 'relative', border: '1px solid var(--border-warm)' }}>
+              <Image src="/assets/images/children-event.png" alt="Meal time at outreach" fill style={{ objectFit: 'cover' }} unoptimized />
+            </div>
+            <div style={{ height: 260, borderRadius: 12, overflow: 'hidden', position: 'relative', border: '1px solid var(--border-warm)' }}>
+              <Image src="/assets/images/hero-volunteer.jpg" alt="Volunteers packing happy boxes" fill style={{ objectFit: 'cover' }} unoptimized />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 6. ONE PRIMARY ACTION */}
+      <section className="section" aria-label="Primary Action">
+        <div className="container" style={{ textAlign: 'center', maxWidth: 720 }}>
+          <Heart size={36} color="var(--primary-green)" strokeWidth={2} style={{ marginBottom: 14 }} />
+          <h2>Ensure No Child Goes Hungry in Class</h2>
+          <p style={{ color: 'var(--text-muted)', fontSize: 16, lineHeight: 1.65, margin: '12px auto 28px' }}>
+            ₦130,000 provides full daily lunch relief for an entire academic term. Give whatever you can today.
+          </p>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: 14, marginBottom: 28, flexWrap: 'wrap' }}>
+            <button
+              type="button"
+              className="btn btn-secondary"
+              onClick={() => openDonationModal('Nourish Now')}
+            >
+              Donate to Nourish Now ♡
+            </button>
+            <Link href="/scholars-program" className="btn btn-tertiary">
+              View Nutrition Sponsorship Packages ›
+            </Link>
+          </div>
+
+          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 12 }}>
+            <div className="avatar-group">
+              <Image src="/assets/images/community-outreach.jpg" alt="Community" width={34} height={34} className="avatar-img" unoptimized />
+              <Image src="/assets/images/children-group.jpg" alt="Children" width={34} height={34} className="avatar-img" unoptimized />
+              <div className="avatar-plus-bubble" style={{ width: 34, height: 34, fontSize: 12 }}>+</div>
+            </div>
+            <span style={{ fontSize: 13, color: 'var(--text-muted)' }}>Over 2,000 hot meals and dry food boxes distributed.</span>
+          </div>
+        </div>
+      </section>
+
+      {/* 7. FAQS */}
+      <section className="section section-bg-light" aria-label="FAQs">
+        <div className="container">
+          <div className="section-header text-center">
+            <span className="section-title-red">Questions & Answers</span>
+            <h2>Frequently Asked Questions</h2>
+            <p style={{ color: 'var(--text-muted)', fontSize: 16 }}>
+              Details on food safety, community vetting, and corporate partnership opportunities.
+            </p>
+          </div>
+
+          <FAQAccordion items={nourishFAQs} />
+        </div>
+      </section>
+
+      {/* 8. ENDING CTA BANNER */}
+      <CtaBanner />
+    </main>
   );
 }
