@@ -26,7 +26,7 @@ export default function ContactPage() {
       {/* Main Content */}
       <section className="section section-bg-light" style={{ paddingTop: 0 }}>
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: 36, alignItems: 'start' }}>
+          <div className="responsive-split-summary" style={{ alignItems: 'start' }}>
             {/* Contact Details Left */}
             <div>
               <div style={{ display: 'grid', gap: 16 }}>
@@ -117,13 +117,7 @@ export default function ContactPage() {
             </div>
 
             {/* Contact Form Right */}
-            <div style={{ background: '#ffffff', borderRadius: 16, border: '1px solid var(--border-warm)', padding: 32, boxShadow: 'var(--shadow-card)' }}>
-              <div style={{ marginBottom: 20 }}>
-                <h2 style={{ fontSize: 20, margin: '0 0 6px' }}>Send Us a Message</h2>
-                <p style={{ color: 'var(--text-muted)', fontSize: 14, margin: 0 }}>
-                  Fill out the form below and our team will get back to you within 24–48 hours.
-                </p>
-              </div>
+            <div style={{ background: '#ffffff', borderRadius: 16, border: '1px solid var(--border-warm)', padding: '32px 24px', boxShadow: 'var(--shadow-card)' }}>
               <ContactForm />
             </div>
           </div>

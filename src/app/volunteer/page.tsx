@@ -115,20 +115,20 @@ export default function VolunteerPage() {
 
   return (
     <main>
-      {/* 1. HERO (Board 07) */}
-      <section className="hero-section" aria-label="Volunteer Hero">
-        <div className="container">
-          <div className="section-header text-center" style={{ maxWidth: 760, margin: '0 auto 36px' }}>
-            <span className="section-title-red">Join The Hands That Care</span>
-            <h1 style={{ margin: '8px 0 16px' }}>Lend your hands. Change a child&apos;s story.</h1>
-            <p className="hero-subtitle" style={{ fontSize: 18 }}>
-              Join a dedicated community of volunteers creating direct impact across education, nutrition, and wellness.
-            </p>
-          </div>
+      {/* 1. HERO (Board 07) - Hide recruitment header once application is submitted to prevent bleed-through */}
+      {!submitted ? (
+        <section className="hero-section" aria-label="Volunteer Hero">
+          <div className="container">
+            <div className="section-header text-center" style={{ maxWidth: 760, margin: '0 auto 36px' }}>
+              <span className="section-title-red">Join The Hands That Care</span>
+              <h1 style={{ margin: '8px 0 16px' }}>Lend your hands. Change a child&apos;s story.</h1>
+              <p className="hero-subtitle" style={{ fontSize: 18 }}>
+                Join a dedicated community of volunteers creating direct impact across education, nutrition, and wellness.
+              </p>
+            </div>
 
-          {/* Stepper indicator */}
-          {!submitted && (
-            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 20, marginBottom: 40 }}>
+            {/* Stepper indicator */}
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 12, marginBottom: 36, flexWrap: 'wrap' }}>
               {steps.map((st, i) => (
                 <React.Fragment key={st.num}>
                   <div
@@ -137,7 +137,7 @@ export default function VolunteerPage() {
                       display: 'flex',
                       alignItems: 'center',
                       gap: 8,
-                      fontSize: 14,
+                      fontSize: 13.5,
                       fontWeight: 700,
                       cursor: step > st.num ? 'pointer' : 'default',
                       color: step === st.num ? 'var(--primary-red)' : step > st.num ? 'var(--primary-green)' : 'var(--text-light)',
@@ -145,18 +145,18 @@ export default function VolunteerPage() {
                   >
                     <div
                       style={{
-                        width: 30,
-                        height: 30,
+                        width: 28,
+                        height: 28,
                         borderRadius: '50%',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        fontSize: 13,
+                        fontSize: 12,
                         background: step === st.num ? 'var(--primary-red)' : step > st.num ? 'var(--primary-green)' : 'var(--light-neutral)',
                         color: step >= st.num ? '#ffffff' : 'var(--text-muted)',
                       }}
                     >
-                      {step > st.num ? <Check size={16} /> : st.num}
+                      {step > st.num ? <Check size={14} /> : st.num}
                     </div>
                     <span>{st.title}</span>
                   </div>
@@ -164,12 +164,16 @@ export default function VolunteerPage() {
                 </React.Fragment>
               ))}
             </div>
-          )}
+          </div>
+        </section>
+      ) : (
+        <div style={{ background: 'var(--light-neutral)', padding: '24px 0 12px', borderBottom: '1px solid var(--border-warm)', textAlign: 'center' }}>
+          <span className="section-title-red" style={{ fontSize: 13 }}>Happy Hands Volunteer Network</span>
         </div>
-      </section>
+      )}
 
       {/* 2. THREE-STEP ONBOARDING FLOW */}
-      <section className="section section-bg-light" style={{ paddingTop: 0 }}>
+      <section className="section section-bg-light" style={{ paddingTop: submitted ? 40 : 0 }}>
         <div className="container" style={{ maxWidth: 840 }}>
           {submitted ? (
             <div
@@ -177,15 +181,15 @@ export default function VolunteerPage() {
                 background: '#ffffff',
                 border: '1px solid var(--border-warm)',
                 borderRadius: 16,
-                padding: '48px 36px',
+                padding: '48px 24px',
                 textAlign: 'center',
                 boxShadow: 'var(--shadow-card)',
               }}
             >
               <div
                 style={{
-                  width: 64,
-                  height: 64,
+                  width: 68,
+                  height: 68,
                   borderRadius: '50%',
                   background: 'var(--primary-green-light)',
                   color: 'var(--primary-green)',
@@ -193,16 +197,17 @@ export default function VolunteerPage() {
                   alignItems: 'center',
                   justifyContent: 'center',
                   marginBottom: 20,
+                  border: '2px solid var(--primary-green-border)',
                 }}
               >
                 <Check size={36} strokeWidth={2.5} />
               </div>
-              <h2>Application Received!</h2>
-              <p style={{ color: 'var(--text-muted)', fontSize: 16, lineHeight: 1.6, maxWidth: 540, margin: '12px auto 24px' }}>
+              <h2 style={{ fontSize: 28, margin: '0 0 10px' }}>Application Received!</h2>
+              <p style={{ color: 'var(--text-muted)', fontSize: 16, lineHeight: 1.6, maxWidth: 540, margin: '12px auto 28px' }}>
                 Thank you, <strong>{fullName}</strong>! We have received your application for the{' '}
                 <strong>{tracks.find((t) => t.id === selectedTrack)?.title}</strong> track. Our coordinator will reach out to <strong>{email}</strong> within 3 to 5 business days.
               </p>
-              <div style={{ display: 'flex', justifyContent: 'center', gap: 14 }}>
+              <div style={{ display: 'flex', justifyContent: 'center', gap: 12, flexWrap: 'wrap' }}>
                 <button
                   type="button"
                   className="btn btn-secondary"
@@ -210,10 +215,11 @@ export default function VolunteerPage() {
                     setSubmitted(false);
                     setStep(1);
                   }}
+                  style={{ minWidth: 200 }}
                 >
                   Submit Another Application
                 </button>
-                <Link href="/" className="btn btn-tertiary">
+                <Link href="/" className="btn btn-tertiary" style={{ minWidth: 180 }}>
                   Return to Homepage ›
                 </Link>
               </div>
@@ -224,7 +230,7 @@ export default function VolunteerPage() {
                 background: '#ffffff',
                 border: '1px solid var(--border-warm)',
                 borderRadius: 16,
-                padding: '36px',
+                padding: '32px 20px',
                 boxShadow: 'var(--shadow-card)',
               }}
             >
@@ -397,7 +403,7 @@ export default function VolunteerPage() {
                     </div>
                   </div>
 
-                  <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap' }}>
                     <button
                       type="button"
                       className="btn btn-tertiary"
@@ -437,7 +443,7 @@ export default function VolunteerPage() {
                       />
                     </div>
 
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 16 }}>
                       <div>
                         <label style={{ display: 'block', fontSize: 14, fontWeight: 700, marginBottom: 6 }}>Email Address *</label>
                         <input
@@ -470,7 +476,7 @@ export default function VolunteerPage() {
                     </div>
                   </div>
 
-                  <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap' }}>
                     <button
                       type="button"
                       className="btn btn-tertiary"
@@ -504,7 +510,7 @@ export default function VolunteerPage() {
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 20 }}>
+          <div className="responsive-grid-4">
             {/* 1. Corporate Partnerships */}
             <div style={{ background: '#ffffff', borderRadius: 12, border: '1px solid var(--border-warm)', padding: 24, boxShadow: 'var(--shadow-card)' }}>
               <div style={{ width: 44, height: 44, borderRadius: '50%', background: 'var(--primary-red-light)', color: 'var(--primary-red)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 14 }}>

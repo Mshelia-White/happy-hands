@@ -64,7 +64,12 @@ export const ContactForm: React.FC = () => {
 
   return (
     <div className="contact-form-card">
-      <h3 style={{ fontSize: 22, fontWeight: 900, margin: '0 0 16px' }}>Send Us a Message</h3>
+      <h2 style={{ fontSize: 22, fontWeight: 700, margin: '0 0 6px', fontFamily: 'var(--font-serif)', color: 'var(--dark-neutral)' }}>
+        Send Us a Message
+      </h2>
+      <p style={{ color: 'var(--text-muted)', fontSize: 14, margin: '0 0 22px' }}>
+        Fill out the form below and our team will get back to you within 24–48 hours.
+      </p>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <input
@@ -122,8 +127,8 @@ export const ContactForm: React.FC = () => {
         </div>
         <button
           type="submit"
-          className="btn btn-orange"
-          style={{ width: '100%' }}
+          className="btn btn-primary"
+          style={{ width: '100%', padding: '12px 20px', fontSize: 15 }}
           disabled={isSubmitting}
         >
           <Send size={16} />

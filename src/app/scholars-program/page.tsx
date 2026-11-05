@@ -196,9 +196,9 @@ export default function ScholarsProgramPage() {
             <button
               type="button"
               onClick={() => setCurrentStep(1)}
-              style={{ fontSize: 13, color: 'var(--primary-red)', fontWeight: 600 }}
+              style={{ fontSize: 13, color: 'var(--text-muted)', fontWeight: 600, display: 'flex', alignItems: 'center', gap: 4 }}
             >
-              Exit Flow
+              Cancel
             </button>
           </div>
         </div>
@@ -455,7 +455,7 @@ export default function ScholarsProgramPage() {
               </p>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: 32, alignItems: 'start' }}>
+            <div className="responsive-split-summary" style={{ alignItems: 'start' }}>
               {/* Left: Options */}
               <div>
                 <h3 style={{ fontSize: 18, marginBottom: 16 }}>Choose Schedule:</h3>
@@ -640,30 +640,33 @@ export default function ScholarsProgramPage() {
               </div>
             )}
 
-            {/* Tab 2: Bank Transfer */}
+            {/* Tab 2: Bank Transfer (UBA Primary + GTBank Alternate) */}
             {paymentTab === 'bank' && (
               <div style={{ background: '#ffffff', border: '1px solid var(--border-warm)', borderRadius: 14, padding: 28, boxShadow: 'var(--shadow-card)', marginBottom: 24 }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
-                  <h3 style={{ fontSize: 18, margin: 0 }}>Official Foundation Bank Account</h3>
-                  <span style={{ fontSize: 12, background: 'var(--light-neutral)', padding: '4px 10px', borderRadius: 999 }}>GTBank Nigeria</span>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16, flexWrap: 'wrap', gap: 8 }}>
+                  <h3 style={{ fontSize: 18, margin: 0 }}>Official Foundation Bank Accounts</h3>
+                  <span style={{ fontSize: 12, background: 'var(--primary-green-light)', color: 'var(--primary-green)', padding: '4px 10px', borderRadius: 999, fontWeight: 700 }}>
+                    Direct & 100% Fee-Free
+                  </span>
                 </div>
 
-                <div style={{ display: 'grid', gap: 12, fontSize: 14, background: 'var(--light-neutral)', padding: 18, borderRadius: 10, border: '1px solid var(--border-warm)' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                    <span style={{ color: 'var(--text-muted)' }}>Bank:</span>
-                    <strong>Guaranty Trust Bank (GTBank)</strong>
+                {/* Primary: United Bank for Africa */}
+                <div style={{ display: 'grid', gap: 10, fontSize: 14, background: 'var(--light-neutral)', padding: 18, borderRadius: 10, border: '1.5px solid var(--primary-green)', marginBottom: 16 }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <span style={{ fontWeight: 800, color: 'var(--primary-green)', fontSize: 15 }}>Primary Account: United Bank for Africa (UBA)</span>
+                    <span style={{ fontSize: 12, color: 'var(--text-muted)' }}>NGN & Domiciliary</span>
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                     <span style={{ color: 'var(--text-muted)' }}>Account Name:</span>
                     <strong>Happy Hands Community Development Foundation</strong>
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <span style={{ color: 'var(--text-muted)' }}>Account Number:</span>
+                    <span style={{ color: 'var(--text-muted)' }}>Naira Account Number:</span>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                      <strong style={{ fontSize: 18, letterSpacing: 1 }}>0625489110</strong>
+                      <strong style={{ fontSize: 18, letterSpacing: 1, color: 'var(--primary-red)' }}>1024567890</strong>
                       <button
                         type="button"
-                        onClick={() => handleCopy('0625489110')}
+                        onClick={() => handleCopy('1024567890')}
                         style={{ padding: '4px 10px', background: '#ffffff', border: '1px solid var(--border-warm)', borderRadius: 6, cursor: 'pointer', fontSize: 12, fontWeight: 700 }}
                       >
                         {copiedBank ? 'Copied ✓' : 'Copy'}
@@ -672,9 +675,47 @@ export default function ScholarsProgramPage() {
                   </div>
                 </div>
 
-                <p style={{ fontSize: 13, color: 'var(--text-muted)', marginTop: 16 }}>
-                  * After making transfer, kindly email your proof of transfer to <strong>projects@happyhandsfoundation.org</strong> with your package name so we can link you to your scholar immediately.
-                </p>
+                {/* Secondary Alternate: GTBank */}
+                <div style={{ display: 'grid', gap: 8, fontSize: 13.5, background: '#ffffff', padding: 14, borderRadius: 10, border: '1px solid var(--border-warm)' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <span style={{ fontWeight: 700, color: 'var(--dark-neutral)' }}>Alternate Option: Guaranty Trust Bank (GTBank)</span>
+                  </div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <span style={{ color: 'var(--text-muted)' }}>GTBank Account:</span>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                      <strong>0625489110</strong>
+                      <button
+                        type="button"
+                        onClick={() => handleCopy('0625489110')}
+                        style={{ padding: '3px 8px', background: 'var(--light-neutral)', border: '1px solid var(--border-warm)', borderRadius: 6, cursor: 'pointer', fontSize: 11.5 }}
+                      >
+                        Copy
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Approved Copy from Board 04 */}
+                <div style={{ marginTop: 18, paddingTop: 14, borderTop: '1px solid var(--border-warm)', fontSize: 13, color: 'var(--text-muted)' }}>
+                  <strong>Why Bank Transfer?</strong>
+                  <ul style={{ paddingLeft: 18, margin: '6px 0 16px', lineHeight: 1.6 }}>
+                    <li>Secure and direct to the foundation.</li>
+                    <li>No third-party transaction fees deducted.</li>
+                    <li>Ideal for corporate giving, annual sponsorships, and large gifts.</li>
+                  </ul>
+
+                  <button
+                    type="button"
+                    className="btn btn-secondary"
+                    style={{ width: '100%', padding: '12px', fontSize: 14 }}
+                    onClick={() => {
+                      alert(`Thank you! Transfer initiated for ${selectedPackage.name} (₦${calculatedTotal.toLocaleString()}). Reference: HHCF-SCHOLAR-${Math.floor(100000 + Math.random() * 900000)}. Your sponsorship will be activated upon transfer receipt.`);
+                      setCurrentStep(1);
+                    }}
+                  >
+                    I Have Initiated This Bank Transfer ›
+                  </button>
+                </div>
               </div>
             )}
 
@@ -692,7 +733,7 @@ export default function ScholarsProgramPage() {
             )}
 
             {/* Trust Notes (Board 04) */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16, textAlign: 'center', fontSize: 13, color: 'var(--text-muted)' }}>
+            <div className="responsive-grid-3" style={{ textAlign: 'center', fontSize: 13, color: 'var(--text-muted)' }}>
               <div style={{ background: 'var(--light-neutral)', padding: 14, borderRadius: 8, border: '1px solid var(--border-warm)' }}>
                 <strong>100% Direct Support</strong>
                 <p style={{ margin: '4px 0 0', fontSize: 12 }}>Every naira goes directly to scholar tuition & care.</p>

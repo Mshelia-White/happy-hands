@@ -173,7 +173,7 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24 }}>
+          <div className="responsive-grid-3">
             <div style={{ background: '#ffffff', borderRadius: 12, border: '1px solid var(--border-warm)', padding: 24, boxShadow: 'var(--shadow-card)' }}>
               <div style={{ width: 44, height: 44, borderRadius: '50%', background: 'var(--primary-red-light)', color: 'var(--primary-red)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 14 }}>
                 <CheckCircle2 size={22} />

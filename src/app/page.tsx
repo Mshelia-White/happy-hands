@@ -7,6 +7,7 @@ import { useDonation } from '@/context/DonationContext';
 import { StatsCounter } from '@/components/StatsCounter';
 import { FAQAccordion, FAQItem } from '@/components/FAQAccordion';
 import { CtaBanner } from '@/components/CtaBanner';
+import { TestimonialsSection } from '@/components/TestimonialsSection';
 import { 
   ArrowRight, 
   Heart, 
@@ -23,7 +24,7 @@ import {
 const homeFAQs: FAQItem[] = [
   {
     question: 'How do I make a donation to Happy Hands Foundation?',
-    answer: 'You can donate securely online in NGN (₦), USD ($), GBP (£), or EUR (€) via card or direct bank transfer to our official Guaranty Trust Bank (GTBank) account: 0625489110 (Happy Hands Community Development Foundation). You can choose to support our general fund or designate your gift to a specific initiative like the Scholars Program or Nourish Now.',
+    answer: 'You can donate securely online in NGN (₦), USD ($), GBP (£), or EUR (€) via card or direct bank transfer to our official United Bank for Africa (UBA) account (1024567890) or GTBank (0625489110). You can choose to support our general fund or designate your gift to a specific initiative like the Scholars Program or Nourish Now.',
   },
   {
     question: 'How does the Scholars Program work?',
@@ -349,7 +350,7 @@ export default function HomePage() {
             </Link>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20 }}>
+          <div className="responsive-grid-3">
             <div style={{ borderRadius: 12, overflow: 'hidden', height: 260, position: 'relative', border: '1px solid var(--border-warm)' }}>
               <Image
                 src="/assets/images/children-event.png"
@@ -381,50 +382,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 6. TESTIMONIALS: VOICES FROM OUR COMMUNITY */}
-      <section className="section section-bg-light" aria-label="Voices From Our Community">
-        <div className="container">
-          <div className="section-header text-center">
-            <span className="section-title-red">Voices From Our Community</span>
-            <h2>What People Are Saying</h2>
-            <p style={{ color: 'var(--text-muted)', fontSize: 16 }}>
-              Words from our guardians, school administrators, and passionate volunteers.
-            </p>
-          </div>
-
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24 }}>
-            <div style={{ background: '#ffffff', border: '1px solid var(--border-warm)', borderRadius: 12, padding: 24, boxShadow: 'var(--shadow-card)' }}>
-              <p style={{ fontSize: 14.5, fontStyle: 'italic', color: 'var(--dark-neutral)', lineHeight: 1.6, margin: '0 0 16px' }}>
-                &ldquo;Sponsoring a scholar through Happy Hands has been one of the most rewarding commitments of my life. Seeing my student move from sitting at home to leading her class in exams is priceless.&rdquo;
-              </p>
-              <div>
-                <strong style={{ display: 'block', fontSize: 14, color: 'var(--dark-neutral)' }}>Mrs. Bukola A.</strong>
-                <span style={{ fontSize: 12.5, color: 'var(--text-muted)' }}>Guardian Sponsor, Scholars Program</span>
-              </div>
-            </div>
-
-            <div style={{ background: '#ffffff', border: '1px solid var(--border-warm)', borderRadius: 12, padding: 24, boxShadow: 'var(--shadow-card)' }}>
-              <p style={{ fontSize: 14.5, fontStyle: 'italic', color: 'var(--dark-neutral)', lineHeight: 1.6, margin: '0 0 16px' }}>
-                &ldquo;When Teachers on the Go visited our community school, the joy in the children’s eyes was unforgettable. The volunteers brought energy, books, and genuine empathy.&rdquo;
-              </p>
-              <div>
-                <strong style={{ display: 'block', fontSize: 14, color: 'var(--dark-neutral)' }}>Mr. Tunde O.</strong>
-                <span style={{ fontSize: 12.5, color: 'var(--text-muted)' }}>Head Teacher, Community Primary School</span>
-              </div>
-            </div>
-
-            <div style={{ background: '#ffffff', border: '1px solid var(--border-warm)', borderRadius: 12, padding: 24, boxShadow: 'var(--shadow-card)' }}>
-              <p style={{ fontSize: 14.5, fontStyle: 'italic', color: 'var(--dark-neutral)', lineHeight: 1.6, margin: '0 0 16px' }}>
-                &ldquo;Volunteering with Happy Hands transformed how I view community service. Everything is transparent, centered on the children, and delivered with love.&rdquo;
-              </p>
-              <div>
-                <strong style={{ display: 'block', fontSize: 14, color: 'var(--dark-neutral)' }}>Chidinma E.</strong>
-                <span style={{ fontSize: 12.5, color: 'var(--text-muted)' }}>Lead Volunteer, Media & Communications</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* 6. TESTIMONIALS: VOICES FROM OUR COMMUNITY (Swipeable on Mobile) */}
+      <TestimonialsSection />
 
       {/* 7. FAQ (Board 08 Accordion) */}
       <section className="section" id="faqs" aria-label="Frequently Asked Questions">

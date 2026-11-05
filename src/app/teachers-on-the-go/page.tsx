@@ -178,7 +178,7 @@ export default function TeachersOnTheGoPage() {
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24 }}>
+          <div className="responsive-grid-3">
             <div style={{ background: '#ffffff', borderRadius: 14, border: '1px solid var(--border-warm)', padding: 28, boxShadow: 'var(--shadow-card)' }}>
               <div style={{ width: 44, height: 44, borderRadius: '50%', background: 'var(--primary-red-light)', color: 'var(--primary-red)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 16 }}>
                 <Palette size={22} />
@@ -223,7 +223,7 @@ export default function TeachersOnTheGoPage() {
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20 }}>
+          <div className="responsive-grid-3">
             <div style={{ height: 260, borderRadius: 12, overflow: 'hidden', position: 'relative', border: '1px solid var(--border-warm)' }}>
               <Image
                 src="/assets/images/children-event.png"

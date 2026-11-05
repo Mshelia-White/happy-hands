@@ -1116,7 +1116,7 @@ img {
   color: var(--primary-red);
 }
 
-.input-field, .select-field, .textarea-field {
+.input-field, .select-field, .textarea-field, .form-control {
   width: 100%;
   padding: 11px 14px;
   border-radius: var(--radius-sm);
@@ -1124,22 +1124,105 @@ img {
   background-color: #ffffff;
   color: var(--dark-neutral);
   font-size: 15px;
-  font-family: inherit;
+  font-family: var(--font-sans);
+  line-height: 1.5;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  box-sizing: border-box;
 }
 
-.input-field:focus, .select-field:focus, .textarea-field:focus {
+textarea.form-control, textarea.textarea-field {
+  min-height: 120px;
+  resize: vertical;
+  font-family: var(--font-sans);
+}
+
+.input-field:focus, .select-field:focus, .textarea-field:focus, .form-control:focus {
   border-color: var(--status-focus);
   outline: none;
+  box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.15);
 }
 
-.input-field.has-error {
+.input-field.has-error, .form-control.has-error {
   border-color: var(--status-error) !important;
   background-color: #FFFDFD;
 }
 
-.input-field.has-success {
+.input-field.has-success, .form-control.has-success {
   border-color: var(--status-success) !important;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.contact-two {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+@media (min-width: 640px) {
+  .contact-two {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Responsive Grid Utilities (Board 08 - Mobile Breakpoint) */
+.responsive-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+@media (min-width: 768px) {
+  .responsive-grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+
+.responsive-grid-3 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+@media (min-width: 640px) {
+  .responsive-grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1024px) {
+  .responsive-grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+}
+
+.responsive-grid-4 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+@media (min-width: 640px) {
+  .responsive-grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+@media (min-width: 1024px) {
+  .responsive-grid-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.responsive-split-summary {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+@media (min-width: 992px) {
+  .responsive-split-summary {
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 32px;
+  }
 }
 
 .form-helper-error {

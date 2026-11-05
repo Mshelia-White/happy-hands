@@ -23,7 +23,7 @@ export default function DonatePage() {
         </div>
 
         {/* Bottom Trust & Transparency Panels (Board 05) */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24, marginTop: 48 }}>
+        <div className="responsive-grid-3" style={{ marginTop: 48 }}>
           <div style={{ background: '#ffffff', padding: 24, borderRadius: 12, border: '1px solid var(--border-warm)' }}>
             <div style={{ width: 44, height: 44, borderRadius: '50%', background: 'var(--primary-red-light)', color: 'var(--primary-red)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 14 }}>
               <ShieldCheck size={22} />

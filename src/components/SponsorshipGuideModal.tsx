@@ -15,51 +15,12 @@ export const SponsorshipGuideModal: React.FC<SponsorshipGuideModalProps> = ({ is
   if (!isOpen) return null;
 
   const handleDownload = () => {
-    const guideContent = `HAPPY HANDS COMMUNITY DEVELOPMENT FOUNDATION
-SCHOLARS PROGRAM — OFFICIAL SPONSORSHIP GUIDE
-
-"They're the reason we exist. But you're the reason this works."
-
-ABOUT THE SCHOLARS PROGRAM
-Through the Scholars Program, we become guardians by supporting children who have academic potential but may not have the financial means to remain in school.
-The scholarship supports the total cost of the child's education, including tuition and extracurricular activities, while also providing daily feeding during school hours.
-We monitor each child's academic progress and give our scholars access to specially curated programs that help nurture their dreams and unlock their full potential.
-
-WHAT THE SCHOLARSHIP INCLUDES:
-• Tuition & Term Assessment Fees
-• Approved education-related costs
-• Extracurricular activities
-• Academic monitoring & mentorship
-• Access to Happy Hands development programs
-• Daily feeding during school hours
-
-WAYS TO BECOME A GUARDIAN (SPONSORSHIP PACKAGES):
-1. Full Bloom Package — Full annual support for a scholar covering complete tuition, daily nutrition, and all educational development.
-2. Empowerment Partner — Termly support covering key educational and developmental needs.
-3. Education Essentials Package — Tuition and essential school needs.
-4. Nutrition for Growth Package — Daily feeding during school hours.
-5. Back-to-School Package — Uniforms, school bags, shoes, and basic learning supplies.
-
-INTERNATIONAL SUPPORT:
-Supporting from outside Nigeria? You can become a Guardian from anywhere in the world. Donations are accepted in NGN (₦), USD ($), GBP (£), and EUR (€).
-
-CONTACT & VERIFICATION:
-• Official Phone: 08121353755, 08188795474
-• Partnerships: partnerships@happyhandsfoundation.org
-• Projects: projects@happyhandsfoundation.org
-• Official Website: https://happyhandsfoundation.org
-Registered Non-Profit Community Development Foundation in Nigeria since 2020.
-`;
-
-    const blob = new Blob([guideContent], { type: 'text/plain;charset=utf-8' });
-    const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
-    link.href = url;
-    link.download = 'HappyHands_Scholars_Program_Sponsorship_Guide.txt';
+    link.href = '/assets/docs/HappyHands_Scholars_Sponsorship_Guide.pdf';
+    link.download = 'HappyHands_Scholars_Sponsorship_Guide.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-    URL.revokeObjectURL(url);
   };
 
   return (

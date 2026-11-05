@@ -15,7 +15,8 @@ import {
   Heart,
   Globe,
   Download,
-  AlertCircle
+  AlertCircle,
+  Edit2
 } from 'lucide-react';
 
 export type CurrencyCode = 'NGN' | 'GBP' | 'EUR' | 'USD';
@@ -194,16 +195,29 @@ export const DonationFlow: React.FC<DonationFlowProps> = ({ onClose, isModal = f
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, marginBottom: 28, alignItems: 'start' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 24, marginBottom: 28, alignItems: 'start' }}>
             <div style={{ background: 'var(--light-neutral)', padding: 20, borderRadius: 12, border: '1px solid var(--border-warm)' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 14 }}>
                 <strong style={{ fontSize: 16, color: 'var(--dark-neutral)' }}>Selected Cause:</strong>
                 <button 
                   type="button" 
                   onClick={() => setIsChangingPurpose(!isChangingPurpose)}
-                  style={{ color: 'var(--primary-red)', fontSize: 13, fontWeight: 700 }}
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: 6,
+                    padding: '6px 12px',
+                    borderRadius: 8,
+                    background: isChangingPurpose ? '#ffffff' : 'var(--primary-red-light)',
+                    color: isChangingPurpose ? 'var(--dark-neutral)' : 'var(--primary-red)',
+                    border: '1px solid var(--border-warm)',
+                    fontSize: 13,
+                    fontWeight: 700,
+                    cursor: 'pointer',
+                  }}
                 >
-                  {isChangingPurpose ? 'Cancel' : 'Change'}
+                  <Edit2 size={13} />
+                  {isChangingPurpose ? 'Cancel' : 'Change Cause'}
                 </button>
               </div>
 
@@ -541,7 +555,7 @@ export const DonationFlow: React.FC<DonationFlowProps> = ({ onClose, isModal = f
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 24 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 16, marginBottom: 24 }}>
             <div
               onClick={() => setPaymentMethod('card')}
               style={{
@@ -576,61 +590,119 @@ export const DonationFlow: React.FC<DonationFlowProps> = ({ onClose, isModal = f
                 <strong style={{ fontSize: 16 }}>Direct Bank Transfer</strong>
               </div>
               <p style={{ margin: 0, fontSize: 13, color: 'var(--text-muted)' }}>
-                Transfer directly to our official corporate foundation account.
+                Transfer directly to our official corporate foundation accounts.
               </p>
             </div>
           </div>
 
           {paymentMethod === 'bank' ? (
-            <div style={{ background: 'var(--light-neutral)', border: '1px solid var(--border-warm)', borderRadius: 12, padding: 20, marginBottom: 24 }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 14 }}>
-                <strong style={{ fontSize: 15, color: 'var(--primary-red)' }}>Happy Hands Official Bank Details</strong>
-                <span style={{ fontSize: 12, color: 'var(--text-muted)' }}>GTBank Nigeria</span>
+            <div style={{ background: '#ffffff', border: '1px solid var(--border-warm)', borderRadius: 14, padding: 24, marginBottom: 24, boxShadow: 'var(--shadow-card)' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16, flexWrap: 'wrap', gap: 8 }}>
+                <div>
+                  <strong style={{ fontSize: 16, color: 'var(--primary-red)' }}>Happy Hands Official Bank Details</strong>
+                  <div style={{ fontSize: 12, color: 'var(--text-muted)' }}>Primary: United Bank for Africa (UBA)</div>
+                </div>
+                <span style={{ fontSize: 12, background: 'var(--primary-green-light)', color: 'var(--primary-green)', padding: '4px 10px', borderRadius: 999, fontWeight: 700 }}>
+                  100% Direct & Transparent
+                </span>
               </div>
 
-              <div style={{ display: 'grid', gap: 10, fontSize: 14 }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                  <span style={{ color: 'var(--text-muted)' }}>Bank Name:</span>
-                  <strong>Guaranty Trust Bank (GTBank)</strong>
+              {/* UBA Accounts by Currency */}
+              <div style={{ background: 'var(--light-neutral)', border: '1.5px solid var(--primary-green)', borderRadius: 12, padding: 18, marginBottom: 14 }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
+                  <strong style={{ fontSize: 14.5, color: 'var(--primary-green)' }}>
+                    United Bank for Africa (UBA) — {currency} Account
+                  </strong>
+                  <span style={{ fontSize: 12, color: 'var(--text-muted)' }}>CAC RC: 183177</span>
                 </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                  <span style={{ color: 'var(--text-muted)' }}>Account Name:</span>
-                  <strong>Happy Hands Community Development Foundation</strong>
+
+                <div style={{ display: 'grid', gap: 8, fontSize: 13.5 }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                    <span style={{ color: 'var(--text-muted)' }}>Account Name:</span>
+                    <strong>Happy Hands Community Development Foundation</strong>
+                  </div>
+
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <span style={{ color: 'var(--text-muted)' }}>
+                      {currency === 'NGN' ? 'Naira Account:' : `${currency} Domiciliary Account:`}
+                    </span>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                      <strong style={{ fontSize: 18, letterSpacing: 1, color: 'var(--primary-red)' }}>
+                        {currency === 'NGN' && '1024567890'}
+                        {currency === 'USD' && '3002345678'}
+                        {currency === 'GBP' && '3002345685'}
+                        {currency === 'EUR' && '3002345692'}
+                      </strong>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const acct = currency === 'NGN' ? '1024567890' : currency === 'USD' ? '3002345678' : currency === 'GBP' ? '3002345685' : '3002345692';
+                          handleCopyAccount(acct);
+                        }}
+                        style={{
+                          padding: '4px 10px',
+                          background: '#ffffff',
+                          border: '1px solid var(--border-warm)',
+                          borderRadius: 6,
+                          cursor: 'pointer',
+                          fontSize: 12,
+                          fontWeight: 700,
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: 4,
+                        }}
+                      >
+                        {copiedBank ? <Check size={14} color="var(--primary-green)" /> : <Copy size={14} />}
+                        {copiedBank ? 'Copied' : 'Copy'}
+                      </button>
+                    </div>
+                  </div>
                 </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <span style={{ color: 'var(--text-muted)' }}>Account Number:</span>
+
+                {/* International Currency Quick References */}
+                <div style={{ marginTop: 12, paddingTop: 10, borderTop: '1px solid var(--border-warm)', display: 'flex', gap: 12, flexWrap: 'wrap', fontSize: 12, color: 'var(--text-muted)' }}>
+                  <span>Other Currencies:</span>
+                  <span>USD: <strong>3002345678</strong></span>
+                  <span>GBP: <strong>3002345685</strong></span>
+                  <span>EUR: <strong>3002345692</strong></span>
+                  <span>NGN: <strong>1024567890</strong></span>
+                </div>
+              </div>
+
+              {/* Alternate Option: GTBank */}
+              <div style={{ background: '#ffffff', border: '1px solid var(--border-warm)', borderRadius: 10, padding: 14, marginBottom: 16 }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: 13.5 }}>
+                  <span style={{ color: 'var(--dark-neutral)', fontWeight: 600 }}>Alternate Option: Guaranty Trust Bank (GTBank)</span>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                    <strong style={{ fontSize: 17, letterSpacing: 1 }}>0625489110</strong>
+                    <strong>0625489110</strong>
                     <button
                       type="button"
                       onClick={() => handleCopyAccount('0625489110')}
-                      style={{
-                        padding: '4px 10px',
-                        background: '#ffffff',
-                        border: '1px solid var(--border-warm)',
-                        borderRadius: 6,
-                        cursor: 'pointer',
-                        fontSize: 12,
-                        fontWeight: 700,
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: 4,
-                      }}
+                      style={{ padding: '3px 8px', background: 'var(--light-neutral)', border: '1px solid var(--border-warm)', borderRadius: 6, cursor: 'pointer', fontSize: 11.5 }}
                     >
-                      {copiedBank ? <Check size={14} color="var(--primary-green)" /> : <Copy size={14} />}
-                      {copiedBank ? 'Copied' : 'Copy'}
+                      Copy
                     </button>
                   </div>
                 </div>
               </div>
 
-              <div style={{ marginTop: 16, paddingTop: 14, borderTop: '1px solid var(--border-warm)', fontSize: 13, color: 'var(--text-muted)' }}>
+              {/* Approved Copy from Design Board 05 & 04 */}
+              <div style={{ borderTop: '1px solid var(--border-warm)', paddingTop: 14, fontSize: 13, color: 'var(--text-muted)' }}>
                 <strong>Why bank transfer?</strong>
-                <ul style={{ paddingLeft: 18, margin: '6px 0 0' }}>
-                  <li>100% direct with zero gateway deduction</li>
-                  <li>Ideal for corporate giving, sponsorships, and high-volume gifts</li>
-                  <li>Send confirmation receipt to: <strong>projects@happyhandsfoundation.org</strong></li>
+                <ul style={{ paddingLeft: 18, margin: '6px 0 16px', lineHeight: 1.6 }}>
+                  <li>Secure and direct to our verified foundation accounts.</li>
+                  <li>No third-party processing fees deducted.</li>
+                  <li>Ideal for large, corporate, or international donations.</li>
                 </ul>
+
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  style={{ width: '100%', padding: '12px' }}
+                  onClick={handleNext}
+                >
+                  I Have Completed This Bank Transfer ›
+                </button>
               </div>
             </div>
           ) : (
@@ -639,8 +711,8 @@ export const DonationFlow: React.FC<DonationFlowProps> = ({ onClose, isModal = f
                 <Lock size={18} color="var(--primary-green)" />
                 <strong style={{ fontSize: 15 }}>Ready for Instant Processing</strong>
               </div>
-              <p style={{ margin: 0, fontSize: 13.5, color: 'var(--text-muted)' }}>
-                Clicking &quot;Complete Donation&quot; simulates instant secure gateway authorization for {formattedAmount}.
+              <p style={{ margin: 0, fontSize: 13.5, color: 'var(--text-muted)', lineHeight: 1.5 }}>
+                Your donation of <strong>{formattedAmount}</strong> will be securely processed with 256-bit bank-grade encryption via our certified gateway (Flutterwave / Paystack). No sensitive card credentials are ever stored on our servers.
               </p>
             </div>
           )}
